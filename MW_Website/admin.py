@@ -1,11 +1,62 @@
 from django.contrib import admin
-from .models import DoctorModel
-
+from django.contrib.admin.helpers import AdminField
+from .models import (
+    DoctorModel,
+    SpecialtyModel,
+    PatientModel,
+    DoctorNotesModel,
+    BlogModel,
+    CategoryModel,
+    TagModel,
+    CommentModel,
+)
 
 class DoctorModel_Admin(admin.ModelAdmin):
-    # list_display = ['user__first_name', 'user__last_name', 'user__phone']
+    list_display = ['get_full_name', 'code']
     search_field = ['code']
     ordering = ['-user__id']
 
+class SpecialtyModel_Admin(admin.ModelAdmin):
+    list_display = ['title']
+    search_field = ['title']
+    ordering = ['-id']
+
+class PatientModel_Admin(admin.ModelAdmin):
+    list_display = ['get_full_name', 'code']
+    search_field = ['code']
+    ordering = ['-user__id']
+
+class BlogModel_Admin(admin.ModelAdmin):
+    list_display = ['title', 'get_full_name']
+    search_field = ['title', 'get_full_name']
+    ordering = ['-id']
+
+class CategoryModel_Admin(admin.ModelAdmin):
+    list_display = ['title']
+    search_field = ['title']
+    ordering = ['-id']
+
+class TagModel_Admin(admin.ModelAdmin):
+    list_display = ['title']
+    search_field = ['title']
+    ordering = ['-id']
+
+class DoctorNotesModel_Admin(admin.ModelAdmin):
+    list_display = ['short_title', 'get_full_name']
+    search_field = ['short_title', 'get_full_name']
+    ordering = ['-id']
+
+class CommentModel_Admin(admin.ModelAdmin):
+    list_display = ['__str__']
+    ordering = ['-id']
 
 admin.site.register(DoctorModel, DoctorModel_Admin)
+admin.site.register(SpecialtyModel, SpecialtyModel_Admin)
+admin.site.register(PatientModel, PatientModel_Admin)
+admin.site.register(DoctorNotesModel, DoctorNotesModel_Admin)
+admin.site.register(BlogModel, BlogModel_Admin)
+admin.site.register(CategoryModel, CategoryModel_Admin)
+admin.site.register(TagModel, TagModel_Admin)
+admin.site.register(CommentModel, CommentModel_Admin)
+
+

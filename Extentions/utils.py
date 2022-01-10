@@ -61,14 +61,20 @@ def get_filename_ext_rand(filepath):
 # ######### for doctors imgs ######### #
 def doctor_image_path(instance, filename):
     name, ext, rand = get_filename_ext_rand(filename)
-    final_name = f"{name}-{instance.username}-{rand}{ext}"
+    final_name = f"{name}-{instance.code}-{rand}{ext}"
     return f"doctors/{final_name}"
 
 # ######### for patient imgs ######### #
 def patient_image_path(instance, filename):
     name, ext, rand = get_filename_ext_rand(filename)
-    final_name = f"{name}-{instance.username}-{rand}{ext}"
+    final_name = f"{name}-{instance.code}-{rand}{ext}"
     return f"patient/{final_name}"
+
+# ######### for brands imgs ######### #
+def brands_image_path(instance, filename):
+    name, ext, rand = get_filename_ext_rand(filename)
+    final_name = f"{rand}{ext}"
+    return f"brands/{final_name}"
 
 
 
@@ -76,10 +82,10 @@ def patient_image_path(instance, filename):
 def get_doctor_code():
     random_1 = randint(1000, 9999)
     random_2 = randint(1000, 9999)
-    return f'us{random_1}{random_2}'
+    return f'{random_1}{random_2}'
 
 # ######### for patient codes ######### #
 def get_patient_code():
     random_1 = randint(1000, 9999)
     random_2 = randint(1000, 9999)
-    return f'us{random_1}{random_2}'
+    return f'{random_1}{random_2}'

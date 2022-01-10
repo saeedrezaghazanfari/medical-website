@@ -1,0 +1,322 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-10 14:00+0330\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\models.py:8
+msgid "کد دکتر"
+msgstr ""
+
+#: .\models.py:9
+msgid "کاربر"
+msgstr ""
+
+#: .\models.py:10
+msgid "پروفایل"
+msgstr ""
+
+#: .\models.py:15
+msgid "دکتر"
+msgstr ""
+
+#: .\models.py:16 .\templates\mw_website\doctors_page.html:3
+#: .\templates\mw_website\doctors_page.html:14
+msgid "دکترها"
+msgstr ""
+
+#: .\models.py:24
+msgid "تخصص"
+msgstr ""
+
+#: .\models.py:25
+msgid "تخصص ‌ها"
+msgstr ""
+
+#: .\templates\mw_website\aboutus_page.html:3
+msgid "درباره ی ما"
+msgstr ""
+
+#: .\templates\mw_website\aboutus_page.html:14
+msgid "درباره ما"
+msgstr ""
+
+#: .\templates\mw_website\aboutus_page.html:15
+#: .\templates\mw_website\blog_detail_page.html:15
+#: .\templates\mw_website\blogs_page.html:15
+#: .\templates\mw_website\contactus_page.html:18
+#: .\templates\mw_website\department_page.html:15
+#: .\templates\mw_website\doctors_page.html:15
+msgid "زمین سبز پشت هوای الوده است"
+msgstr ""
+
+#: .\templates\mw_website\aboutus_page.html:18
+msgid "خانه / درباره ی ما"
+msgstr ""
+
+#: .\templates\mw_website\aboutus_page.html:32
+#: .\templates\mw_website\index_page.html:105
+msgid "با ما بهترین پزشک ها را تجربه کنید"
+msgstr ""
+
+#: .\templates\mw_website\aboutus_page.html:33
+#: .\templates\mw_website\index_page.html:106
+msgid ""
+"ما بهترین پزشک های متخصص را دور هم گرد آورده ایم تا با بهترین کیفیت به شما "
+"خدمت کنیم"
+msgstr ""
+
+#: .\templates\mw_website\aboutus_page.html:34
+#: .\templates\mw_website\index_page.html:107
+msgid "سلامتی شما آرزوی ماست"
+msgstr ""
+
+#: .\templates\mw_website\aboutus_page.html:48
+msgid "سوالی دارید"
+msgstr ""
+
+#: .\templates\mw_website\aboutus_page.html:55
+msgid "آیا ما پشتیبانی 24 ساعته داریم؟"
+msgstr ""
+
+#: .\templates\mw_website\aboutus_page.html:63
+msgid "بله ما پشتیبانی 24 ساعته داریم :)"
+msgstr ""
+
+#: .\templates\mw_website\aboutus_page.html:72
+msgid "آیا هدف ما سلامتی شماست؟"
+msgstr ""
+
+#: .\templates\mw_website\aboutus_page.html:80
+msgid "بله هدف ما سلامتی شماست :)"
+msgstr ""
+
+#: .\templates\mw_website\aboutus_page.html:89
+msgid "آیا ما دکترهای خوب داریم؟"
+msgstr ""
+
+#: .\templates\mw_website\aboutus_page.html:97
+msgid "بله ما ما دکترهای متخصص داریم :)"
+msgstr ""
+
+#: .\templates\mw_website\blog_detail_page.html:3
+#: .\templates\mw_website\blog_detail_page.html:14
+msgid "اطلاعات بلاگ"
+msgstr ""
+
+#: .\templates\mw_website\blog_detail_page.html:18
+msgid "خانه / بلاگ ها / اطلاعات بلاگ"
+msgstr ""
+
+#: .\templates\mw_website\blog_detail_page.html:93
+msgid "پست قبلی"
+msgstr ""
+
+#: .\templates\mw_website\blog_detail_page.html:101
+msgid "پست بعدی"
+msgstr ""
+
+#: .\templates\mw_website\blog_detail_page.html:135
+msgid "نظر"
+msgstr ""
+
+#: .\templates\mw_website\blog_detail_page.html:223
+msgid "جواب دادن"
+msgstr ""
+
+#: .\templates\mw_website\blog_detail_page.html:248
+#: .\templates\mw_website\contactus_page.html:76
+msgid "ارسال پیام"
+msgstr ""
+
+#: .\templates\mw_website\blogs_page.html:3
+#: .\templates\mw_website\blogs_page.html:14
+msgid "بلاگ ها"
+msgstr ""
+
+#: .\templates\mw_website\blogs_page.html:18
+msgid "خانه / بلاگ ها"
+msgstr ""
+
+#: .\templates\mw_website\contactus_page.html:3
+#: .\templates\mw_website\contactus_page.html:17
+msgid "ارتباط با ما"
+msgstr ""
+
+#: .\templates\mw_website\contactus_page.html:21
+msgid "خانه / ارتباط با ما"
+msgstr ""
+
+#: .\templates\mw_website\contactus_page.html:49
+msgid "در ارتباط بمانید"
+msgstr ""
+
+#: .\templates\mw_website\contactus_page.html:86
+msgid "ایران، اصفهان"
+msgstr ""
+
+#: .\templates\mw_website\contactus_page.html:87
+msgid "شهرضا"
+msgstr ""
+
+#: .\templates\mw_website\contactus_page.html:94
+msgid "شنبه تا چهارشنبه صبح تا شب"
+msgstr ""
+
+#: .\templates\mw_website\contactus_page.html:101
+msgid "سوال خود را از من بپرسید"
+msgstr ""
+
+#: .\templates\mw_website\department_page.html:3
+msgid "دپارتمان"
+msgstr ""
+
+#: .\templates\mw_website\department_page.html:14
+msgid "ساختمان"
+msgstr ""
+
+#: .\templates\mw_website\department_page.html:18
+msgid "خانه / ساختمان"
+msgstr ""
+
+#: .\templates\mw_website\department_page.html:31
+msgid "سرویس سلامتی"
+msgstr ""
+
+#: .\templates\mw_website\department_page.html:41
+msgid "سرویس ها"
+msgstr ""
+
+#: .\templates\mw_website\department_page.html:50
+msgid "کلینیک دندان پزشکی"
+msgstr ""
+
+#: .\templates\mw_website\department_page.html:59
+#: .\templates\mw_website\index_page.html:89
+msgid "جراحی پلاستیک"
+msgstr ""
+
+#: .\templates\mw_website\doctors_page.html:18
+msgid "خانه / دکتر ها"
+msgstr ""
+
+#: .\templates\mw_website\doctors_page.html:31
+msgid "مدیکیور دکتر های با تجربه"
+msgstr ""
+
+#: .\templates\mw_website\doctors_page.html:102
+msgid "اورژانسی"
+msgstr ""
+
+#: .\templates\mw_website\doctors_page.html:104
+#: .\templates\mw_website\index_page.html:242
+msgid "ما برای سلامتی شما سرویس 24 ساعته در نظر داریم"
+msgstr ""
+
+#: .\templates\mw_website\index_page.html:3
+msgid "خانه"
+msgstr ""
+
+#: .\templates\mw_website\index_page.html:12
+msgid "سلامتی را با هم بسازیم"
+msgstr ""
+
+#: .\templates\mw_website\index_page.html:13
+msgid ""
+"ما اینجا هستیم تا شما بتوانید با صرفه جویی در زمان، امورات پزشکی خود را "
+"انجام دهید."
+msgstr ""
+
+#: .\templates\mw_website\index_page.html:14
+msgid "دیدن دپارتمان"
+msgstr ""
+
+#: .\templates\mw_website\index_page.html:30
+msgid "مراقبت ویژه"
+msgstr ""
+
+#: .\templates\mw_website\index_page.html:31
+msgid ""
+"در واقع شرایط بیماران بستری در بخش مراقبت ویژه به گونه ای است که امکان "
+"مراقبت ونگهداری از آنها در سایر بخش‌ها و در کنار دیگر بیماران وجود ندارد."
+msgstr ""
+
+#: .\templates\mw_website\index_page.html:39
+msgid "موارد اظطراری"
+msgstr ""
+
+#: .\templates\mw_website\index_page.html:40
+msgid "پیشگیری بهتر از درمان است. در حفظ سلامتی خود کوشا باشید."
+msgstr ""
+
+#: .\templates\mw_website\index_page.html:48
+msgid "قرار انلاین"
+msgstr ""
+
+#: .\templates\mw_website\index_page.html:49
+msgid ""
+"شما میتوانید در همه‌ی اوقات شبانه روز، برای ملاقات با پزشک موردنظر خود، تایم "
+"رزرو کنید."
+msgstr ""
+
+#: .\templates\mw_website\index_page.html:62
+msgid "فوق العاده ترین مراقبت ها"
+msgstr ""
+
+#: .\templates\mw_website\index_page.html:71
+msgid "سرویس پزشکی"
+msgstr ""
+
+#: .\templates\mw_website\index_page.html:80
+msgid "دندانی کلینک"
+msgstr ""
+
+#: .\templates\mw_website\index_page.html:120
+msgid "پزشکی دکتر های باتجربه"
+msgstr ""
+
+#: .\templates\mw_website\index_page.html:240
+msgid "خط ویژه"
+msgstr ""
+
+#: .\templates\mw_website\index_page.html:254
+msgid "آخرین بلاگ‌ها"
+msgstr ""
+
+#: .\templates\partials_mw_website\blog_sidebar.html:15
+msgid "جستجو"
+msgstr ""
+
+#: .\templates\partials_mw_website\blog_sidebar.html:20
+msgid "دسته بندی"
+msgstr ""
+
+#: .\templates\partials_mw_website\blog_sidebar.html:62
+msgid "پست های اخیر"
+msgstr ""
+
+#: .\templates\partials_mw_website\blog_sidebar.html:101
+msgid "تگ ها"
+msgstr ""
+
+#: .\templates\partials_mw_website\blog_sidebar.html:151
+msgid "اخبار"
+msgstr ""
+
+#: .\templates\partials_mw_website\blog_sidebar.html:157
+msgid "اشتراک"
+msgstr ""

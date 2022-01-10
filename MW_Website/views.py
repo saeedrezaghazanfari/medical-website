@@ -1,7 +1,14 @@
 from django.shortcuts import render
 
+
 # url: /
 def index_page(request):
+    # from Extentions.utils import jalali_convertor, jalali_convertor_tokens
+    # import datetime
+    # a = datetime.date.today().year
+    # b = datetime.date.today().month
+    # c = datetime.date.today().day
+    # print(jalali_convertor_tokens(datetime.datetime.now()))
     return render(request, 'mw_website/index_page.html', {})
 
 # url: /about-us

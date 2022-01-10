@@ -13,6 +13,7 @@ urlpatterns = [
 urlpatterns += i18n_patterns(
     path('', include('MW_Website.urls', namespace='website')),
     path('', include('MW_Auth.urls', namespace='auth')),
+    path('', include('MW_Setting.urls', namespace='setting')),
     path('change/language/', views.activate_language, name='activate_lang'),
     path('admin/', admin.site.urls),
 )

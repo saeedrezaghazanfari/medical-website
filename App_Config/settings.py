@@ -19,6 +19,7 @@ INSTALLED_APPS = [
     # APPs
     'MW_Website.apps.MwWebsiteConfig',  # website actions
     'MW_Auth.apps.MwAuthConfig',        # authentication actions
+    'MW_Setting.apps.MwSettingConfig',        # authentication actions
 
     # PACKs
     
@@ -91,7 +92,7 @@ LANGUAGES = [
     ('fa', _('Persian')),
     ('en', _('English')),
 ]
-LANGUAGE_CODE = 'fa-ir'
+LANGUAGE_CODE = 'fa'
 TIME_ZONE = 'Asia/Tehran'
 USE_I18N = True
 USE_TZ = True

@@ -1,4 +1,15 @@
 {% load i18n static %}
+
+<!--================ messages box =================-->
+{% for msg in messages %}
+<div class="alert alert-success alert-dismissible alertme" id="alertme">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    {{ msg }}
+</div>
+{% empty %}
+{% endfor %}
+<!--================ messages box =================-->
+
 <!--================Header Menu Area =================-->
 <header class="header_area">
     <div class="top_menu row m0">
@@ -10,7 +21,7 @@
                 <a href="{% url 'activate_lang' %}?lang=fa&url={{ request.path|slice:'4:' }}" class="dn_btn mr-3">فا</a>
                 {% endif %}
 
-                {% if not request.user.is_authenticated %}
+                {% if request.user.is_authenticated %}
                 <a href="" class="dn_btn mr-3">Account</a>
                 <a href="" class="dn_btn mr-3">Log Out</a>
                 {% else %}
