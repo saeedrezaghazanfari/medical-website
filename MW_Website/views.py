@@ -1,15 +1,17 @@
+from django.views import generic
 from django.shortcuts import render
+from .models import (
+    BlogModel
+)
 
 
 # url: /
-def index_page(request):
-    # from Extentions.utils import jalali_convertor, jalali_convertor_tokens
-    # import datetime
-    # a = datetime.date.today().year
-    # b = datetime.date.today().month
-    # c = datetime.date.today().day
-    # print(jalali_convertor_tokens(datetime.datetime.now()))
-    return render(request, 'mw_website/index_page.html', {})
+class IndexPage(generic.TemplateView):
+    template_name = 'mw_website/index_page.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['last_blogs'] = BlogModel.objects.all()[:3]
+        return context
 
 # url: /about-us
 def aboutus_page(request):

@@ -1,6 +1,7 @@
 from django.utils import timezone
 from . import jalali
 import os
+import datetime
 from random import randint
 
 def jalali_convertor(time):
@@ -76,16 +77,47 @@ def brands_image_path(instance, filename):
     final_name = f"{rand}{ext}"
     return f"brands/{final_name}"
 
+# ######### for blogs imgs ######### #
+def blog_image_path(instance, filename):
+    name, ext, rand = get_filename_ext_rand(filename)
+    final_name = f"{rand}{ext}"
+    return f"blogs/{final_name}"
+
+
 
 
 # ######### for doctor codes ######### #
 def get_doctor_code():
-    random_1 = randint(1000, 9999)
-    random_2 = randint(1000, 9999)
-    return f'{random_1}{random_2}'
+    time = datetime.datetime.now()
+    intmonth = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+
+    time_to_str = f'{time.year} {time.month} {time.day}'
+    time_to_tuple = jalali.Gregorian(time_to_str).persian_tuple()
+    time_to_list = list(time_to_tuple)
+
+    for index, month in enumerate(intmonth):
+        if time_to_list[1] == index + 1:
+            time_to_list[1] = month
+            break
+    random = randint(10, 99)
+    output = f'{time_to_list[2]}{time_to_list[1]}{time_to_list[0]}{random}1'
+    return output
+    # 21101400321 => 21 day, 10 month, 1400 age, 32 random, 1 doctor
 
 # ######### for patient codes ######### #
 def get_patient_code():
-    random_1 = randint(1000, 9999)
-    random_2 = randint(1000, 9999)
-    return f'{random_1}{random_2}'
+    time = datetime.datetime.now()
+    intmonth = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+
+    time_to_str = f'{time.year} {time.month} {time.day}'
+    time_to_tuple = jalali.Gregorian(time_to_str).persian_tuple()
+    time_to_list = list(time_to_tuple)
+
+    for index, month in enumerate(intmonth):
+        if time_to_list[1] == index + 1:
+            time_to_list[1] = month
+            break
+    random = randint(10, 99)
+    output = f'{time_to_list[2]}{time_to_list[1]}{time_to_list[0]}{random}0'
+    return output
+    # 21101400210 => 21 day, 10 month, 1400 age, 21 random, 0 patient

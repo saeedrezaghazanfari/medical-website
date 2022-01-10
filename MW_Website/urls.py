@@ -3,7 +3,8 @@ from . import views
 
 app_name = 'website'
 urlpatterns = [
-    path('', views.index_page, name='index'),
+    # path('', views.index_page, name='index'),
+    path('', views.IndexPage.as_view(), name='index'),
     path('about-us', views.aboutus_page, name='aboutus'),
     path('department', views.department_page, name='department'),
     path('doctors', views.doctors_page, name='doctors'),

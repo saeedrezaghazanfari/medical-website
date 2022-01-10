@@ -9,6 +9,8 @@ from .models import (
     CategoryModel,
     TagModel,
     CommentModel,
+    BlogLikesModel,
+    CommentLikesModel,
 )
 
 class DoctorModel_Admin(admin.ModelAdmin):
@@ -58,5 +60,5 @@ admin.site.register(BlogModel, BlogModel_Admin)
 admin.site.register(CategoryModel, CategoryModel_Admin)
 admin.site.register(TagModel, TagModel_Admin)
 admin.site.register(CommentModel, CommentModel_Admin)
-
-
+admin.site.register(BlogLikesModel)
+admin.site.register(CommentLikesModel)

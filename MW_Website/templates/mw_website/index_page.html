@@ -113,123 +113,11 @@
 <!--================About Area End =================-->
 
 <!--================ Team section start =================-->  
-<section class="team-area area-padding">
-    <div class="container">
-        <div class="area-heading row">
-            <div class="col-md-5 col-xl-4">
-                <h3>{% translate 'پزشکی دکتر های باتجربه' %}</h3>
-            </div>  
-            <div class="col-md-7 col-xl-8"></div>
-        </div>
-
-        <div class="row">
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card card-team">
-                    <img class="card-img rounded-0" src="{% static 'img/team/1.jpg' %}" alt="">
-                    <div class="card-team__body text-center">
-                        <h3><a href="#">دکتر ایکس ایگرگ</a></h3>
-                        <p>پزشک</p>
-                        <div class="team-footer d-flex justify-content-between">
-                            <a class="dn_btn" href=""><i class="ti-mobile"></i>0915****2525</a>
-                            <ul class="card-team__social">
-                                <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
-                                <li><a href="#"><i class="ti-instagram"></i></a></li>
-                                <li><a href="#"><i class="ti-skype"></i></a></li>
-                            </ul> 
-                        </div> 
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card card-team">
-                    <img class="card-img rounded-0" src="{% static 'img/team/2.jpg' %}" alt="">
-                    <div class="card-team__body text-center">
-                        <h3><a href="#">دگتر ایکس</a></h3>
-                        <p>پزشک</p>
-                        <div class="team-footer d-flex justify-content-between">
-                            <a class="dn_btn" href=""><i class="ti-mobile"></i>0915****2525</a>
-                            <ul class="card-team__social">
-                                <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
-                                <li><a href="#"><i class="ti-instagram"></i></a></li>
-                                <li><a href="#"><i class="ti-skype"></i></a></li>
-                            </ul> 
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card card-team">
-                    <img class="card-img rounded-0" src="{% static 'img/team/3.jpg' %}" alt="">
-                    <div class="card-team__body text-center">
-                        <h3><a href="#">دکتر ایکس</a></h3>
-                        <p>پزشک</p>
-                        <div class="team-footer d-flex justify-content-between">
-                            <a class="dn_btn" href=""><i class="ti-mobile"></i>0915****2525</a>
-                            <ul class="card-team__social">
-                                <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
-                                <li><a href="#"><i class="ti-instagram"></i></a></li>
-                                <li><a href="#"><i class="ti-skype"></i></a></li>
-                            </ul> 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+{% include 'partials_mw_website/doctor_cards.html' %}
 <!--================ Team section end =================-->  
 
 <!-- ================ testimonial section start ================= -->      
-<section class="testimonial" style="margin-top: 0 !important; padding: 95px 0px !important;">
-    <div class="container">
-        <div class="testi_slider owl-carousel owl-theme">
-            <div class="item">
-                <div class="testi_item">
-                    <div class="testimonial_image">
-                        <img src="{% static 'img/elements/tes1.jpg' %}" alt="">
-                    </div>
-                    <div class="testi_item_content">
-                        <p>
-                            “ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.”
-                        </p>
-                        <h4>- پزشک -</h4>       
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="testi_item">
-                    <div class="testimonial_image">
-                        <img src="{% static 'img/elements/tes1.jpg' %}" alt="">
-                    </div>
-                    <div class="testi_item_content">
-                        <p>
-                            “ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.”
-                        </p>
-                        <h4>- پزشک -</h4>         
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="testi_item">
-                    <div class="testimonial_image">
-                        <img src="{% static 'img/elements/tes1.jpg' %}" alt="">
-                    </div>
-                    <div class="testi_item_content">
-                        <p>
-                            “ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.”
-                        </p>
-                        <h4>- پزشک -</h4>       
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+{% include 'partials_mw_website/doctor_notes.html' with style="margin-top: 0 !important; padding: 95px 0px !important;" %}
 <!-- ================ testimonial section end ================= -->    
 
 <!-- ================ Hotline Area Starts ================= -->  
@@ -258,71 +146,33 @@
 
 
         <div class="row">
+            {% for blog in last_blogs %}
             <div class="col-md-6 col-lg-4 col-md-4">
                 <div class="single-blog">
                     <div class="thumb">
-                        <img class="img-fluid" src="{% static 'img/blog/1.jpg' %}" alt="">
+                        <img class="img-fluid" src="{{ blog.image.url }}" alt="{{ blog.title }}">
                     </div>
                     <div class="short_details">
 
                         <div class="meta-top d-flex">
-                            <a href="#">پزشکی, </a>
-                            <a href="#">دندانی, </a>
-                            <a href="#">سلامتی</a>
+                            {% for cate in blog.categories.all %}
+                            <span>{{ cate.title }}{% if not forloop.last %} - {% endif %} </span>
+                            {% empty %}
+                            {% endfor %}
                         </div>
                         
                         <a class="d-block" href="single-blog.html">
-                            <h4>پزشکلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است..</h4>
+                            <h4>{{ blog.short_desc }}</h4>
                         </a>
                         <div class="meta-bottom d-flex">
                             <a href="#"><i class="ti-comments"></i>8 نظر</a>
-                            <a href="#"><i class="ti-heart"></i> 0 لایک</a>
+                            <a href="#"><i class="ti-heart"></i> 2 لایک</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-4 col-md-4">
-                <div class="single-blog">
-                    <div class="thumb">
-                        <img class="img-fluid" src="{% static 'img/blog/2.jpg' %}" alt="">
-                    </div>
-                    <div class="short_details">
-                        <div class="meta-top d-flex">
-                            <a href="#">پزشکی, </a>
-                            <a href="#">دندانی, </a>
-                            <a href="#">سلامتی</a>
-                        </div>
-                        <a class="d-block" href="single-blog.html">
-                            <h4>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</h4>
-                        </a>
-                        <div class="meta-bottom d-flex">
-                            <a href="#"><i class="ti-comments"></i>5 نظر</a>
-                            <a href="#"><i class="ti-heart"></i> 0 لایک</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 col-md-4">
-                <div class="single-blog">
-                    <div class="thumb">
-                        <img class="img-fluid" src="{% static 'img/blog/3.jpg' %}" alt="">
-                    </div>
-                    <div class="short_details">
-                        <div class="meta-top d-flex">
-                            <a href="#">پزشکی, </a>
-                            <a href="#">دندانی, </a>
-                            <a href="#">سلامتی</a>
-                        </div>
-                        <a class="d-block" href="single-blog.html">
-                            <h4>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</h4>
-                        </a>
-                        <div class="meta-bottom d-flex">
-                            <a href="#"><i class="ti-comments"></i>5 نظر</a>
-                            <a href="#"><i class="ti-heart"></i> 0 لایک</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% empty %}
+            {% endfor %}
         </div>
     </div>
 </section>

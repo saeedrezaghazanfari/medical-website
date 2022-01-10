@@ -3,7 +3,7 @@ from django.db import models
 from django.db.models.base import Model, ModelState
 from MW_Auth.models import User
 from django.utils.translation import gettext_lazy as _
-from Extentions.utils import doctor_image_path, patient_image_path, get_doctor_code, get_patient_code
+from Extentions.utils import doctor_image_path, patient_image_path, get_doctor_code, get_patient_code, blog_image_path
 
 
 class DoctorModel(models.Model):
@@ -76,13 +76,13 @@ class DoctorNotesModel(models.Model):
 
 
 class BlogModel(models.Model):
+    image = models.ImageField(upload_to=blog_image_path, null=True, blank=True, verbose_name=_('تصویر'))
     writer = models.ForeignKey(to=DoctorModel, on_delete=models.CASCADE, verbose_name=_('نویسنده'))
     categories = models.ManyToManyField(to='CategoryModel', verbose_name=_('دسته بندی ها'))
     tags = models.ManyToManyField(to='TagModel', verbose_name=_('تگ ها'))
     title = models.CharField(max_length=100, verbose_name=_('عنوان'))
     desc = models.TextField(verbose_name=_('متن مقاله'))
     short_desc = models.CharField(max_length=500, verbose_name=_('متن کوتاه'))
-    is_liked = models.BooleanField(default=False, verbose_name=_('لایک؟'))
     created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -105,7 +105,6 @@ class CommentModel(models.Model):
     blog = models.ForeignKey(to=BlogModel, on_delete=models.CASCADE, verbose_name=_('بلاگ'))
     created = models.DateTimeField(auto_now_add=True)
     is_reply = models.BooleanField(default=False, verbose_name=_('پاسخ؟'))
-    is_like = models.BooleanField(default=False, verbose_name=_('لایک؟'))
 
     class Meta:
         ordering = ['-id']
@@ -137,3 +136,28 @@ class TagModel(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class BlogLikesModel(models.Model):
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE, verbose_name=_('کاربر'))
+    blog = models.ForeignKey(to=BlogModel, on_delete=models.CASCADE, verbose_name=_('بلاگ'))
+    
+    class Meta:
+        ordering = ['-id']
+        verbose_name = _('پست و لایک')
+        verbose_name_plural = _('پست ها و لایک ها')
+
+    def __str__(self):
+        return str(self.id)
+
+class CommentLikesModel(models.Model):
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE, verbose_name=_('کاربر'))
+    comment = models.ForeignKey(to=CommentModel, on_delete=models.CASCADE, verbose_name=_('نظر'))
+    
+    class Meta:
+        ordering = ['-id']
+        verbose_name = _('نظر و لایک')
+        verbose_name_plural = _('نظرات و لایک ها')
+
+    def __str__(self):
+        return str(self.id)
