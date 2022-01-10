@@ -1,0 +1,32 @@
+{% load static %}
+<!doctype html>
+<html lang="{{ request.LANGUAGE_CODE }}">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}قالب پزشکی{% endblock %}</title>
+    <!-- Bootstrap CSS -->
+
+    <!--================ Header Links =================-->
+    {% include 'website/shared/_header_ref.html' %}
+
+    <!--================ extra Scripts or Css =================-->
+    {% block extraScriptCss %}{% endblock %}
+
+</head>
+<body>
+
+    <!--================ Header =================-->
+    {% include 'website/shared/_header.html' %}
+
+    <!--================ BODY =================-->
+    {% block content %}{% endblock %}
+
+    <!--================ Footer =================-->
+    {% include 'website/shared/_footer.html' %} 
+
+    <!--================ Footer Scripts =================-->
+    {% include 'website/shared/_footer_ref.html' %}
+</body>
+</html>

@@ -1,0 +1,62 @@
+{% load i18n static %}
+<!--================Header Menu Area =================-->
+<header class="header_area">
+    <div class="top_menu row m0">
+        <div class="container">
+            <div class="float-left">
+                {% if request.LANGUAGE_CODE == 'fa' %}
+                <a href="{% url 'activate_lang' %}?lang=en&url={{ request.path|slice:'4:' }}" class="dn_btn mr-3">En</a>
+                {% elif request.LANGUAGE_CODE == 'en' %}
+                <a href="{% url 'activate_lang' %}?lang=fa&url={{ request.path|slice:'4:' }}" class="dn_btn mr-3">فا</a>
+                {% endif %}
+
+                {% if not request.user.is_authenticated %}
+                <a href="" class="dn_btn mr-3">Account</a>
+                <a href="" class="dn_btn mr-3">Log Out</a>
+                {% else %}
+                <a href="" class="dn_btn mr-3">Login</a>
+                {% endif %}
+
+                <a class="dn_btn" href="mailto:saeedreza.gh.1397@gmail.com"><i class="ti-email"></i></a>
+            </div>
+            <div class="float-right">
+                <ul class="list header_social">
+                    <li><a href="https://www.linkedin.com/in/%D8%B3%D8%B9%DB%8C%D8%AF%D8%B1%D8%B6%D8%A7-%D8%BA%D8%B6%D9%86%D9%81%D8%B1%DB%8C-7b2944220/" target="_blank"><i class="ti-linkedin"></i></a></li>
+                    <li><a href="https://www.instagram.com/saeedreza_wu/" target="_blank"><i class="ti-instagram"></i></a></li>
+                    <li><a href="live:.cid.f18c8ab4ed801bf9"><i class="ti-skype"></i></a></li>
+                </ul>	
+            </div>
+        </div>	
+    </div>	
+    <div class="main_menu">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <a class="navbar-brand logo_h" href="{% url 'website:index' %}"><img src="{% static 'img/logo.png' %}" alt=""></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav menu_nav ml-auto">
+                        <li class="nav-item"><a class="nav-link {% if request.path == '/fa/' or request.path == '/en/' %}text-primary{% endif %}" href="{% url 'website:index' %}">{% translate 'خانه' %}</a></li> 
+                        <li class="nav-item"><a class="nav-link {% if request.path == '/fa/about-us' or request.path == '/en/about-us' %}text-primary{% endif %}" href="{% url 'website:aboutus' %}">{% translate 'درباره' %}</a></li> 
+                        <li class="nav-item"><a class="nav-link {% if request.path == '/fa/department' or request.path == '/en/department' %}text-primary{% endif %}" href="{% url 'website:department' %}">{% translate 'دپارتمان' %}</a></li> 
+                        <li class="nav-item"><a class="nav-link {% if request.path == '/fa/doctors' or request.path == '/en/doctors' %}text-primary{% endif %}" href="{% url 'website:doctors' %}">{% translate 'دکتر ها' %}</a></li>    
+                        <li class="nav-item submenu dropdown">
+                            <a href="#" class="nav-link dropdown-toggle {% if '/blogs' in request.path %}text-primary{% endif %}" id="Contatc" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% translate 'بلاگ' %}</a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item"><a class="nav-link" href="{% url 'website:blogs' %}">{% translate 'بلاگ ها' %}</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{% url 'website:blog_details' %}">{% translate 'محتویات بلاگ' %}</a></li>
+                            </ul>
+                        </li> 
+                        <li class="nav-item"><a class="nav-link {% if request.path == '/fa/contact-us' or request.path == '/en/contact-us' %}text-primary{% endif %}" href="{% url 'website:contactus' %}">{% translate 'تماس با ما' %}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+<!--================Header Menu Area =================-->

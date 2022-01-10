@@ -1,0 +1,159 @@
+{% extends 'website/shared/_main_layout.html' %}
+{% load static i18n %}
+{% block title %}{% translate 'درباره ی ما' %}{% endblock %}
+
+
+{% block content %}
+
+<!--================Home Banner Area =================-->
+<section class="banner_area" style="z-index: 12 !important;">
+    <div class="banner_inner d-flex align-items-center">
+        <div class="container">
+            <div class="banner_content d-md-flex justify-content-between align-items-center">
+                <div class="mb-3 mb-md-0">
+                    <h2>{% translate 'درباره ما' %}</h2>
+                    <p>{% translate 'زمین سبز پشت هوای الوده است' %}</p>
+                </div>
+                <div class="page_link">
+                    <a href="{% url 'website:aboutus' %}">{% translate 'خانه / درباره ی ما' %}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Home Banner Area =================-->
+
+<!--================About  Area =================-->
+<section class="about-area">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-10 offset-md-1 col-lg-6 offset-lg-6 offset-xl-7 col-xl-5">
+                <div class="about-content">
+                    <h4>{% translate 'با ما بهترین پزشک ها را تجربه کنید' %}</h4>
+                    <h6>{% translate 'ما بهترین پزشک های متخصص را دور هم گرد آورده ایم تا با بهترین کیفیت به شما خدمت کنیم' %}</h6>
+                    <p>{% translate 'سلامتی شما آرزوی ماست' %}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================About Area End =================-->
+
+<!--================ appointment Area Starts =================-->
+<section class="appointment-area area-padding-top">
+    <div class="container">
+        <div class="appointment-inner">
+            <div class="row">
+                <div class="col-sm-12 col-lg-9 offset-lg-1">
+                    <h3>{% translate 'سوالی دارید' %}</h3>
+                    <div class="accordion" id="accordionExample">
+
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne1" aria-expanded="true" aria-controls="collapseOne">
+                                        {% translate 'آیا ما پشتیبانی 24 ساعته داریم؟' %}
+                                    </button>
+
+                                </h5>
+                            </div>
+
+                            <div id="collapseOne1" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    {% translate 'بله ما پشتیبانی 24 ساعته داریم :)' %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne2" aria-expanded="true" aria-controls="collapseOne">
+                                        {% translate 'آیا هدف ما سلامتی شماست؟' %}
+                                    </button>
+
+                                </h5>
+                            </div>
+
+                            <div id="collapseOne2" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    {% translate 'بله هدف ما سلامتی شماست :)' %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne3" aria-expanded="true" aria-controls="collapseOne">
+                                        {% translate 'آیا ما دکترهای خوب داریم؟' %}
+                                    </button>
+
+                                </h5>
+                            </div>
+
+                            <div id="collapseOne3" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    {% translate 'بله ما ما دکترهای متخصص داریم :)' %}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!--================ appointment Area End =================-->
+
+<!-- ================ testimonial section start ================= -->      
+<section class="testimonial">
+    <div class="container">
+        <div class="testi_slider owl-carousel owl-theme">
+            <div class="item">
+                <div class="testi_item">
+                    <div class="testimonial_image">
+                        <img src="{% static 'img/elements/tes1.jpg' %}" alt="">
+                    </div>
+                    <div class="testi_item_content">
+                        <p>
+                            “ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است”
+                        </p>
+                        <h4>- دکتر ایکس زد -</h4>       
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="testi_item">
+                    <div class="testimonial_image">
+                        <img src="{% static 'img/elements/tes1.jpg' %}" alt="">
+                    </div>
+                    <div class="testi_item_content">
+                        <p>
+                            “ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است”
+                        </p>
+                        <h4>- دکتر ایکس زد -</h4>         
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="testi_item">
+                    <div class="testimonial_image">
+                        <img src="{% static 'img/elements/tes1.jpg' %}" alt="">
+                    </div>
+                    <div class="testi_item_content">
+                        <p>
+                            “ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است”
+                        </p>
+                        <h4>- دکتر ایکس زد -</h4>       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ================ testimonial section end ================= -->    
+
+{% endblock %}
