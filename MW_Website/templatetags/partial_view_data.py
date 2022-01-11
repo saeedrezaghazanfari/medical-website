@@ -1,5 +1,6 @@
 from django import template
 from MW_Website.models import DoctorNotesModel, DoctorModel
+from MW_Setting.models import BrandsModel
 
 
 register = template.Library()
@@ -13,7 +14,14 @@ def doctor_notes():
 
 @register.simple_tag
 def doctor_cards():
-    notes = DoctorModel.objects.all()[:3]
-    if notes:
-        return notes
+    cards = DoctorModel.objects.all()[:3]
+    if cards:
+        return cards
+    return False
+
+@register.simple_tag
+def brands_footer():
+    logos = BrandsModel.objects.all()[:20]
+    if logos:
+        return logos
     return False

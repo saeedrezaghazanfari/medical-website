@@ -1,14 +1,14 @@
 from django.urls import path
 from . import views
 
+
 app_name = 'website'
 urlpatterns = [
-    # path('', views.index_page, name='index'),
     path('', views.IndexPage.as_view(), name='index'),
-    path('about-us', views.aboutus_page, name='aboutus'),
-    path('department', views.department_page, name='department'),
-    path('doctors', views.doctors_page, name='doctors'),
-    path('blogs', views.blogs_page, name='blogs'),
-    path('blogs/details', views.blog_detail_page, name='blog_details'),
-    path('contact-us', views.contactus_page, name='contactus'),
+    path('about-us', views.AboutUsPage.as_view(), name='aboutus'),
+    path('department', views.DepartmentPage.as_view(), name='department'),
+    path('doctors', views.DoctorsPage.as_view(), name='doctors'),
+    path('blogs', views.BlogsPage.as_view(), name='blogs'),
+    path('blogs/details', views.BlogDetailPage.as_view(), name='blog_details'),
+    path('contact-us', views.ContactIsPage.as_view(), name='contactus'),
 ]

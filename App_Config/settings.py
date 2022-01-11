@@ -22,7 +22,7 @@ INSTALLED_APPS = [
     'MW_Setting.apps.MwSettingConfig',        # authentication actions
 
     # PACKs
-    
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [

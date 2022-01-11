@@ -1,46 +1,21 @@
-{% load static i18n %}
+{% load static i18n partial_view_data %}
+{% brands_footer as brands %}
 <!--================ Start Brands Area =================-->
 <section class="brands-area background_one">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-10">
                 <div class="owl-carousel brand-carousel">
+
                     <!-- single-brand -->
+                    {% for brand in brands %}
                     <div class="single-brand-item d-table">
                         <div class="d-table-cell">
-                            <img src="{% static 'img/brand/1.png' %}" alt="">
+                            <img src="{{ brand.brand_image.url }}">
                         </div>
                     </div>
-                    <!-- single-brand -->
-                    <div class="single-brand-item d-table">
-                        <div class="d-table-cell">
-                            <img src="{% static 'img/brand/2.png' %}" alt="">
-                        </div>
-                    </div>
-                    <!-- single-brand -->
-                    <div class="single-brand-item d-table">
-                        <div class="d-table-cell">
-                            <img src="{% static 'img/brand/3.png' %}" alt="">
-                        </div>
-                    </div>
-                    <!-- single-brand -->
-                    <div class="single-brand-item d-table">
-                        <div class="d-table-cell">
-                            <img src="{% static 'img/brand/4.png' %}" alt="">
-                        </div>
-                    </div>
-                    <!-- single-brand -->
-                    <div class="single-brand-item d-table">
-                        <div class="d-table-cell">
-                            <img src="{% static 'img/brand/5.png' %}" alt="">
-                        </div>
-                    </div>
-                    <!-- single-brand -->
-                    <div class="single-brand-item d-table">
-                        <div class="d-table-cell">
-                            <img src="{% static 'img/brand/3.png' %}" alt="">
-                        </div>
-                    </div>
+                    {% empty %}
+                    {% endfor %}
                 </div>
             </div>
         </div>

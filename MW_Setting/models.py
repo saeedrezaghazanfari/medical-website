@@ -21,7 +21,7 @@ class SettingModel(models.Model):
         verbose_name_plural = _('‌تنظیمات')
 
     def __str__(self):
-        return _('شما حتما باید یک مقدار در این جدول ذخیره کنید.')
+        return str(_('شما حتما باید یک مقدار در این جدول ذخیره کنید.'))
 
 
 class BrandsModel(models.Model):
