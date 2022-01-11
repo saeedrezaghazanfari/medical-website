@@ -4,6 +4,8 @@ from django.urls import reverse_lazy
 from .models import BlogModel
 from MW_Setting.models import SettingModel, ContactUsModel
 
+from MW_Website import models
+
 
 # url: /
 class IndexPage(generic.TemplateView):
@@ -13,26 +15,33 @@ class IndexPage(generic.TemplateView):
         context['last_blogs'] = BlogModel.objects.all()[:3]
         return context
 
+
 # url: /about-us
 class AboutUsPage(generic.TemplateView):
     template_name = 'mw_website/aboutus_page.html'
+
 
 # url: /department
 class DepartmentPage(generic.TemplateView):
     template_name = 'mw_website/department_page.html'
 
+
 # url: /doctors
 class DoctorsPage(generic.TemplateView):
     template_name = 'mw_website/doctors_page.html'
 
+
 # url: /blogs
-class BlogsPage(generic.TemplateView):
+class BlogsPage(generic.ListView):
     template_name = 'mw_website/blogs_page.html'
+    model = BlogModel
+    paginate_by = 3
 
 
 # url: /blog-detail////////////
-class BlogDetailPage(generic.TemplateView):
+class BlogDetailPage(generic.DetailView):
     template_name = 'mw_website/blog_detail_page.html'
+    model = BlogModel
 
 
 # url: /contact-us

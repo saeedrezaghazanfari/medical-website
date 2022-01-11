@@ -29,131 +29,61 @@
         <div class="row">
             <div class="col-lg-8 mb-5 mb-lg-0">
                 <div class="blog_left_sidebar">
+
+                    {% for blog in page_obj %}
                     <article class="blog_item">
                         <div class="blog_item_img">
-                            <img class="card-img rounded-0" src="{% static 'img/blog/main-blog/m-blog-1.jpg' %}" alt="">
-                            <a href="#" class="blog_item_date">
-                            <h3>15</h3>
-                            <p>ژانویه</p>
+                            {% if blog.image %}<img class="card-img rounded-0" src="{{ blog.image.url }}" alt="">{% endif %}
+                            <a href="{% url 'website:blog_details' blog.id %}" class="blog_item_date">
+                                <h3>{{ blog.created.day }}</h3>
+                                <p>{{ blog.created.month }}</p>
                             </a>
                         </div>
                         
                         <div class="blog_details">
-                            <a class="d-inline-block" href="single-blog.html">
-                                <h2>مکانی رویایی برای مریضان ما</h2>
+                            <a class="d-inline-block" href="{% url 'website:blog_details' blog.id %}">
+                                <h2>{{ blog.title }}</h2>
                             </a>
-                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</p>
+                            <p>{{ blog.short_desc }}</p>
                             <ul class="blog-info-link">
-                                <li><a href="#"><i class="far fa-user"></i> سفر، سبک زندگی</a></li>
+                                <li><a href="#"><i class="far fa-user"></i> {% for cate in blog.categories.all %}{{cate.title}} {% if not forloop.last %}-{% endif %} {% endfor %}</a></li>
                                 <li><a href="#"><i class="far fa-comments"></i> 3 نظر</a></li>
                             </ul>
                         </div>
                     </article>
-                    
-                    <article class="blog_item">
-                        <div class="blog_item_img">
-                            <img class="card-img rounded-0" src="{% static 'img/blog/main-blog/m-blog-2.jpg' %}" alt="">
-                            <a href="#" class="blog_item_date">
-                            <h3>15</h3>
-                            <p>ژانویه</p>
-                            </a>
-                        </div>
-                        
-                        <div class="blog_details">
-                            <a class="d-inline-block" href="single-blog.html">
-                                <h2>مکانی رویایی برای مریضان ما</h2>
-                            </a>
-                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</p>
-                            <ul class="blog-info-link">
-                                <li><a href="#"><i class="far fa-user"></i> سفر، سبک زندگی</a></li>
-                                <li><a href="#"><i class="far fa-comments"></i> 3 نظر</a></li>
-                            </ul>
-                        </div>
-                    </article>
-
-                    <article class="blog_item">
-                        <div class="blog_item_img">
-                            <img class="card-img rounded-0" src="{% static 'img/blog/main-blog/m-blog-3.jpg' %}" alt="">
-                            <a href="#" class="blog_item_date">
-                            <h3>15</h3>
-                            <p>ژانویه</p>
-                            </a>
-                        </div>
-                        
-                        <div class="blog_details">
-                            <a class="d-inline-block" href="single-blog.html">
-                                <h2>مکانی رویایی برای مریضان ما</h2>
-                            </a>
-                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</p>
-                            <ul class="blog-info-link">
-                                <li><a href="#"><i class="far fa-user"></i> سفر، سبک زندگی</a></li>
-                                <li><a href="#"><i class="far fa-comments"></i> 3 نظر</a></li>
-                            </ul>
-                        </div>
-                    </article>
-
-                    <article class="blog_item">
-                        <div class="blog_item_img">
-                            <img class="card-img rounded-0" src="{% static 'img/blog/main-blog/m-blog-4.jpg' %}" alt="">
-                            <a href="#" class="blog_item_date">
-                            <h3>15</h3>
-                            <p>ژانویه</p>
-                            </a>
-                        </div>
-                        
-                        <div class="blog_details">
-                            <a class="d-inline-block" href="single-blog.html">
-                                <h2>مکانی رویایی برای مریضان ما</h2>
-                            </a>
-                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</p>
-                            <ul class="blog-info-link">
-                                <li><a href="#"><i class="far fa-user"></i> سفر، سبک زندگی</a></li>
-                                <li><a href="#"><i class="far fa-comments"></i> 3 نظر</a></li>
-                            </ul>
-                        </div>
-                    </article>
-
-                    <article class="blog_item">
-                        <div class="blog_item_img">
-                            <img class="card-img rounded-0" src="{% static 'img/blog/main-blog/m-blog-5.jpg' %}" alt="">
-                            <a href="#" class="blog_item_date">
-                            <h3>15</h3>
-                            <p>ژانویه</p>
-                            </a>
-                        </div>
-
-                        <div class="blog_details">
-                            <a class="d-inline-block" href="single-blog.html">
-                                <h2>مکانی رویایی برای مریضان ما</h2>
-                            </a>
-                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</p>
-                            <ul class="blog-info-link">
-                                <li><a href="#"><i class="far fa-user"></i> سفر، سبک زندگی</a></li>
-                                <li><a href="#"><i class="far fa-comments"></i> 3 نظر</a></li>
-                            </ul>
-                        </div>
-                    </article>
-                    
-
+                    {% empty %}
+                    {% endfor %}
 
                     <nav class="blog-pagination justify-content-center d-flex">
                         <ul class="pagination">
+                            
+                        {% if page_obj.has_previous %}
                             <li class="page-item">
-                                <a href="#" class="page-link" aria-label="Previous">
-                                    <i class="ti-angle-left"></i>
+                                <a href="?page={{ page_obj.previous_page_number }}" class="page-link" aria-label="Previous">
+                                    {% translate 'قبلی' %}
                                 </a>
                             </li>
+                        {% endif %}
+                        {% for page in paginator.page_range %}
+                            {% if page == page_obj.number %}
+                                <li class="page-item active">
+                                    <a href="?page={{ page }}" class="page-link">{{ page }}</a>
+                                </li>
+                            {% else %}
+                                <li class="page-item">
+                                    <a href="?page={{ page }}" class="page-link">{{ page }}</a>
+                                </li>
+                            {% endif %}
+    
+                            
+                        {% endfor %}
+                        {% if page_obj.has_next %}
                             <li class="page-item">
-                                <a href="#" class="page-link">1</a>
-                            </li>
-                            <li class="page-item active">
-                                <a href="#" class="page-link">2</a>
-                            </li>
-                            <li class="page-item">
-                                <a href="#" class="page-link" aria-label="Next">
-                                    <i class="ti-angle-right"></i>
+                                <a href="?page={{ page_obj.next_page_number }}" class="page-link" aria-label="Next">
+                                    {% translate 'بعدی' %}
                                 </a>
                             </li>
+                        {% endif %}
                         </ul>
                     </nav>
                 </div>

@@ -76,6 +76,7 @@ class DoctorNotesModel(models.Model):
 
 
 class BlogModel(models.Model):
+    slug = models.SlugField(unique=True, verbose_name=_('مقدار در url'))
     image = models.ImageField(upload_to=blog_image_path, null=True, blank=True, verbose_name=_('تصویر'))
     writer = models.ForeignKey(to=DoctorModel, on_delete=models.CASCADE, verbose_name=_('نویسنده'))
     categories = models.ManyToManyField(to='CategoryModel', verbose_name=_('دسته بندی ها'))

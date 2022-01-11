@@ -56,13 +56,7 @@
                         <li class="nav-item"><a class="nav-link {% if request.path == '/fa/about-us' or request.path == '/en/about-us' %}text-primary{% endif %}" href="{% url 'website:aboutus' %}">{% translate 'درباره' %}</a></li> 
                         <li class="nav-item"><a class="nav-link {% if request.path == '/fa/department' or request.path == '/en/department' %}text-primary{% endif %}" href="{% url 'website:department' %}">{% translate 'دپارتمان' %}</a></li> 
                         <li class="nav-item"><a class="nav-link {% if request.path == '/fa/doctors' or request.path == '/en/doctors' %}text-primary{% endif %}" href="{% url 'website:doctors' %}">{% translate 'دکتر ها' %}</a></li>    
-                        <li class="nav-item submenu dropdown">
-                            <a href="#" class="nav-link dropdown-toggle {% if '/blogs' in request.path %}text-primary{% endif %}" id="Contatc" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% translate 'بلاگ' %}</a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item"><a class="nav-link" href="{% url 'website:blogs' %}">{% translate 'بلاگ ها' %}</a></li>
-                                <li class="nav-item"><a class="nav-link" href="{% url 'website:blog_details' %}">{% translate 'محتویات بلاگ' %}</a></li>
-                            </ul>
-                        </li> 
+                        <li class="nav-item ml-5"><a class="nav-link {% if '/blogs' in request.path %}text-primary{% endif %}" href="{% url 'website:blogs' %}">{% translate 'بلاگ ها' %}</a></li>
                         <li class="nav-item"><a class="nav-link {% if request.path == '/fa/contact-us' or request.path == '/en/contact-us' %}text-primary{% endif %}" href="{% url 'website:contactus' %}">{% translate 'تماس با ما' %}</a></li>
                     </ul>
                 </div>

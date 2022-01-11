@@ -9,6 +9,6 @@ urlpatterns = [
     path('department', views.DepartmentPage.as_view(), name='department'),
     path('doctors', views.DoctorsPage.as_view(), name='doctors'),
     path('blogs', views.BlogsPage.as_view(), name='blogs'),
-    path('blogs/details', views.BlogDetailPage.as_view(), name='blog_details'),
+    path('blogs/<int:id>', views.BlogDetailPage.as_view(), name='blog_details'),
     path('contact-us', views.ContactIsPage.as_view(), name='contactus'),
 ]
