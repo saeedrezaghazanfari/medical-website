@@ -1,4 +1,5 @@
-{% load static i18n %}
+{% load static i18n partial_view_data %}
+{% doctor_cards as doctors %}
 <section class="team-area area-padding">
     <div class="container">
         <div class="area-heading row">
@@ -9,62 +10,21 @@
         </div>
 
         <div class="row">
+            {% for doctor in doctors %}
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="card card-team">
-                    <img class="card-img rounded-0" src="{% static 'img/team/1.jpg' %}" alt="">
+                    {% if doctor.profile %}<img class="card-img rounded-0" src="{{ doctor.profile.url }}" alt="">{% endif %}
                     <div class="card-team__body text-center">
-                        <h3><a href="#">دکتر ایکس ایگرگ</a></h3>
+                        <h3><a href="#">دکتر {{ doctor.get_full_name }}</a></h3>
                         <p>پزشک</p>
                         <div class="team-footer d-flex justify-content-between">
-                            <a class="dn_btn" href=""><i class="ti-mobile"></i>0915****2525</a>
-                            <ul class="card-team__social">
-                                <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
-                                <li><a href="#"><i class="ti-instagram"></i></a></li>
-                                <li><a href="#"><i class="ti-skype"></i></a></li>
-                            </ul> 
+                            <a class="dn_btn" href=""><i class="ti-mobile"></i>{{ doctor.user.phone }}</a>
                         </div> 
                     </div>
                 </div>
             </div>
-
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card card-team">
-                    <img class="card-img rounded-0" src="{% static 'img/team/2.jpg' %}" alt="">
-                    <div class="card-team__body text-center">
-                        <h3><a href="#">دگتر ایکس</a></h3>
-                        <p>پزشک</p>
-                        <div class="team-footer d-flex justify-content-between">
-                            <a class="dn_btn" href=""><i class="ti-mobile"></i>0915****2525</a>
-                            <ul class="card-team__social">
-                                <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
-                                <li><a href="#"><i class="ti-instagram"></i></a></li>
-                                <li><a href="#"><i class="ti-skype"></i></a></li>
-                            </ul> 
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card card-team">
-                    <img class="card-img rounded-0" src="{% static 'img/team/3.jpg' %}" alt="">
-                    <div class="card-team__body text-center">
-                        <h3><a href="#">دکتر ایکس</a></h3>
-                        <p>پزشک</p>
-                        <div class="team-footer d-flex justify-content-between">
-                            <a class="dn_btn" href=""><i class="ti-mobile"></i>0915****2525</a>
-                            <ul class="card-team__social">
-                                <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
-                                <li><a href="#"><i class="ti-instagram"></i></a></li>
-                                <li><a href="#"><i class="ti-skype"></i></a></li>
-                            </ul> 
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% empty %}
+            {% endfor %}
         </div>
     </div>
 </section>

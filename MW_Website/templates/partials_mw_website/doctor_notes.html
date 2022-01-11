@@ -1,46 +1,24 @@
-{% load static %}
+{% load static partial_view_data %}
+{% doctor_notes as notes %}
 <section class="testimonial" style="{{ style }}">
     <div class="container">
         <div class="testi_slider owl-carousel owl-theme">
+            {% for note in notes %}
             <div class="item">
                 <div class="testi_item">
                     <div class="testimonial_image">
-                        <img src="{% static 'img/elements/tes1.jpg' %}" alt="">
+                        {% if note.doctor.profile %}<img src="{{ note.doctor.profile.url }}" alt="{{ note.doctor.get_full_name }}">{% endif %}
                     </div>
                     <div class="testi_item_content">
                         <p>
-                            “ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است”
+                            “{{ note.text }}”
                         </p>
-                        <h4>- دکتر ایکس زد -</h4>       
+                        <h4>- دکتر {{ note.doctor.get_full_name }} -</h4>       
                     </div>
                 </div>
             </div>
-            <div class="item">
-                <div class="testi_item">
-                    <div class="testimonial_image">
-                        <img src="{% static 'img/elements/tes1.jpg' %}" alt="">
-                    </div>
-                    <div class="testi_item_content">
-                        <p>
-                            “ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است”
-                        </p>
-                        <h4>- دکتر ایکس زد -</h4>         
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="testi_item">
-                    <div class="testimonial_image">
-                        <img src="{% static 'img/elements/tes1.jpg' %}" alt="">
-                    </div>
-                    <div class="testi_item_content">
-                        <p>
-                            “ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است”
-                        </p>
-                        <h4>- دکتر ایکس زد -</h4>       
-                    </div>
-                </div>
-            </div>
+            {% empty %}
+            {% endfor %}
         </div>
     </div>
 </section>
