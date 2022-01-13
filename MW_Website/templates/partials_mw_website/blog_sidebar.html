@@ -24,8 +24,8 @@
                 {% for category in categories %}
                 <li>
                     <a href="#" class="d-flex">
-                        <p>{{ category.title }}</p>
-                        <p>(37)</p>
+                        <p>{{ category.category_name }}</p>
+                        <p>({{ category.num }})</p>
                     </a>
                 </li>
                 {% empty %}{% endfor %}
@@ -51,9 +51,10 @@
         <aside class="single_sidebar_widget newsletter_widget">
             <h4 class="widget_title">{% translate 'اخبار' %}</h4>
 
-            <form action="#">
+            <form action="{% url 'website:savemail' %}" method="POST">
+                {% csrf_token %}
                 <div class="form-group">
-                <input type="email" class="form-control" placeholder="ایمیل خود را وارد کنید" required>
+                    <input type="email" name="emailfield" class="form-control" placeholder="ایمیل خود را وارد کنید" required>
                 </div>
                 <button class="button rounded-0 primary-bg text-white w-100" type="submit">{% translate 'اشتراک' %}</button>
             </form>

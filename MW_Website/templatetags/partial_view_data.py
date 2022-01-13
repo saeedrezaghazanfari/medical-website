@@ -28,10 +28,16 @@ def brands_footer():
 
 @register.simple_tag
 def last_categories():
+    categories_numblogs = []
     categories = CategoryModel.objects.all()
     if categories:
-        return categories
+        for category in categories:
+            num = category.blogmodel_set.count()
+            categories_numblogs.append({'category_name': category.title, 'num': num})
+        return categories_numblogs
     return None
+    
+
 
 @register.simple_tag
 def last_posts():

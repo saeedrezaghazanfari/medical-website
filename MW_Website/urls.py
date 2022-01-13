@@ -10,5 +10,6 @@ urlpatterns = [
     path('doctors', views.DoctorsPage.as_view(), name='doctors'),
     path('blogs/', views.BlogsPage.as_view(), name='blogs'),
     path('blogs/<slug:slug>', views.BlogDetailPage.as_view(), name='blog_details'),
+    path('save/email', views.EmailForNewsUrl.as_view(), name='savemail'),
     path('contact-us', views.ContactIsPage.as_view(), name='contactus'),
 ]

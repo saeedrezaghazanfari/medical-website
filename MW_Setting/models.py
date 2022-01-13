@@ -50,3 +50,15 @@ class ContactUsModel(models.Model):
 
     def __str__(self):
         return str(self.title)
+
+
+class NewsEmailModel(models.Model):
+    email = models.EmailField(max_length=100, blank=True, null=True, verbose_name=_('ایمیل'))
+    
+    class Meta:
+        ordering = ['-id']
+        verbose_name = _('ایمیل - ارسال خبر')
+        verbose_name_plural = _('ایمیل‌ها - ارسال اخبار')
+
+    def __str__(self):
+        return self.email
