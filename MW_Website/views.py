@@ -35,13 +35,13 @@ class DoctorsPage(generic.TemplateView):
 class BlogsPage(generic.ListView):
     template_name = 'mw_website/blogs_page.html'
     model = BlogModel
+    queryset = BlogModel.objects.filter(is_published=True).all()
     paginate_by = 3
-
 
 # url: /blog-detail////////////
 class BlogDetailPage(generic.DetailView):
-    template_name = 'mw_website/blog_detail_page.html'
     model = BlogModel
+    template_name = 'mw_website/blog_detail_page.html'
 
 
 # url: /contact-us

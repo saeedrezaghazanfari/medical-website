@@ -34,14 +34,14 @@
                     <article class="blog_item">
                         <div class="blog_item_img">
                             {% if blog.image %}<img class="card-img rounded-0" src="{{ blog.image.url }}" alt="">{% endif %}
-                            <a href="{% url 'website:blog_details' blog.id %}" class="blog_item_date">
+                            <a href="{% url 'website:blog_details' blog.slug %}" class="blog_item_date">
                                 <h3>{{ blog.created.day }}</h3>
                                 <p>{{ blog.created.month }}</p>
                             </a>
                         </div>
                         
                         <div class="blog_details">
-                            <a class="d-inline-block" href="{% url 'website:blog_details' blog.id %}">
+                            <a class="d-inline-block" href="{% url 'website:blog_details' blog.slug %}">
                                 <h2>{{ blog.title }}</h2>
                             </a>
                             <p>{{ blog.short_desc }}</p>

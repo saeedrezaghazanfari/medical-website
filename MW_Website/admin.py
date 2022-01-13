@@ -29,8 +29,8 @@ class PatientModel_Admin(admin.ModelAdmin):
     ordering = ['-user__id']
 
 class BlogModel_Admin(admin.ModelAdmin):
-    list_display = ['title', 'get_full_name']
-    search_field = ['title', 'get_full_name']
+    list_display = ['title', 'get_full_name', 'is_published']
+    search_field = ['title', 'get_full_name', 'is_published']
     ordering = ['-id']
 
 class CategoryModel_Admin(admin.ModelAdmin):

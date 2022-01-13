@@ -1,6 +1,6 @@
 import datetime
 from django.db import models
-from django.db.models.base import Model, ModelState
+# from django.urls import reverse_lazy
 from MW_Auth.models import User
 from django.utils.translation import gettext_lazy as _
 from Extentions.utils import doctor_image_path, patient_image_path, get_doctor_code, get_patient_code, blog_image_path
@@ -84,6 +84,7 @@ class BlogModel(models.Model):
     title = models.CharField(max_length=100, verbose_name=_('عنوان'))
     desc = models.TextField(verbose_name=_('متن مقاله'))
     short_desc = models.CharField(max_length=500, verbose_name=_('متن کوتاه'))
+    is_published = models.BooleanField(default=False, verbose_name=_('منتشر شود؟'))
     created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -93,6 +94,23 @@ class BlogModel(models.Model):
 
     def __str__(self):
         return self.title
+
+    # def get_absoulute_url(self):
+    #     return reverse_lazy("website:blog_details", args=[str(self.slug)])
+
+    def prev_post(self):
+        this_id = self.id
+        blog = BlogModel.objects.filter(id=this_id-1, is_published=True).first()
+        if blog:
+            return blog
+        return None
+
+    def next_post(self):
+        this_id = self.id
+        blog = BlogModel.objects.filter(id=this_id+1, is_published=True).first()
+        if blog:
+            return blog
+        return None
 
     def get_full_name(self):
         return f'{self.writer.user.first_name} {self.writer.user.last_name}'

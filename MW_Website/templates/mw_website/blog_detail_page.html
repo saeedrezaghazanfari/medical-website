@@ -1,6 +1,6 @@
 {% extends 'website/shared/_main_layout.html' %}
 {% load static i18n %}
-{% block title %}{% translate 'اطلاعات بلاگ' %}{% endblock %}
+{% block title %}{{ object.title }}{% endblock %}
 
 
 {% block content %}
@@ -11,11 +11,11 @@
         <div class="container">
             <div class="banner_content d-md-flex justify-content-between align-items-center">
                 <div class="mb-3 mb-md-0">
-                    <h2>{% translate 'اطلاعات بلاگ' %}</h2>
+                    <h2>{{ object.title }}</h2>
                     <p>{% translate 'زمین سبز پشت هوای الوده است' %}</p>
                 </div>
                 <div class="page_link">
-                    <a href="{% url 'website:blog_details' %}">{% translate 'خانه / بلاگ ها / اطلاعات بلاگ' %}</a>
+                    <a href="{% url 'website:blog_details' object.slug %}">{% translate 'خانه / بلاگ ها / اطلاعات بلاگ' %}</a>
                 </div>
             </div>
         </div>
@@ -34,32 +34,29 @@
                     </div>
 
                     <div class="blog_details">
-                        <h2>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</h2>
+                        <h2>{{ object.title }}</h2>
                         <ul class="blog-info-link mt-3 mb-4">
-                            <li><a href="#"><i class="far fa-user"></i> سفر، سبک زندگی</a></li>
+                            <li><a href="#"><i class="far fa-user"></i> {% for cate in object.categories.all %}{{cate.title}} {% if not forloop.last %}-{% endif %} {% endfor %}</a></li>
                             <li><a href="#"><i class="far fa-comments"></i> 3 نظر</a></li>
                         </ul>
                         <p class="excert">
-                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است
-
-                        </p>
-                        <p>
-                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است
+                            {{ object.short_desc }}
                         </p>
                         <div class="quote-wrapper">
                             <div class="quotes">
-                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است
+                                {{ object.desc }}
                             </div>
                         </div>
 
+                        <ul class="list" style="display: flex; margin-bottom: 1rem; flex-wrap: wrap;">
+                            {% for tag in object.tags.all %}
+                            <li style="padding: 8px 16px; background: #f2f3f7; color: white; margin: 5px; border-radius: 5px;">
+                                <a href="#">{{ tag.title }}</a>
+                            </li>
+                            {% empty %}
+                            {% endfor %}
+                        </ul>
 
-                        <p>
-                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است
-
-                        </p>
-                        <p>
-                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است
-                        </p>
                     </div>
                 </div>
                 <div class="navigation-top">
@@ -68,52 +65,51 @@
                         <div class="col-sm-4 text-center my-2 my-sm-0">
                             <p class="comment-count"><span class="align-middle"><i class="far fa-comment"></i></span> 06 نظر</p>
                         </div>
-                        <ul class="social-icons">
-                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fab fa-dribbble"></i></a></li>
-                            <li><a href="#"><i class="fab fa-behance"></i></a></li>
-                        </ul>
                     </div>
 
                     <div class="navigation-area">
                         <div class="row">
-                            <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
+                            {% if object.prev_post %}
+                            <div class="col-6 nav-left flex-row d-flex justify-content-start align-items-center">
                                 <div class="thumb">
-                                    <a href="#">
+                                    <a href="/blogs/{{ object.prev_post.slug }}">
                                         <img class="img-fluid" src="{% static 'img/blog/prev.jpg' %}" alt="">
                                     </a>
                                 </div>
                                 <div class="arrow">
-                                    <a href="#">
+                                    <a href="/blogs/{{ object.prev_post.slug }}">
                                         <span class="lnr text-white lnr-arrow-left"></span>
                                     </a>
                                 </div>
                                 <div class="detials">
                                     <p>{% translate 'پست قبلی' %}</p>
-                                    <a href="#">
-                                        <h4>برید فضا</h4>
+                                    <a href="/blogs/{{ object.prev_post.slug }}">
+                                        <h4>{{ object.prev_post.title }}</h4>
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
+                            {% endif %}
+
+                            {% if object.next_post %}
+                            <div class="col-6 {% if not object.prev_post %}col-12{% endif %} nav-right flex-row d-flex justify-content-end align-items-center">
                                 <div class="detials">
                                     <p>{% translate 'پست بعدی' %}</p>
-                                    <a href="#">
-                                        <h4>تلسکوپ 101</h4>
+                                    <a href="/blogs/{{ object.next_post.slug }}">
+                                        <h4>{{ object.next_post.title }}</h4>
                                     </a>
                                 </div>
                                 <div class="arrow">
-                                    <a href="#">
+                                    <a href="/blogs/{{ object.next_post.slug }}">
                                         <span class="lnr text-white lnr-arrow-right"></span>
                                     </a>
                                 </div>
                                 <div class="thumb">
-                                    <a href="#">
+                                    <a href="/blogs/{{ object.next_post.slug }}">
                                         <img class="img-fluid" src="{% static 'img/blog/next.jpg' %}" alt="">
                                     </a>
                                 </div>
                             </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -124,9 +120,9 @@
                         <img src="{% static 'img/blog/author.png' %}" alt="">
                         <div class="media-body">
                             <a href="#">
-                                <h4>اقای ایکس</h4>
+                                <h4>{{ object.writer.get_full_name }}</h4>
                             </a>
-                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</p>
+                            <p>{{ object.writer.bio }}</p>
                         </div>
                     </div>
                 </div>
