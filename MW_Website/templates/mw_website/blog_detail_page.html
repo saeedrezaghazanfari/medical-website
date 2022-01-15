@@ -169,8 +169,8 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label for="comment">{% translate 'خوشحال میشویم نظر خود را با ما به اشتراک بگذارید' %}</label>
-                                    {% render_field form.message name="msg" class="form-control w-100" id="comment" cols="30" rows="9" placeholder="کامنت " %}
-                                    {% render_field form.at_blog name="blog" value=blog.slug %}
+                                    {% render_field form.message class="form-control w-100" id="comment" cols="30" rows="9" placeholder="کامنت " %}
+                                    {% render_field form.at_blog value=blog.slug %}
                                 </div>
                             </div>
                         </div>

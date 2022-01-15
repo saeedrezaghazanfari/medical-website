@@ -3,7 +3,7 @@
 <!--================ messages box =================-->
 {% for msg in messages %}
 
-<div class="alert alert-{% if msg.tags == 'error' %}danger{% elif msg.tags == 'info' %}info{% elif msg.tags == 'success' %}success{% elif msg.tags == 'warning' %}warning{% endif %} alert-dismissible alertme" id="alertm">
+<div class="alert alert-{% if msg.tags == 'error' %}danger{% elif msg.tags == 'info' %}info{% elif msg.tags == 'success' %}success{% elif msg.tags == 'warning' %}warning{% endif %} alert-dismissible alertme" id="alertme">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
     {{ msg }}
 </div>

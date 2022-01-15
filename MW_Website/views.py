@@ -1,4 +1,3 @@
-from django.shortcuts import HttpResponse
 from django.views import generic
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
@@ -50,7 +49,7 @@ class BlogDetailPage(generic.DetailView):
         context = super().get_context_data(**kwargs)
         thispost = context['object']
         context['form'] = CommentForm()                                                   # send form
-        context['comments'] = CommentModel.objects.filter(blog=thispost, is_reply=False)  # send comments
+        context['comments'] = CommentModel.objects.filter(blog=thispost, is_reply=False, is_show=True)  # send comments
         context['comments_nums'] = context['comments'].count()                            # send comments numbers
         return context
     template_name = 'mw_website/blog_detail_page.html'
@@ -59,7 +58,18 @@ class BlogDetailPage(generic.DetailView):
 # url: /blogs/comment/save 
 class CommentSaveURL(generic.View):
     def post(self, request):
-        pass
+        msg = request.POST['message']
+        blog_slug = request.POST['at_blog']
+        if msg and blog_slug: 
+            blog = BlogModel.objects.filter(slug=blog_slug).first()
+            comment = CommentModel.objects.create(message=msg, user=request.user, blog=blog)
+            if comment and blog:
+                messages.success(request, _('نظر شما ثبت شد. بعد از تایید در سایت نمایش خواهد شد'))
+                return redirect(f'/blogs/{blog_slug}')
+
+            return redirect('/')
+        return redirect('/')
+
 
 # url: /blogs/<slug:slug>
 class EmailForNewsUrl(generic.View):

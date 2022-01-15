@@ -1,4 +1,5 @@
 import datetime
+from statistics import mode
 from django.db import models
 from MW_Auth.models import User
 from django.utils.translation import gettext_lazy as _
@@ -107,6 +108,7 @@ class CommentModel(models.Model):
     blog = models.ForeignKey(to=BlogModel, on_delete=models.CASCADE, verbose_name=_('بلاگ'))
     created = models.DateTimeField(auto_now_add=True)
     is_reply = models.BooleanField(default=False, verbose_name=_('پاسخ؟'))
+    is_show = models.BooleanField(default=False, verbose_name=_('نمایش؟'))
 
     class Meta:
         ordering = ['-id']
