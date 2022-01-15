@@ -1,6 +1,6 @@
 {% extends 'website/shared/_main_layout.html' %}
-{% load static i18n %}
-{% block title %}{{ object.title }}{% endblock %}
+{% load static i18n widget_tweaks %}
+{% block title %}{{ blog.title }}{% endblock %}
 
 
 {% block content %}
@@ -11,11 +11,11 @@
         <div class="container">
             <div class="banner_content d-md-flex justify-content-between align-items-center">
                 <div class="mb-3 mb-md-0">
-                    <h2>{{ object.title }}</h2>
+                    <h2>{{ blog.title }}</h2>
                     <p>{% translate 'زمین سبز پشت هوای الوده است' %}</p>
                 </div>
                 <div class="page_link">
-                    <a href="{% url 'website:blog_details' object.slug %}">{% translate 'خانه / بلاگ ها / اطلاعات بلاگ' %}</a>
+                    <a href="{% url 'website:blog_details' blog.slug %}">{% translate 'خانه / بلاگ ها / اطلاعات بلاگ' %}</a>
                 </div>
             </div>
         </div>
@@ -34,24 +34,24 @@
                     </div>
 
                     <div class="blog_details">
-                        <h2>{{ object.title }}</h2>
+                        <h2>{{ blog.title }}</h2>
                         <ul class="blog-info-link mt-3 mb-4">
-                            <li><a href="#"><i class="far fa-user"></i> {% for cate in object.categories.all %}{{cate.title}} {% if not forloop.last %}-{% endif %} {% endfor %}</a></li>
-                            <li><a href="#"><i class="far fa-comments"></i> 3 نظر</a></li>
+                            <li><a href="#"><i class="far fa-user"></i> {% for cate in blog.categories.all %}{{cate.title}} {% if not forloop.last %}-{% endif %} {% endfor %}</a></li>
+                            <li><a href="#"><i class="far fa-comments"></i> {{ comments_nums }} نظر</a></li>
                         </ul>
                         <p class="excert">
-                            {{ object.short_desc }}
+                            {{ blog.short_desc }}
                         </p>
                         <div class="quote-wrapper">
                             <div class="quotes">
-                                {{ object.desc }}
+                                {{ blog.desc }}
                             </div>
                         </div>
 
                         <ul class="list" style="display: flex; margin-bottom: 1rem; flex-wrap: wrap;">
-                            {% for tag in object.tags.all %}
+                            {% for tag in blog.tags.all %}
                             <li style="padding: 8px 16px; background: #f2f3f7; color: white; margin: 5px; border-radius: 5px;">
-                                <a href="#">{{ tag.title }}</a>
+                                <a href="{% url 'website:blog_search_tag' %}?query={{ tag.title }}">{{ tag.title }}</a>
                             </li>
                             {% empty %}
                             {% endfor %}
@@ -61,50 +61,50 @@
                 </div>
                 <div class="navigation-top">
                     <div class="d-sm-flex justify-content-between text-center">
-                        <p class="like-info"><span class="align-middle"><i class="far fa-heart"></i></span> لیلی و 4 نفر دیگر این پست را پسندیده اند</p>
+                        <p class="like-info"><span class="align-middle"><i class="far fa-heart"></i></span> 41</p>
                         <div class="col-sm-4 text-center my-2 my-sm-0">
-                            <p class="comment-count"><span class="align-middle"><i class="far fa-comment"></i></span> 06 نظر</p>
+                            <p class="comment-count"><span class="align-middle"><i class="far fa-comment"></i></span> {{ comments_nums }} نظر</p>
                         </div>
                     </div>
 
                     <div class="navigation-area">
                         <div class="row">
-                            {% if object.prev_post %}
+                            {% if blog.prev_post %}
                             <div class="col-6 nav-left flex-row d-flex justify-content-start align-items-center">
                                 <div class="thumb">
-                                    <a href="/blogs/{{ object.prev_post.slug }}">
+                                    <a href="/blogs/{{ blog.prev_post.slug }}">
                                         <img class="img-fluid" src="{% static 'img/blog/prev.jpg' %}" alt="">
                                     </a>
                                 </div>
                                 <div class="arrow">
-                                    <a href="/blogs/{{ object.prev_post.slug }}">
+                                    <a href="/blogs/{{ blog.prev_post.slug }}">
                                         <span class="lnr text-white lnr-arrow-left"></span>
                                     </a>
                                 </div>
                                 <div class="detials">
                                     <p>{% translate 'پست قبلی' %}</p>
-                                    <a href="/blogs/{{ object.prev_post.slug }}">
-                                        <h4>{{ object.prev_post.title }}</h4>
+                                    <a href="/blogs/{{ blog.prev_post.slug }}">
+                                        <h4>{{ blog.prev_post.title }}</h4>
                                     </a>
                                 </div>
                             </div>
                             {% endif %}
 
-                            {% if object.next_post %}
-                            <div class="col-6 {% if not object.prev_post %}col-12{% endif %} nav-right flex-row d-flex justify-content-end align-items-center">
+                            {% if blog.next_post %}
+                            <div class="col-6 {% if not blog.prev_post %}col-12{% endif %} nav-right flex-row d-flex justify-content-end align-items-center">
                                 <div class="detials">
                                     <p>{% translate 'پست بعدی' %}</p>
-                                    <a href="/blogs/{{ object.next_post.slug }}">
-                                        <h4>{{ object.next_post.title }}</h4>
+                                    <a href="/blogs/{{ blog.next_post.slug }}">
+                                        <h4>{{ blog.next_post.title }}</h4>
                                     </a>
                                 </div>
                                 <div class="arrow">
-                                    <a href="/blogs/{{ object.next_post.slug }}">
+                                    <a href="/blogs/{{ blog.next_post.slug }}">
                                         <span class="lnr text-white lnr-arrow-right"></span>
                                     </a>
                                 </div>
                                 <div class="thumb">
-                                    <a href="/blogs/{{ object.next_post.slug }}">
+                                    <a href="/blogs/{{ blog.next_post.slug }}">
                                         <img class="img-fluid" src="{% static 'img/blog/next.jpg' %}" alt="">
                                     </a>
                                 </div>
@@ -117,35 +117,36 @@
 
                 <div class="blog-author">
                     <div class="media align-items-center">
-                        <img src="{% static 'img/blog/author.png' %}" alt="">
+                        {% if blog.writer.user.profile %}<img style="height: 90px; width: 90px;" src="{{ blog.writer.user.profile.url }}" alt="">{% endif %}
                         <div class="media-body">
                             <a href="#">
-                                <h4>{{ object.writer.get_full_name }}</h4>
+                                <h4>{{ blog.writer.get_full_name }}</h4>
                             </a>
-                            <p>{{ object.writer.bio }}</p>
+                            <p>{{ blog.writer.bio }}</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="comments-area">
-                    <h4>5 {% translate 'نظر' %}</h4>
+                    <h4>{{ comments_nums }} {% translate 'نظر' %}</h4>
+                    {% for comment in comments %}
                     <div class="comment-list">
                         <div class="single-comment justify-content-between d-flex">
                             <div class="user justify-content-between d-flex">
                                 <div class="thumb">
-                                    <img src="{% static 'img/blog/c1.png' %}" alt="">
+                                    {% if comment.user.profile %}<img style="height: 50px; width: 50px;" src="{{ comment.user.profile.url }}" alt="">{% endif %}
                                 </div>
                                 <div class="desc">
                                     <p class="comment">
-                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است
+                                        {{ comment.message }}
                                     </p>
 
                                     <div class="d-flex justify-content-between">
                                         <div class="d-flex align-items-center">
                                             <h5>
-                                                <a href="#">ایکس مرد</a>
+                                                <a href="#">{{ comment.user.get_full_name }}</a>
                                             </h5>
-                                            <p class="date">25 دی 1397 </p>
+                                            <p class="date">{{ comment.j_created }} </p>
                                         </div>
 
                                         <div class="reply-btn">
@@ -157,87 +158,19 @@
                             </div>
                         </div>
                     </div>
-                    <div class="comment-list">
-                        <div class="single-comment justify-content-between d-flex">
-                            <div class="user justify-content-between d-flex">
-                                <div class="thumb">
-                                    <img src="{% static 'img/blog/c2.png' %}" alt="">
-                                </div>
-                                <div class="desc">
-                                    <p class="comment">
-                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است
-                                    </p>
-
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex align-items-center">
-                                            <h5>
-                                                <a href="#">ایکس مرد</a>
-                                            </h5>
-                                            <p class="date">25 دی 1397 </p>
-                                        </div>
-
-                                        <div class="reply-btn">
-                                            <a href="#" class="btn-reply text-uppercase">جواب دادن</a>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="comment-list">
-                        <div class="single-comment justify-content-between d-flex">
-                            <div class="user justify-content-between d-flex">
-                                <div class="thumb">
-                                    <img src="{% static 'img/blog/c3.png' %}" alt="">
-                                </div>
-                                <div class="desc">
-                                    <p class="comment">
-                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است
-                                    </p>
-
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex align-items-center">
-                                            <h5>
-                                                <a href="#">ایکس مرد</a>
-                                            </h5>
-                                            <p class="date">25 دی 1397 </p>
-                                        </div>
-
-                                        <div class="reply-btn">
-                                            <a href="#" class="btn-reply text-uppercase">جواب دادن</a>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {% empty %}{% endfor %}
                 </div>
 
                 <div class="comment-form">
                     <h4>{% translate 'جواب دادن' %}</h4>
-                    <form class="form-contact comment_form" action="#" id="commentForm">
+                    <form class="form-contact comment_form" method="POST" action="{% url 'website:comment_save' %}" id="commentForm">
+                        {% csrf_token %}
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
-                                    {{ form }}
-                                    <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9" placeholder="کامنت "></textarea>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <input class="form-control" name="name" id="name" type="text" placeholder="نام">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <input class="form-control" name="email" id="email" type="email" placeholder="ایمیل">
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <input class="form-control" name="website" id="website" type="text" placeholder="وبسایت">
+                                    <label for="comment">{% translate 'خوشحال میشویم نظر خود را با ما به اشتراک بگذارید' %}</label>
+                                    {% render_field form.message name="msg" class="form-control w-100" id="comment" cols="30" rows="9" placeholder="کامنت " %}
+                                    {% render_field form.at_blog name="blog" value=blog.slug %}
                                 </div>
                             </div>
                         </div>

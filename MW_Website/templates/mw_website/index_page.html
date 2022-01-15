@@ -144,7 +144,6 @@
             <div class="col-md-7 col-xl-8"></div>
         </div>
 
-
         <div class="row">
             {% for blog in last_blogs %}
             <div class="col-md-6 col-lg-4 col-md-4">
@@ -161,7 +160,7 @@
                             {% endfor %}
                         </div>
                         
-                        <a class="d-block" href="single-blog.html">
+                        <a class="d-block" href="{% url 'website:blog_details' blog.slug %}">
                             <h4>{{ blog.short_desc }}</h4>
                         </a>
                         <div class="meta-bottom d-flex">

@@ -1,10 +1,9 @@
 from django import forms
-from django.db import models
 from django.db.models import fields
 from .models import CommentModel
 
-
 class CommentForm(forms.ModelForm):
+    at_blog = forms.CharField(widget=forms.HiddenInput())
     class Meta:
         model = CommentModel
-        fields = ['message']
+        fields = ['message', 'at_blog']

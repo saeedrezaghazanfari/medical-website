@@ -1,9 +1,8 @@
 from django.contrib import admin
-from django.contrib.admin.helpers import AdminField
+from django.utils.translation import gettext_lazy as _
 from .models import (
     DoctorModel,
     SpecialtyModel,
-    PatientModel,
     DoctorNotesModel,
     BlogModel,
     CategoryModel,
@@ -14,19 +13,19 @@ from .models import (
 )
 
 class DoctorModel_Admin(admin.ModelAdmin):
-    list_display = ['get_full_name', 'code']
-    search_field = ['code']
+    list_display = ['get_full_name', 'get_specialties']
+    search_field = ['id']
     ordering = ['-user__id']
+
+    def get_specialties(self, obj):
+        return ', '.join([specialty.title for specialty in obj.specialties.all()])
+    get_specialties.short_description = _('تخصص‌ها')
+    
 
 class SpecialtyModel_Admin(admin.ModelAdmin):
     list_display = ['title']
     search_field = ['title']
     ordering = ['-id']
-
-class PatientModel_Admin(admin.ModelAdmin):
-    list_display = ['get_full_name', 'code']
-    search_field = ['code']
-    ordering = ['-user__id']
 
 class BlogModel_Admin(admin.ModelAdmin):
     list_display = ['title', 'get_full_name', 'is_published', 'j_created']
@@ -49,12 +48,11 @@ class DoctorNotesModel_Admin(admin.ModelAdmin):
     ordering = ['-id']
 
 class CommentModel_Admin(admin.ModelAdmin):
-    list_display = ['__str__']
+    list_display = ['__str__', 'j_created']
     ordering = ['-id']
 
 admin.site.register(DoctorModel, DoctorModel_Admin)
 admin.site.register(SpecialtyModel, SpecialtyModel_Admin)
-admin.site.register(PatientModel, PatientModel_Admin)
 admin.site.register(DoctorNotesModel, DoctorNotesModel_Admin)
 admin.site.register(BlogModel, BlogModel_Admin)
 admin.site.register(CategoryModel, CategoryModel_Admin)

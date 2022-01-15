@@ -1,23 +1,13 @@
 import datetime
 from django.db import models
-# from django.urls import reverse_lazy
 from MW_Auth.models import User
 from django.utils.translation import gettext_lazy as _
-from Extentions.utils import (
-    doctor_image_path,
-    jalali_convertor,
-    patient_image_path,
-    get_doctor_code,
-    get_patient_code,
-    blog_image_path,
-)
+from Extentions.utils import jalali_convertor, blog_image_path
 
 
 class DoctorModel(models.Model):
-    code = models.AutoField(primary_key=True, unique=True, editable=False, default=get_doctor_code, verbose_name=_('کد پزشک'))
     user = models.OneToOneField(to=User, on_delete=models.CASCADE, verbose_name=_('کاربر'))
-    profile = models.ImageField(upload_to=doctor_image_path, null=True, blank=True, verbose_name=_('پروفایل'))
-    specialties = models.ManyToManyField(to='SpecialtyModel', verbose_name=_('تخصص ها'))
+    specialties = models.ManyToManyField(to='SpecialtyModel', verbose_name=_('تخصص‌ها'))
     bio = models.TextField(max_length=300, blank=True, null=True, verbose_name=_('بیوگرافی'))
 
     class Meta:
@@ -26,7 +16,7 @@ class DoctorModel(models.Model):
         verbose_name_plural = _('پزشک ها')
 
     def __str__(self):
-        return str(self.code)
+        return str(self.user.code)
 
     def get_full_name(self):
         return f'{self.user.first_name} {self.user.last_name}'
@@ -43,24 +33,6 @@ class SpecialtyModel(models.Model):
     
     def __str__(self):  
         return self.title
-
-
-class PatientModel(models.Model):
-    code = models.AutoField(primary_key=True, unique=True, editable=False, default=get_patient_code, verbose_name=_('کد بیمار'))
-    user = models.OneToOneField(to=User, on_delete=models.CASCADE, verbose_name=_('کاربر'))
-    profile = models.ImageField(upload_to=patient_image_path, null=True, blank=True, verbose_name=_('پروفایل'))
-
-    class Meta:
-        ordering = ['-user__id']
-        verbose_name = _('بیمار')
-        verbose_name_plural = _('بیماران')
-
-    def __str__(self):
-        return str(self.code)
-
-    def get_full_name(self):
-        return f'{self.user.first_name} {self.user.last_name}'
-    get_full_name.short_description = _('نام بیمار')
 
 
 class DoctorNotesModel(models.Model):
@@ -140,6 +112,10 @@ class CommentModel(models.Model):
         ordering = ['-id']
         verbose_name = _('نظر کاربر')
         verbose_name_plural = _('نظرات کاربران')
+
+    def j_created(self):
+        return jalali_convertor(time=self.created, output='j_date')
+    j_created.short_description = _('تاریخ نظر')
 
     def __str__(self):
         return self.blog.title

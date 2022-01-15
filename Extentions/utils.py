@@ -4,6 +4,7 @@ import os
 import datetime
 from random import randint
 
+
 def jalali_convertor(time, output='date_time', number=False):
     jmonth = ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند']
     intmonth = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
@@ -57,41 +58,44 @@ def get_ext_file(filename):
 
 # before function File storage
 def get_filename_ext_rand(filepath):
+    time = datetime.datetime.now()
+    intmonth = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    time_to_str = f'{time.year} {time.month} {time.day}'
+    time_to_tuple = jalali.Gregorian(time_to_str).persian_tuple()
+    time_to_list = list(time_to_tuple)
+    for index, month in enumerate(intmonth):
+        if time_to_list[1] == index + 1:
+            time_to_list[1] = month
+            break
     base_name = os.path.basename(filepath)
     name, ext = os.path.splitext(base_name)
-    random_1 = randint(1000, 9999)
-    random_2 = randint(1000, 9999)
-    return name, ext, f'{random_1}-{random_2}'
+    random = randint(100, 999)
+    output = f'{time_to_list[2]}{time_to_list[1]}{time_to_list[0]}{random}'
+    return ext, output
 
 # ######### for doctors imgs ######### #
-def doctor_image_path(instance, filename):
-    name, ext, rand = get_filename_ext_rand(filename)
-    final_name = f"{name}-{instance.code}-{rand}{ext}"
-    return f"doctors/{final_name}"
-
-# ######### for patient imgs ######### #
-def patient_image_path(instance, filename):
-    name, ext, rand = get_filename_ext_rand(filename)
-    final_name = f"{name}-{instance.code}-{rand}{ext}"
-    return f"patient/{final_name}"
+def user_image_path(instance, filename):
+    ext, output = get_filename_ext_rand(filename)
+    final_name = f"{output}{ext}"
+    return f"users/{final_name}"
 
 # ######### for brands imgs ######### #
 def brands_image_path(instance, filename):
-    name, ext, rand = get_filename_ext_rand(filename)
-    final_name = f"{rand}{ext}"
+    ext, output = get_filename_ext_rand(filename)
+    final_name = f"{output}{ext}"
     return f"brands/{final_name}"
 
 # ######### for blogs imgs ######### #
 def blog_image_path(instance, filename):
-    name, ext, rand = get_filename_ext_rand(filename)
-    final_name = f"{rand}{ext}"
+    ext, output = get_filename_ext_rand(filename)
+    final_name = f"{output}{ext}"
     return f"blogs/{final_name}"
 
 # =============== end static path
 
 
-# ######### for doctor codes ######### #
-def get_doctor_code():
+# ######### get user code ######### #
+def get_user_code():
     time = datetime.datetime.now()
     intmonth = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
@@ -103,25 +107,7 @@ def get_doctor_code():
         if time_to_list[1] == index + 1:
             time_to_list[1] = month
             break
-    random = randint(10, 99)
-    output = f'{time_to_list[2]}{time_to_list[1]}{time_to_list[0]}{random}1'
+    random = randint(100, 999)
+    output = f'{time_to_list[2]}{time_to_list[1]}{time_to_list[0]}{random}'
     return output
-    # 21101400321 => 21 day, 10 month, 1400 age, 32 random, 1 doctor
-
-# ######### for patient codes ######### #
-def get_patient_code():
-    time = datetime.datetime.now()
-    intmonth = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-
-    time_to_str = f'{time.year} {time.month} {time.day}'
-    time_to_tuple = jalali.Gregorian(time_to_str).persian_tuple()
-    time_to_list = list(time_to_tuple)
-
-    for index, month in enumerate(intmonth):
-        if time_to_list[1] == index + 1:
-            time_to_list[1] = month
-            break
-    random = randint(10, 99)
-    output = f'{time_to_list[2]}{time_to_list[1]}{time_to_list[0]}{random}0'
-    return output
-    # 21101400210 => 21 day, 10 month, 1400 age, 21 random, 0 patient
+    # 21101400321 => 21 day, 10 month, 1400 age, 32 random

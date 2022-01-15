@@ -24,7 +24,7 @@
             <ul class="list cat-list">
                 {% for category in categories %}
                 <li>
-                    <a href="#" class="d-flex">
+                    <a href="{% url 'website:blog_search_category' %}?query={{ category.category_name }}" class="d-flex">
                         <p>{{ category.category_name }}</p>
                         <p>({{ category.num }})</p>
                     </a>

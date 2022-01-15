@@ -7,7 +7,7 @@
             <div class="item">
                 <div class="testi_item">
                     <div class="testimonial_image">
-                        {% if note.doctor.profile %}<img src="{{ note.doctor.profile.url }}" alt="{{ note.doctor.get_full_name }}">{% endif %}
+                        {% if note.doctor.user.profile %}<img src="{{ note.doctor.user.profile.url }}" style="height: 100px; width: 100px;" alt="{{ note.doctor.user.get_full_name }}">{% endif %}
                     </div>
                     <div class="testi_item_content">
                         <p>

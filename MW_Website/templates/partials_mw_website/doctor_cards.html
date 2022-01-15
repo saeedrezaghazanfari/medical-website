@@ -13,9 +13,9 @@
             {% for doctor in doctors %}
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="card card-team">
-                    {% if doctor.profile %}<img class="card-img rounded-0" src="{{ doctor.profile.url }}" alt="">{% endif %}
+                    {% if doctor.user.profile %}<img class="card-img rounded-0" src="{{ doctor.user.profile.url }}" alt="">{% endif %}
                     <div class="card-team__body text-center">
-                        <h3><a href="#">دکتر {{ doctor.get_full_name }}</a></h3>
+                        <h3><a href="#">دکتر {{ doctor.user.get_full_name }}</a></h3>
                         <p>پزشک</p>
                         <div class="team-footer d-flex justify-content-between">
                             <a class="dn_btn" href=""><i class="ti-mobile"></i>{{ doctor.user.phone }}</a>

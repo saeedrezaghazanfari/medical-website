@@ -11,10 +11,11 @@ class AdminUser(UserAdmin):
         'is_superuser',
         'groups',
         'user_permissions',
-        'phone',
         'ip',
+        'phone',
+        'profile'
     )
-    list_display = ('username', 'email', 'first_name', 'last_name', 'ip', 'phone')
+    list_display = ('username', 'email', 'get_full_name', 'phone', 'code', 'get_profile')
 
 admin.site.register(User, AdminUser)
 admin.site.unregister(Group) # hide groups
