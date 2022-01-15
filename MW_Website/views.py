@@ -1,5 +1,7 @@
 from django.views import generic
 from django.urls import reverse_lazy
+from django.shortcuts import redirect
+from django.db.models import Q
 from .models import BlogModel
 from django.contrib import messages
 from MW_Setting.models import SettingModel, ContactUsModel, NewsEmailModel
@@ -52,17 +54,55 @@ class BlogDetailPage(generic.DetailView):
 class EmailForNewsUrl(generic.View):
     def post(self, request):
         email = request.POST['emailfield']
+        if email:
+            if not NewsEmailModel.objects.filter(email=email).first(): 
+                email_created = NewsEmailModel.objects.create(email=email)
+                if email_created:
+                    messages.success(request, _('ایمیل شما با موفقیت ذخیره شد'))
+                    return redirect('/blogs')
+                messages.warning(request, _('مشکلی در ثبت ایمیل پیش آمد'))
+                return redirect('/blogs')
+            messages.error(request, _('این ایمیل قبلا وارد شده است'))
+            return redirect('/blogs')
+        messages.error(request, _('فرمت ایمیل را درست وارد کنید'))
+        return redirect('/blogs')
 
-        if NewsEmailModel.objects.filter(email=email).first() != email: 
-            email_created = NewsEmailModel.objects.create(email=email)
-            if email_created:
-                messages.info(request, _('ایمیل شما با موفقیت ذخیره شد'))
-                return reverse_lazy('website:blogs')
 
-            return reverse_lazy('website:blogs')
-        messages.error(request, _('این ایمیل قبلا وارد شده است'))
-        return reverse_lazy('website:blogs')
+# url: /blogs/search/
+class SearchBoxURL(generic.ListView):
+    template_name = 'mw_website/blogs_page.html'
+    model = BlogModel
+    def get_queryset(self):
+        request = self.request
+        query = request.GET.get('query')
+        lookup = Q(title__icontains=query) | Q(short_desc__icontains=query) | Q(writer__user__first_name__icontains=query)  | Q(writer__user__last_name__icontains=query) 
+        return BlogModel.objects.filter(lookup, is_published=True).distinct()
+    paginate_by = 3
 
+
+# url: /blogs/search/tags
+class SearchTagURL(generic.ListView):
+    template_name = 'mw_website/blogs_page.html'
+    model = BlogModel
+    def get_queryset(self):
+        request = self.request
+        query = request.GET.get('query')
+        lookup = None
+        return BlogModel.objects.filter(lookup, is_published=True).distinct()
+    paginate_by = 3
+
+
+# url: /blogs/search/categories
+
+class SearchCategoryURL(generic.ListView):
+    template_name = 'mw_website/blogs_page.html'
+    model = BlogModel
+    def get_queryset(self):
+        request = self.request
+        query = request.GET.get('query')
+        lookup = None
+        return BlogModel.objects.filter(lookup, is_published=True).distinct()
+    paginate_by = 3
 
 # url: /contact-us
 class ContactIsPage(generic.CreateView):

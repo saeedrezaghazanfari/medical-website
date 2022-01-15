@@ -1,3 +1,5 @@
 django translated fields install  => -
-dynamic pages => ~
-accounting => -
+index page like and comments => ~
+blog list => ~
+blog details => ~
+accounting => ~
