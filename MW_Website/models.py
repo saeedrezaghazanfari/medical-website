@@ -3,7 +3,14 @@ from django.db import models
 # from django.urls import reverse_lazy
 from MW_Auth.models import User
 from django.utils.translation import gettext_lazy as _
-from Extentions.utils import doctor_image_path, patient_image_path, get_doctor_code, get_patient_code, blog_image_path
+from Extentions.utils import (
+    doctor_image_path,
+    jalali_convertor,
+    patient_image_path,
+    get_doctor_code,
+    get_patient_code,
+    blog_image_path,
+)
 
 
 class DoctorModel(models.Model):
@@ -95,8 +102,12 @@ class BlogModel(models.Model):
     def __str__(self):
         return self.title
 
-    # def get_absoulute_url(self):
-    #     return reverse_lazy("website:blog_details", args=[str(self.slug)])
+    def j_created(self):
+        return jalali_convertor(time=self.created, output='j_date')
+    j_created.short_description = _('تاریخ انتشار')
+
+    def j_month(self):
+        return jalali_convertor(time=self.created, output='j_month')
 
     def prev_post(self):
         this_id = self.id

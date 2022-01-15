@@ -36,7 +36,7 @@
                             {% if blog.image %}<img class="card-img rounded-0" src="{{ blog.image.url }}" alt="">{% endif %}
                             <a href="{% url 'website:blog_details' blog.slug %}" class="blog_item_date">
                                 <h3>{{ blog.created.day }}</h3>
-                                <p>{{ blog.created.month }}</p>
+                                <p>{{ blog.j_month }}</p>
                             </a>
                         </div>
                         
