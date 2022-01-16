@@ -16,7 +16,11 @@ class IndexPage(generic.TemplateView):
     template_name = 'mw_website/index_page.html'
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['last_blogs'] = BlogModel.objects.filter(is_published=True).all()[:3]
+        blogs = BlogModel.objects.filter(is_published=True).all()[:3]
+        list_blogs = []
+        for blog in blogs:
+            list_blogs.append({'blog':blog, 'likes': blog.bloglikesmodel_set.count(), 'comments': blog.commentmodel_set.filter(is_show=True).count()})
+        context['last_blogs'] = list_blogs
         return context
 
 

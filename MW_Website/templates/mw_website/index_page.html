@@ -149,23 +149,23 @@
             <div class="col-md-6 col-lg-4 col-md-4">
                 <div class="single-blog">
                     <div class="thumb">
-                        <img class="img-fluid" src="{{ blog.image.url }}" alt="{{ blog.title }}">
+                        <img class="img-fluid" src="{{ blog.blog.image.url }}" alt="{{ blog.blog.title }}">
                     </div>
                     <div class="short_details">
 
                         <div class="meta-top d-flex">
-                            {% for cate in blog.categories.all %}
+                            {% for cate in blog.blog.categories.all %}
                             <span>{{ cate.title }}{% if not forloop.last %} - {% endif %} </span>
                             {% empty %}
                             {% endfor %}
                         </div>
                         
-                        <a class="d-block" href="{% url 'website:blog_details' blog.slug %}">
-                            <h4>{{ blog.short_desc }}</h4>
+                        <a class="d-block" href="{% url 'website:blog_details' blog.blog.slug %}">
+                            <h4>{{ blog.blog.short_desc }}</h4>
                         </a>
                         <div class="meta-bottom d-flex">
-                            <a href="#"><i class="ti-comments"></i>8 نظر</a>
-                            <a href="#"><i class="ti-heart"></i> 2 لایک</a>
+                            <a href="#"><i class="ti-comments"></i>{{ blog.comments }} نظر</a>
+                            <a href="#"><i class="ti-heart"></i> {{ blog.likes }} لایک</a>
                         </div>
                     </div>
                 </div>
