@@ -48,7 +48,7 @@ class DoctorNotesModel_Admin(admin.ModelAdmin):
     ordering = ['-id']
 
 class CommentModel_Admin(admin.ModelAdmin):
-    list_display = ['__str__', 'j_created']
+    list_display = ['id', 'j_created']
     ordering = ['-id']
 
 admin.site.register(DoctorModel, DoctorModel_Admin)

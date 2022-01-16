@@ -120,7 +120,7 @@ class CommentModel(models.Model):
     j_created.short_description = _('تاریخ نظر')
 
     def __str__(self):
-        return self.blog.title
+        return str(self.id)
 
 class CategoryModel(models.Model):
     title = models.CharField(max_length=100, verbose_name=_('عنوان'))

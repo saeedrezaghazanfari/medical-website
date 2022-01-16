@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
 from MW_Setting.models import SettingModel, ContactUsModel, NewsEmailModel
 from MW_Auth.models import User
-from .models import BlogModel, CommentModel
+from .models import BlogModel, CommentModel, BlogLikesModel
 from .forms import CommentForm
 
 
@@ -50,9 +50,19 @@ class BlogDetailPage(generic.DetailView):
         thispost = context['object']
         context['form'] = CommentForm()                                                   # send form
         context['comments'] = CommentModel.objects.filter(blog=thispost, is_reply=False, is_show=True)  # send comments
-        context['comments_nums'] = context['comments'].count()                            # send comments numbers
+        context['replies'] = CommentModel.objects.filter(blog=thispost, is_reply=True, is_show=True)  # send replyes
+        context['comments_nums'] = context['comments'].count() + context['replies'].count()   # send comments numbers
         return context
     template_name = 'mw_website/blog_detail_page.html'
+
+
+# url: blogs/like/<slug:slug>
+# class BlogDetailPage(generic.View):
+    # def get(self, request):
+        # slug = request.kwargs['slug']
+        # blog = BlogModel.objects.filter(slug=slug).first()
+        # BlogLikesModel.objects.create(user=request.user, blog=blog)
+        # pass
 
 
 # url: /blogs/comment/save 
@@ -60,15 +70,29 @@ class CommentSaveURL(generic.View):
     def post(self, request):
         msg = request.POST['message']
         blog_slug = request.POST['at_blog']
-        if msg and blog_slug: 
+        reply = request.POST['isreply']
+        comment_id = request.POST['commentid']
+
+        if msg and blog_slug and reply == 'False' and comment_id == '':
             blog = BlogModel.objects.filter(slug=blog_slug).first()
             comment = CommentModel.objects.create(message=msg, user=request.user, blog=blog)
             if comment and blog:
                 messages.success(request, _('نظر شما ثبت شد. بعد از تایید در سایت نمایش خواهد شد'))
                 return redirect(f'/blogs/{blog_slug}')
-
+            
+            messages.success(request, _('مشکلی به وجود آمده است'))
             return redirect('/')
-        return redirect('/')
+
+        elif msg and blog_slug and reply == 'True' and comment_id:
+            blog = BlogModel.objects.filter(slug=blog_slug).first()
+            comment = CommentModel.objects.get(id=comment_id)
+            reply = CommentModel.objects.create(reply=comment, message=msg, user=request.user, blog=blog, is_reply=True)
+            if reply and blog:
+                messages.success(request, _('پاسخ شما ثبت شد. بعد از تایید در سایت نمایش خواهد شد'))
+                return redirect(f'/blogs/{blog_slug}')
+
+            messages.success(request, _('مشکلی به وجود آمده است'))
+            return redirect('/')
 
 
 # url: /blogs/<slug:slug>

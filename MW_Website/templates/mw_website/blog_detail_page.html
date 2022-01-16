@@ -61,7 +61,7 @@
                 </div>
                 <div class="navigation-top">
                     <div class="d-sm-flex justify-content-between text-center">
-                        <p class="like-info"><span class="align-middle"><i class="far fa-heart"></i></span> 41</p>
+                        <p class="like-info"><a href="#TODO"><span class="align-middle"><i class="far fa-heart"></i></span> 41</a></p>
                         <div class="col-sm-4 text-center my-2 my-sm-0">
                             <p class="comment-count"><span class="align-middle"><i class="far fa-comment"></i></span> {{ comments_nums }} نظر</p>
                         </div>
@@ -130,14 +130,14 @@
                 <div class="comments-area">
                     <h4>{{ comments_nums }} {% translate 'نظر' %}</h4>
                     {% for comment in comments %}
-                    <div class="comment-list">
+                    <div class="comment-list" style="border: 1px dashed rgb(214, 214, 214); margin-bottom: 10px; border-radius: 15px; padding: 7px 0 7px 13px;">
                         <div class="single-comment justify-content-between d-flex">
                             <div class="user justify-content-between d-flex">
-                                <div class="thumb">
-                                    {% if comment.user.profile %}<img style="height: 50px; width: 50px;" src="{{ comment.user.profile.url }}" alt="">{% endif %}
+                                <div class="thumb" style="min-width: 60px !important;">
+                                    {% if comment.user.profile %}<img style="height: 50px !important; width: 50px !important;" src="{{ comment.user.profile.url }}" alt="">{% endif %}
                                 </div>
                                 <div class="desc">
-                                    <p class="comment">
+                                    <p class="comment text-justify">
                                         {{ comment.message }}
                                     </p>
 
@@ -150,13 +150,54 @@
                                         </div>
 
                                         <div class="reply-btn">
-                                            <a href="#" class="btn-reply text-uppercase">جواب دادن</a>
+                                            <a href="javascript:void(0);" id="linkreply{{ comment.id }}" onclick="document.getElementById('msgreply{{ comment.id }}').classList.remove('d-none');document.getElementById('linkreply{{ comment.id }}').classList.add('d-none');" class="btn-reply text-uppercase">جواب دادن</a>
                                         </div>
                                     </div>
-
+                                    <div class="mt-4 d-none" id="msgreply{{ comment.id }}">
+                                        <form action="{% url 'website:comment_save' %}" method="POST">
+                                            {% csrf_token %}
+                                            {% render_field form.message class="form-control w-100" id="comment" cols="30" rows="3" placeholder="پاسخ خود را وارد کنید" %}
+                                            {% render_field form.at_blog value=blog.slug %}
+                                            {% render_field form.isreply value='True' %}
+                                            {% render_field form.commentid value=comment.id %}
+                                            <div class="d-flex">
+                                                <button type="submit" class="btn btn-primary btn-sm mt-2">{% translate 'ارسال پاسخ' %}</button>
+                                                <button onclick="document.getElementById('msgreply{{ comment.id }}').classList.add('d-none');document.getElementById('linkreply{{ comment.id }}').classList.remove('d-none');" class="btn btn-danger btn-sm mt-2 mr-1">بستن</button>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        {% for reply in replies %}
+                        {% if reply.reply == comment %}
+                        <div class="comment-list" style="background-color: #fafafa; margin-bottom: 10px; border-radius: 15px; padding: 10px 10px 10px 13px; margin-right: 13px; margin-top: 20px;">
+                            <div class="single-comment justify-content-between d-flex">
+                                <div class="user justify-content-between d-flex">
+                                    <div class="thumb" style="min-width: 60px !important;">
+                                        {% if reply.user.profile %}<img style="height: 50px !important; width: 50px !important;" src="{{ reply.user.profile.url }}" alt="">{% endif %}
+                                    </div>
+                                    <div class="desc">
+                                        <p class="comment text-justify">
+                                            {{ reply.message }}
+                                        </p>
+    
+                                        <div class="d-flex justify-content-between">
+                                            <div class="d-flex align-items-center">
+                                                <h5>
+                                                    <a href="#">{{ reply.user.get_full_name }}</a>
+                                                </h5>
+                                                <p class="date">{{ reply.j_created }} </p>
+                                            </div>
+                                        </div>
+    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% empty %}
+                        {% endfor %}
                     </div>
                     {% empty %}{% endfor %}
                 </div>
@@ -169,8 +210,10 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label for="comment">{% translate 'خوشحال میشویم نظر خود را با ما به اشتراک بگذارید' %}</label>
-                                    {% render_field form.message class="form-control w-100" id="comment" cols="30" rows="9" placeholder="کامنت " %}
+                                    {% render_field form.message class="form-control w-100" id="comment" cols="30" rows="9" placeholder="نظر " %}
                                     {% render_field form.at_blog value=blog.slug %}
+                                    {% render_field form.isreply value='False' %}
+                                    {% render_field form.commentid value='' %}
                                 </div>
                             </div>
                         </div>
