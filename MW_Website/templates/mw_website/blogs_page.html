@@ -33,21 +33,21 @@
                     {% for blog in page_obj %}
                     <article class="blog_item">
                         <div class="blog_item_img">
-                            {% if blog.image %}<img class="card-img rounded-0" src="{{ blog.image.url }}" alt="">{% endif %}
-                            <a href="{% url 'website:blog_details' blog.slug %}" class="blog_item_date">
-                                <h3>{{ blog.created.day }}</h3>
-                                <p>{{ blog.j_month }}</p>
+                            {% if blog.blog.image %}<img class="card-img rounded-0" src="{{ blog.blog.image.url }}" alt="">{% endif %}
+                            <a href="{% url 'website:blog_details' blog.blog.slug %}" class="blog_item_date">
+                                <h3>{{ blog.blog.created.day }}</h3>
+                                <p>{{ blog.blog.j_month }}</p>
                             </a>
                         </div>
                         
                         <div class="blog_details">
-                            <a class="d-inline-block" href="{% url 'website:blog_details' blog.slug %}">
-                                <h2>{{ blog.title }}</h2>
+                            <a class="d-inline-block" href="{% url 'website:blog_details' blog.blog.slug %}">
+                                <h2>{{ blog.blog.title }}</h2>
                             </a>
-                            <p>{{ blog.short_desc }}</p>
+                            <p>{{ blog.blog.short_desc }}</p>
                             <ul class="blog-info-link">
-                                <li><a href="#"><i class="far fa-user"></i> {{ blog.writer.get_full_name }}</a></li>
-                                <li><a href="#"><i class="far fa-comments"></i> ???? نظر</a></li>
+                                <li><a href="#"><i class="far fa-user"></i> {{ blog.blog.writer.get_full_name }}</a></li>
+                                <li><a href="#"><i class="far fa-comments"></i> {{ blog.num_comments }} نظر</a></li>
                             </ul>
                         </div>
                     </article>

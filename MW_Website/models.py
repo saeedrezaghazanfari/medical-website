@@ -157,15 +157,3 @@ class BlogLikesModel(models.Model):
 
     def __str__(self):
         return str(self.id)
-
-class CommentLikesModel(models.Model):
-    user = models.ForeignKey(to=User, on_delete=models.CASCADE, verbose_name=_('کاربر'))
-    comment = models.ForeignKey(to=CommentModel, on_delete=models.CASCADE, verbose_name=_('نظر'))
-    
-    class Meta:
-        ordering = ['-id']
-        verbose_name = _('نظر و لایک')
-        verbose_name_plural = _('نظرات و لایک ها')
-
-    def __str__(self):
-        return str(self.id)

@@ -5,6 +5,7 @@ from django.db.models import Q
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
 from MW_Setting.models import SettingModel, ContactUsModel, NewsEmailModel
+from django.http import JsonResponse
 from MW_Auth.models import User
 from .models import BlogModel, CommentModel, BlogLikesModel
 from .forms import CommentForm
@@ -38,8 +39,35 @@ class DoctorsPage(generic.TemplateView):
 class BlogsPage(generic.ListView):
     template_name = 'mw_website/blogs_page.html'
     model = BlogModel
-    queryset = BlogModel.objects.filter(is_published=True).all()
+    def get_queryset(self):
+        blogs = BlogModel.objects.filter(is_published=True).all()
+        blogs_comments = []
+        for blog in blogs:
+            counter = blog.commentmodel_set.filter(is_show=True).count()
+            blogs_comments.append({'blog': blog, 'num_comments': counter})
+        return blogs_comments
     paginate_by = 3
+
+
+# url: /blogs/like/<slug:slug>
+class BlogLikePage(generic.View):
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            exist = BlogLikesModel.objects.filter(user=request.user, blog=BlogModel.objects.get(slug=kwargs['slug'])).first()
+            if not exist:
+                like = BlogLikesModel.objects.create(user=request.user, blog=BlogModel.objects.get(slug=kwargs['slug']))
+                if like:
+                    likes = BlogLikesModel.objects.filter(blog=BlogModel.objects.get(slug=kwargs['slug'])).count()
+                    return JsonResponse({'counter': likes, 'status': 200}, safe=False)
+            
+            elif exist:
+                dislike = BlogLikesModel.objects.get(user=request.user, blog=BlogModel.objects.get(slug=kwargs['slug'])).delete()
+                if dislike:
+                    likes = BlogLikesModel.objects.filter(blog=BlogModel.objects.get(slug=kwargs['slug'])).count()
+                    return JsonResponse({'counter': likes, 'status': 203}, safe=False)
+
+        return JsonResponse({'status': 404}, safe=False)
+
 
 # url: /blogs/<slug:slug>
 class BlogDetailPage(generic.DetailView):
@@ -52,6 +80,8 @@ class BlogDetailPage(generic.DetailView):
         context['comments'] = CommentModel.objects.filter(blog=thispost, is_reply=False, is_show=True)  # send comments
         context['replies'] = CommentModel.objects.filter(blog=thispost, is_reply=True, is_show=True)  # send replyes
         context['comments_nums'] = context['comments'].count() + context['replies'].count()   # send comments numbers
+        context['likes'] = BlogLikesModel.objects.filter(blog=thispost).count()   # send likes
+        context['is_like'] = bool(BlogLikesModel.objects.filter(blog=thispost, user=self.request.user).first())   # like it?
         return context
     template_name = 'mw_website/blog_detail_page.html'
 
@@ -117,23 +147,33 @@ class EmailForNewsUrl(generic.View):
 class SearchBoxURL(generic.ListView):
     template_name = 'mw_website/blogs_page.html'
     model = BlogModel
+    paginate_by = 3
     def get_queryset(self):
         request = self.request
         query = request.GET.get('query')
         lookup = Q(title__icontains=query) | Q(short_desc__icontains=query) | Q(writer__user__first_name__icontains=query)  | Q(writer__user__last_name__icontains=query) 
-        return BlogModel.objects.filter(lookup, is_published=True).distinct()
-    paginate_by = 3
+        blogs = BlogModel.objects.filter(lookup, is_published=True).distinct()
 
+        blogs_comments = []
+        for blog in blogs:
+            counter = blog.commentmodel_set.filter(is_show=True).count()
+            blogs_comments.append({'blog': blog, 'num_comments': counter})
+        return blogs_comments
 
 # url: /blogs/search/tags
 class SearchTagURL(generic.ListView):
     template_name = 'mw_website/blogs_page.html'
     model = BlogModel
+    paginate_by = 3
     def get_queryset(self):
         request = self.request
         query = request.GET.get('query')
-        return BlogModel.objects.filter(tags__title__iexact=query, is_published=True).distinct()
-    paginate_by = 3
+        blogs = BlogModel.objects.filter(tags__title__iexact=query, is_published=True).distinct()
+        blogs_comments = []
+        for blog in blogs:
+            counter = blog.commentmodel_set.filter(is_show=True).count()
+            blogs_comments.append({'blog': blog, 'num_comments': counter})
+        return blogs_comments
 
 
 # url: /blogs/search/categories
@@ -144,7 +184,12 @@ class SearchCategoryURL(generic.ListView):
     def get_queryset(self):
         request = self.request
         query = request.GET.get('query')
-        return BlogModel.objects.filter(categories__title__iexact=query, is_published=True).distinct()
+        blogs = BlogModel.objects.filter(categories__title__iexact=query, is_published=True).distinct()
+        blogs_comments = []
+        for blog in blogs:
+            counter = blog.commentmodel_set.filter(is_show=True).count()
+            blogs_comments.append({'blog': blog, 'num_comments': counter})
+        return blogs_comments
     paginate_by = 3
 
 # url: /contact-us
