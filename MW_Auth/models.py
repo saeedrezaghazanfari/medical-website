@@ -6,13 +6,17 @@ from Extentions.utils import get_user_code, user_image_path
 
 
 class User(AbstractUser):
-    code = models.IntegerField(editable=False, default=get_user_code, verbose_name=_('کد کاربری'))
+    username = models.CharField(max_length=12, unique=True, default=get_user_code, verbose_name=_('کد کاربری'))
     ip = models.GenericIPAddressField(blank=True, null=True, verbose_name=_('آیپی'))
     phone = models.BigIntegerField(blank=True, null=True, verbose_name=_('شماره تلفن'))
+    national_code = models.BigIntegerField(blank=True, null=True, unique=True, verbose_name=_('کدملی'))
     profile = models.ImageField(upload_to=user_image_path, null=True, blank=True, verbose_name=_('پروفایل'))
 
     def get_profile(self):
-        return format_html(f'<img style="height: 100px; width: 110px; border-radius: 5px;" src="{self.profile.url}" />')
+        if self.profile:
+            return format_html(f'<img style="height: 100px; width: 110px; border-radius: 5px;" src="{self.profile.url}" />')
+        else:
+            return None
     get_profile.short_description = _('پروفایل')
 
     def get_full_name(self):

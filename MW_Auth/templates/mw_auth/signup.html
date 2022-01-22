@@ -1,0 +1,137 @@
+{% load static i18n widget_tweaks %}
+<html lang="{{ request.LANGUAGE_CODE }}">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% translate 'ثبت نام' %}</title>
+
+    <link rel="icon" href="{% static 'img/favicon.png' %}" type="image/png">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/fontawesome/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sign.css' %}">
+
+</head>
+<body>
+    {% for msg in messages %}
+
+    <div class="alert alert-{% if msg.tags == 'error' %}danger{% elif msg.tags == 'info' %}info{% elif msg.tags == 'success' %}success{% elif msg.tags == 'warning' %}warning{% endif %} alert-dismissible alertme" style="z-index: 100 !important; position: fixed; top: 10px; left: 10px;" id="alertme">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ msg }}
+    </div>
+    {% empty %}
+    {% endfor %}
+
+    <div class="main" {% if request.LANGUAGE_CODE == 'fa' %}style="direction: rtl;"{% endif %}>
+
+        <div style="position: absolute; top: 10px; left: 10px;">
+            {% translate 'انتخاب زبان:' %}
+            {% if request.LANGUAGE_CODE == 'en' %}<a href="{% url 'activate_lang' %}?lang=fa&url={{ request.path|slice:'4:' }}" class="mx-1">فا</a>{% endif %}
+            {% if request.LANGUAGE_CODE == 'fa' %}<a href="{% url 'activate_lang' %}?lang=en&url={{ request.path|slice:'4:' }}" class="mx-1">En</a>{% endif %}
+        </div>
+
+        <!-- with email -->
+        <section class="signup" id="mail-sec">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title {% if request.LANGUAGE_CODE == 'fa' %}ml-5{% endif %}">{% translate 'ثبت نام با ایمیل' %} <br><a onclick="document.getElementById('phone-sec').classList.remove('d-none');document.getElementById('mail-sec').classList.add('d-none');" style="font-size: 10pt;">{% translate 'ثبت نام با شماره تلفن' %}</a></h2>
+                        <form method="POST" action="{% url 'auth:signup-email' %}" class="register-form" id="register-form">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="fname"><i class="fa fa-user"></i></label>
+                                {% render_field form_email.first_name id="fname" %}
+                                {% for msg in form_email.first_name.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
+                            </div>
+                            <div class="form-group">
+                                <label for="lname"><i class="fa fa-user"></i></label>
+                                {% render_field form_email.last_name id="lname" %}
+                                {% for msg in form_email.last_name.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
+                            </div>
+                            <div class="form-group">
+                                <label for="email"><i class="fa fa-envelope"></i></label>
+                                {% render_field form_email.email id="email" %}
+                                {% for msg in form_email.email.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
+                            </div>
+                            <div class="form-group">
+                                <label for="ntcode"><i class="fa fa-edit"></i></label>
+                                {% render_field form_email.national_code id="ntcode" %}
+                                {% for msg in form_email.national_code.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
+                            </div>
+                            <div class="form-group">
+                                <label for="passcode"><i class="fa fa-lock"></i></label>
+                                {% render_field form_email.passcode id="passcode" %}
+                                {% for msg in form_email.passcode.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
+                                {% for msg in form_email.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
+                            </div>
+                            <div class="form-group form-button">
+                                <input type="submit" name="signup" id="signup" class="form-submit" value="{% translate 'ثبت نام' %}">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="signup-image">
+                        <figure><img src="{% static 'img/background/signup-image.jpg' %}" alt="sing up image"></figure>
+                        <a href="{% url 'auth:signin' %}" class="signup-image-link ">{% translate 'ورود به سایت' %}</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- with phone -->
+        <section class="signup d-none" id="phone-sec">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title ml-5">{% translate 'ثبت نام با تلفن' %} <br><a onclick="document.getElementById('phone-sec').classList.add('d-none');document.getElementById('mail-sec').classList.remove('d-none');" style="font-size: 10pt;" style="font-size: 10pt;">{% translate 'ثبت نام با ایمیل' %}</a></h2>
+                        <form method="POST" action="{% url 'auth:signup-phone' %}" class="register-form" id="register-form">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="fname"><i class="fa fa-user"></i></label>
+                                {% render_field form_phone.first_name id="fname" %}
+                                {% for msg in form_phone.first_name.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
+                            </div>
+                            <div class="form-group">
+                                <label for="lname"><i class="fa fa-user"></i></label>
+                                {% render_field form_phone.last_name id="lname" %}
+                                {% for msg in form_phone.last_name.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
+                            </div>
+                            <div class="form-group">
+                                <label for="email"><i class="fa fa-phone"></i></label>
+                                {% render_field form_phone.phone id="email" %}
+                                {% for msg in form_phone.phone.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
+                            </div>
+                            <div class="form-group">
+                                <label for="ntcode"><i class="fa fa-edit"></i></label>
+                                {% render_field form_phone.national_code id="ntcode" %}
+                                {% for msg in form_phone.national_code.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
+                            </div>
+                            <div class="form-group">
+                                <label for="passcode"><i class="fa fa-lock"></i></label>
+                                {% render_field form_phone.passcode id="passcode" %}
+                                {% for msg in form_phone.passcode.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
+                                {% for msg in form_phone.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
+                            </div>
+                            <div class="form-group form-button">
+                                <input type="submit" name="signup" id="signup" class="form-submit" value="{% translate 'ثبت نام' %}">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="signup-image">
+                        <figure><img src="{% static 'img/background/signup-image.jpg' %}" alt="sing up image"></figure>
+                        <a href="{% url 'auth:signin' %}" class="signup-image-link ">{% translate 'ورود به سایت' %}</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+<script>
+    const alert = document.getElementById('alertme');
+    setTimeout(() => {
+        alert.style.display = 'none'
+    }, 5000)
+</script>
+</html>

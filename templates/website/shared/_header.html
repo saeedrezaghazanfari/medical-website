@@ -23,13 +23,12 @@
                 {% endif %}
 
                 {% if request.user.is_authenticated %}
-                <a href="" class="dn_btn mr-3">Account</a>
-                <a href="" class="dn_btn mr-3">Log Out</a>
+                <a href="{% url 'auth:signout' %}" class="dn_btn mr-3">Log Out</a>
                 {% else %}
-                <a href="" class="dn_btn mr-3">Login</a>
+                <a href="{% url 'auth:signin' %}" class="dn_btn mr-3">Login</a>
+                <a href="{% url 'auth:signup' %}" class="dn_btn mr-3">Register</a>
                 {% endif %}
 
-                <a class="dn_btn" href="mailto:saeedreza.gh.1397@gmail.com"><i class="ti-email"></i></a>
             </div>
             <div class="float-right">
                 <ul class="list header_social">

@@ -1,6 +1,9 @@
 from pathlib import Path
+from decouple import config
 from django.utils.translation import gettext_lazy as _
 
+
+# TODO config and decouple
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-_t01^p$r!ifdky-n!24$%z!z#&3-*8$e=$rs6@@5py%of9f$94'
@@ -110,4 +113,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # ### More Config ### #
 
-AUTH_USER_MODEL = 'MW_Auth.User' # custom user
+# custom user
+AUTH_USER_MODEL = 'MW_Auth.User' 
+
+# email configs
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'peakabot@gmail.com'
+EMAIL_HOST_PASSWORD = '1190274442saeed'

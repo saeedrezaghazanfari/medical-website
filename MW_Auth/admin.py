@@ -13,9 +13,10 @@ class AdminUser(UserAdmin):
         'user_permissions',
         'ip',
         'phone',
-        'profile'
+        'profile',
+        'national_code'
     )
-    list_display = ('username', 'email', 'get_full_name', 'phone', 'code', 'get_profile')
+    list_display = ('username', 'email', 'get_full_name', 'phone', 'get_profile')
 
 admin.site.register(User, AdminUser)
-admin.site.unregister(Group) # hide groups
+admin.site.unregister(Group)          # hide groups

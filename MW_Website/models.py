@@ -17,7 +17,7 @@ class DoctorModel(models.Model):
         verbose_name_plural = _('پزشک ها')
 
     def __str__(self):
-        return str(self.user.code)
+        return str(self.user.username)
 
     def get_full_name(self):
         return f'{self.user.first_name} {self.user.last_name}'

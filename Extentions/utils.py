@@ -110,4 +110,4 @@ def get_user_code():
     random = randint(100, 999)
     output = f'{time_to_list[2]}{time_to_list[1]}{time_to_list[0]}{random}'
     return output
-    # 21101400321 => 21 day, 10 month, 1400 age, 32 random
+    # 21101400321 => 21 day, 10 month, 1400 age, 321 random
