@@ -48,7 +48,6 @@
                                 <label for="passcode"><i class="fa fa-lock"></i></label>
                                 {% render_field form.passcode id="passcode" %}
                                 {% for msg in form.passcode.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
-                                {% for msg in form.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
                             </div>
                             <div class="form-group form-button">
                                 <input type="submit" name="signup" id="signup" class="form-submit" value="{% translate 'ورود' %}">
@@ -58,7 +57,7 @@
                     <div class="signup-image">
                         <figure><img src="{% static 'img/background/signin-image.jpg' %}" alt="sing up image"></figure>
                         <a href="{% url 'auth:signup' %}"  class="signup-image-link">{% translate 'ثبت نام در سایت' %}</a>
-                        <a href="{% url 'auth:signin' %}" class="signup-image-link ">{% translate 'فراموشی رمزعبور' %}</a>
+                        <a href="{% url 'auth:forget-pw-email-phone' %}" class="signup-image-link ">{% translate 'فراموشی رمزعبور' %}</a>
                     </div>
                 </div>
             </div>

@@ -5,6 +5,9 @@ import datetime
 from random import randint
 
 
+# is_email = bool(re.compile(r'(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)').match(user_text))
+# is_phone = bool(re.compile(r'09([0-1][0-9]|3[1-9]|2[1-9])-?[0-9]{3}-?[0-9]{4}').match(user_text))
+
 def jalali_convertor(time, output='date_time', number=False):
     jmonth = ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند']
     intmonth = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]

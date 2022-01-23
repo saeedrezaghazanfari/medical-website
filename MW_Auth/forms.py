@@ -64,16 +64,45 @@ class SignUpForm_Phone(forms.ModelForm):
             raise forms.ValidationError(_('این کدملی در سیستم ثبت شده است'))
         return national_code
 
-class SignInForm(forms.ModelForm):
+class SignInForm(forms.Form):
     passcode = forms.CharField(
         label=_("گذر واژه"),
         strip=False,
         widget=forms.PasswordInput(attrs={'placeholder': _('رمزعبور خود را وارد کنید')}),
     )
+    national_code = forms.IntegerField(widget=forms.NumberInput(attrs={'placeholder': _('کدملی خود را وارد کنید') }))
 
-    class Meta:
-        model = User
-        fields = ['national_code', 'passcode']
-        widgets = {
-            'national_code': forms.NumberInput({'placeholder': _('کدملی خود را وارد کنید')}),
-        }
+    def clean_national_code(self):
+        ntcode = self.cleaned_data.get('national_code')
+        if not User.objects.filter(national_code=ntcode).first():
+            raise forms.ValidationError(_('این کدملی در سیستم ثبت نشده است'))
+        return ntcode
+
+
+class ResetPassWord(forms.Form):
+    password1 = forms.CharField(
+        label=_("گذر واژه"),
+        strip=False,
+        widget=forms.PasswordInput(attrs={'placeholder': _('رمزعبور خود را وارد کنید')}),
+    )
+    password2 = forms.CharField(
+        label=_("تکرار گذر واژه"),
+        strip=False,
+        widget=forms.PasswordInput(attrs={'placeholder': _('رمزعبور خود را تکرار کنید')}),
+    )
+    
+    def clean_password1(self):
+        password = self.cleaned_data.get('password1')
+        for i in password:
+            if ord(i) > 1000:
+                raise forms.ValidationError(_('رمزعبور باید شامل کاراکترهای انگلیسی باشد'))
+        return password
+
+    def clean_password2(self):
+        password1 = self.cleaned_data.get('password1')
+        password2 = self.cleaned_data.get('password2')
+        
+        if password2 != password1:
+            raise forms.ValidationError(_('باید هردو پسورد با هم برابر باشند'))
+        return password2
+        

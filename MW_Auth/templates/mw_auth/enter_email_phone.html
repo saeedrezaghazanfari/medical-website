@@ -1,0 +1,68 @@
+{% load static i18n %}
+<html lang="{{ request.LANGUAGE_CODE }}">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% translate 'فراموشی رمزعبور' %}</title>
+
+    <link rel="icon" href="{% static 'img/favicon.png' %}" type="image/png">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/fontawesome/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sign.css' %}">
+
+</head>
+<body>
+
+    {% for msg in messages %}
+
+    <div class="alert alert-{% if msg.tags == 'error' %}danger{% elif msg.tags == 'info' %}info{% elif msg.tags == 'success' %}success{% elif msg.tags == 'warning' %}warning{% endif %} alert-dismissible alertme" style="z-index: 100 !important; position: fixed; top: 10px; left: 10px;" id="alertme">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ msg }}
+    </div>
+    {% empty %}
+    {% endfor %}
+    
+    <div class="main" {% if request.LANGUAGE_CODE == 'fa' %}style="direction: rtl;"{% endif %}>
+
+        <div style="position: absolute; top: 10px; left: 10px;">
+            {% translate 'انتخاب زبان:' %}
+            {% if request.LANGUAGE_CODE == 'en' %}<a href="{% url 'activate_lang' %}?lang=fa&url={{ request.path|slice:'4:' }}" class="mx-1">فا</a>{% endif %}
+            {% if request.LANGUAGE_CODE == 'fa' %}<a href="{% url 'activate_lang' %}?lang=en&url={{ request.path|slice:'4:' }}" class="mx-1">En</a>{% endif %}
+        </div>
+
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title {% if request.LANGUAGE_CODE == 'fa' %}ml-5{% endif %}">{% translate 'فراموشی رمزعبور' %}</h2>
+                        <form method="POST" class="register-form" id="register-form" method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="phoneoremail"><i class="fa fa-edit"></i></label>
+                                <input type="text" name="phone-or-email" id="phoneoremail" placeholder="{% translate 'تلفن یا ایمیل خود را وارد کنید' %}" />
+                            </div>
+                            <div class="form-group form-button">
+                                <input type="submit" id="signup" class="form-submit" value="{% translate 'ارسال' %}">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="signup-image">
+                        <figure><img src="{% static 'img/background/signin-image.jpg' %}" alt="sing up image"></figure>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+
+<script>
+    const alert = document.getElementById('alertme');
+    setTimeout(() => {
+        alert.style.display = 'none'
+    }, 5000)
+</script>
+</html>
