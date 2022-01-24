@@ -18,6 +18,23 @@
             right: 0 !important;
             left: unset !important;
         }
+        div.wrapper-captcha {
+            display: flex;
+        }
+        input#captcha_1 {
+            margin-right: 10px;
+            padding: 6px 10px !important;
+        }
+    </style>
+    {% else %}
+    <style>
+        div.wrapper-captcha {
+            display: flex;
+        }
+        input#captcha_1 {
+            margin-left: 10px;
+            padding: 6px 10px !important;
+        }
     </style>
     {% endif %}
 </head>
@@ -73,8 +90,7 @@
                                 {% for msg in form.passcode.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
                             </div>
                             <div class="form-group">
-                                <label for="captcha"></label>
-                                {% render_field form.captcha id="captcha" %}
+                                <div class="wrapper-captcha">{% render_field form.captcha id="captcha" %}</div>
                                 {% for msg in form.captcha.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
                             </div>
                             <div class="form-group form-button">
@@ -124,8 +140,7 @@
                                 {% for msg in form.passcode.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
                             </div>
                             <div class="form-group">
-                                <label for="captcha"></label>
-                                {% render_field form.captcha id="captcha" %}
+                                <div class="wrapper-captcha">{% render_field form.captcha id="captcha" %}</div>
                                 {% for msg in form.captcha.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
                             </div>
                             <div class="form-group form-button">
