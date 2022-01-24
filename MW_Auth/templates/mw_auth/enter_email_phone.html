@@ -11,7 +11,14 @@
     <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
     <link rel="stylesheet" href="{% static 'vendors/fontawesome/css/all.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/sign.css' %}">
-
+    {% if request.LANGUAGE_CODE == 'fa' %}
+    <style>
+        label {
+            right: 0 !important;
+            left: unset !important;
+        }
+    </style>
+    {% endif %}
 </head>
 <body>
 

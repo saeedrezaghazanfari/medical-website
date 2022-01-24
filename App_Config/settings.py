@@ -3,12 +3,11 @@ from decouple import config
 from django.utils.translation import gettext_lazy as _
 
 
-# TODO config and decouple
-
 BASE_DIR = Path(__file__).resolve().parent.parent
-SECRET_KEY = 'django-insecure-_t01^p$r!ifdky-n!24$%z!z#&3-*8$e=$rs6@@5py%of9f$94'
-DEBUG = True
+SECRET_KEY = config('SECRET_KEY')
+DEBUG = config('DEBUG')
 ALLOWED_HOSTS = []
+SECURE_SSL_REDIRECT = False
 
 # Application definition
 INSTALLED_APPS = [
@@ -26,6 +25,7 @@ INSTALLED_APPS = [
 
     # PACKs
     'widget_tweaks',
+    'captcha',
 ]
 
 MIDDLEWARE = [
@@ -39,8 +39,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # 'MW_Website.middleware.first', # custom middleware
 ]
-
-ROOT_URLCONF = 'App_Config.urls'
+ROOT_URLCONF = config('ROOT_URLCONF')
 
 TEMPLATES = [
     {
@@ -58,8 +57,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'App_Config.wsgi.application'
-
+WSGI_APPLICATION = config('WSGI_APPLICATION')
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
@@ -70,7 +68,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
+#TODO postgresql database - decouple
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -90,17 +88,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 LANGUAGES = [
     ('fa', _('Persian')),
     ('en', _('English')),
 ]
-LANGUAGE_CODE = 'fa'
-TIME_ZONE = 'Asia/Tehran'
-USE_I18N = True
-USE_TZ = True
-
+LANGUAGE_CODE = config('LANGUAGE_CODE')
+TIME_ZONE = config('TIME_ZONE')
+USE_I18N = config('USE_I18N')
+USE_TZ = config('USE_TZ')
 
 STATIC_URL = '/site_static/'
 STATIC_ROOT = Path("static_cdn", "static_root")
@@ -114,15 +110,22 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # ### More Config ### #
 
 # custom user
-AUTH_USER_MODEL = 'MW_Auth.User' 
+AUTH_USER_MODEL = config('AUTH_USER_MODEL')
 
 # email configs
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'peakabot@gmail.com'
-EMAIL_HOST_PASSWORD = '1190274442saeed'
+EMAIL_BACKEND = config('EMAIL_BACKEND')
+EMAIL_USE_TLS = config('EMAIL_USE_TLS')
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 # kavenegar API
-KAVENEGAR_API = '715276777A65304B626B7A3947696A74397047796633332B336F31784B786B596F65716B523132784A50553D'
+KAVENEGAR_API = config('KAVENEGAR_API')
+
+# captcha
+CAPTCHA_FONT_SIZE = 30
+CAPTCHA_BACKGROUND_COLOR = '#fff'
+CAPTCHA_FOREGROUND_COLOR = '#4f98dc'
+CAPTCHA_LENGTH = 3
+CAPTCHA_IMAGE_SIZE = (100, 50) 

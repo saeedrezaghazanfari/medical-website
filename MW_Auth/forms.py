@@ -1,6 +1,6 @@
-from dataclasses import fields
 from django import forms
 from .models import User
+from captcha.fields import CaptchaField
 from django.utils.translation import gettext_lazy as _
 
 
@@ -10,6 +10,7 @@ class SignUpForm_Email(forms.ModelForm):
         strip=False,
         widget=forms.PasswordInput(attrs={'placeholder': _('رمزعبور خود را وارد کنید')}),
     )
+    captcha = CaptchaField()
 
     class Meta:
         model = User
@@ -21,6 +22,27 @@ class SignUpForm_Email(forms.ModelForm):
             'national_code': forms.NumberInput({'placeholder': _('کدملی خود را وارد کنید')}),
         }
 
+    def clean_first_name(self):
+        first_name = self.cleaned_data.get('first_name')
+        for i in first_name:
+            if ord(i) < 1000:
+                raise forms.ValidationError(_('نام باید شامل کاراکترهای فارسی باشد'))
+        return first_name
+    
+    def clean_last_name(self):
+        last_name = self.cleaned_data.get('last_name')
+        for i in last_name:
+            if ord(i) < 1000:
+                raise forms.ValidationError(_(' نام‌خانوادگی باید شامل کاراکترهای فارسی باشد'))
+        return last_name
+
+    def clean_passcode(self):
+        passcode = self.cleaned_data.get('passcode')
+        for i in passcode:
+            if ord(i) > 1000:
+                raise forms.ValidationError(_('رمزعبور باید شامل کاراکترهای انگلیسی باشد'))
+        return passcode
+    
     def clean_email(self):
         email = self.cleaned_data.get('email')
         if User.objects.filter(email=email).first():
@@ -40,6 +62,7 @@ class SignUpForm_Phone(forms.ModelForm):
         strip=False,
         widget=forms.PasswordInput(attrs={'placeholder': _('رمزعبور خود را وارد کنید')}),
     )
+    captcha = CaptchaField()
 
     class Meta:
         model = User
@@ -51,16 +74,36 @@ class SignUpForm_Phone(forms.ModelForm):
             'national_code': forms.NumberInput({'placeholder': _('کدملی خود را وارد کنید')}),
         }
 
+    def clean_first_name(self):
+        first_name = self.cleaned_data.get('first_name')
+        for i in first_name:
+            if ord(i) < 1000:
+                raise forms.ValidationError(_('نام باید شامل کاراکترهای فارسی باشد'))
+        return first_name
+    
+    def clean_last_name(self):
+        last_name = self.cleaned_data.get('last_name')
+        for i in last_name:
+            if ord(i) < 1000:
+                raise forms.ValidationError(_(' نام‌خانوادگی باید شامل کاراکترهای فارسی باشد'))
+        return last_name
+
+    def clean_passcode(self):
+        passcode = self.cleaned_data.get('passcode')
+        for i in passcode:
+            if ord(i) > 1000:
+                raise forms.ValidationError(_('رمزعبور باید شامل کاراکترهای انگلیسی باشد'))
+        return passcode
     
     def clean_phone(self):
         phone = self.cleaned_data.get('phone')
-        if User.objects.filter(phone=phone).exists():
+        if User.objects.filter(phone=phone).first():
             raise forms.ValidationError(_('این شماره تلفن در سیستم ثبت شده است'))
         return phone
 
     def clean_national_code(self):
         national_code = self.cleaned_data.get('national_code')
-        if User.objects.filter(national_code=national_code).exists():
+        if User.objects.filter(national_code=national_code).first():
             raise forms.ValidationError(_('این کدملی در سیستم ثبت شده است'))
         return national_code
 

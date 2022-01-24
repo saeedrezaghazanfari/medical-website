@@ -8,6 +8,7 @@ from . import views
 
 urlpatterns = [
     path('', views.select_lang_redirect),
+    path('captcha/', include('captcha.urls')),
 ]
 
 urlpatterns += i18n_patterns(

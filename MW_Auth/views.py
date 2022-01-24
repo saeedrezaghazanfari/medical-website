@@ -15,35 +15,25 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from .tokens import account_activation_token
 
 
-# url: /sign-up
-def sign_up_page(request):
-    form_email = SignUpForm_Email(request.POST or None)
-    form_phone = SignUpForm_Phone(request.POST or None)
-    return render(request, 'mw_auth/signup.html', {
-        'form_email': form_email,
-        'form_phone': form_phone,
-    })
+# url: /sign-up/<str:type_form>
+def sign_up_page(request, *args, **kwargs):
+    type_form = kwargs.get('type_form')
 
-
-# url: /sign-up-email
-def signing_up_email(request):
-    if request.POST:
-        form = SignUpForm_Email(request.POST)
-
-        if form.is_valid():
-            user = form.save(commit=False)
+    if type_form == 'email-form':
+        form_email = SignUpForm_Email(request.POST or None)
+        if form_email.is_valid():
+            user = form_email.save(commit=False)
             user.is_active = False
-            user.set_password(form.cleaned_data.get('passcode'))
+            user.set_password(form_email.cleaned_data.get('passcode'))
             user.save()
 
             if user:
                 current_site = get_current_site(request)    # get domain site
-                domain = current_site.domain
                 uid = urlsafe_base64_encode(force_bytes(user.pk))
                 token = account_activation_token.make_token(user)
                 # sending mail
                 subject = _('اکتیویت حساب کاربری | MW')
-                message = f'<h3>سلام و عرض خسته نباشید خدمت {user.first_name} عزیز</h3><p>لینک فعالسازی حساب کاربری:</p><a href="http://{domain}/account/activation/{uid}/{token}">برای فعالسازی کلیک کنید</a>'
+                message = f'<h3>سلام و عرض خسته نباشید خدمت {user.first_name} عزیز</h3><p>لینک فعالسازی حساب کاربری:</p><a href="http://{current_site.domain}/account/activation/{uid}/{token}">برای فعالسازی کلیک کنید</a>'
                 from_email = settings.EMAIL_HOST_USER
                 to_list = [user.email]
                 msg_EMAIL = EmailMessage(subject, message, from_email, to_list)
@@ -52,23 +42,43 @@ def signing_up_email(request):
 
                 messages.success(request, _('حساب شما با موفقیت ساخته شد. برای فعالسازی حساب، ایمیل خود را چک کنید'))
                 return redirect('/sign-in')
-        messages.error(request, _('ایمیل و یا کدملی شما در سیستم موجود میباشد'))
-        return redirect('/sign-up')
 
-
-# url: /sign-up-phone
-def signing_up_phone(request):
-    if request.POST:
-        form = SignUpForm_Phone(request.POST)
-        if form.is_valid():
-            user = form.save(commit=False)
+        return render(request, 'mw_auth/signup.html', {'form': form_email})
+    
+    elif type_form == 'phone-form':
+        form_phone = SignUpForm_Phone(request.POST or None)
+        if form_phone.is_valid():
+            user = form_phone.save(commit=False)
             user.is_active = False
-            user.set_password(form.cleaned_data.get('passcode'))
+            user.set_password(form_phone.cleaned_data.get('passcode'))
             user.save()
             if user:
+                current_site = get_current_site(request)
+                uid = urlsafe_base64_encode(force_bytes(user.pk))
+                token = account_activation_token.make_token(user)
+                message = f'سلام و عرض خسته نباشید خدمت {user.first_name} عزیز\nلینک فعالسازی حساب کاربری:\nhttp://{current_site.domain}/account/activation/{uid}/{token}'
 
-                messages.success(request, _('حساب شما با موفقیت ساخته شد. برای فعالسازی حساب، کد پیامک شده را وارد کنید'))
-                return redirect('/sign-in')
+                try:
+                    api = KavenegarAPI(settings.KAVENEGAR_API)
+                    params = { 'sender' : '10008663', 'receptor': user.phone, 'message': message }
+                    # response = api.sms_send(params)
+                    # print(response)
+                
+                    messages.success(request, _('لینک فعالسازی حساب کاربری برای شما ارسال شد. منتظر بمانید'))
+                    return redirect('/')
+
+                except APIException as e: 
+                    print('err 1')
+                    print(e)
+                except HTTPException as e:
+                    print('err 2')
+                    print(e)
+
+            messages.error(request, _('مشکلی بوجود آمده است'))
+            return redirect('/sign-up/email-form')
+        return render(request, 'mw_auth/signup.html', {'form': form_phone})
+
+    return redirect('/')
 
 
 # url: /sign-in
@@ -153,7 +163,7 @@ def forget_pw_email_phone(request):
                     current_site = get_current_site(request)    # get domain site
                     uid = urlsafe_base64_encode(force_bytes(user.pk))
                     token = account_activation_token.make_token(user)
-                    message = f'سلام و عرض خسته نباشید خدمت {user.first_name} عزیز \n صفحه ی بازیابی رمزعبور \n http://{current_site.domain}/account/reset-password/{uid}/{token}'
+                    message = f'سلام و عرض خسته نباشید خدمت {user.first_name} عزیز\nصفحه ی بازیابی رمزعبور\nhttp://{current_site.domain}/account/reset-password/{uid}/{token}'
 
                     try:
                         api = KavenegarAPI(settings.KAVENEGAR_API)

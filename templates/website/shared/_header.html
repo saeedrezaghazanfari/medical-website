@@ -26,7 +26,7 @@
                 <a href="{% url 'auth:signout' %}" class="dn_btn mr-3">Log Out</a>
                 {% else %}
                 <a href="{% url 'auth:signin' %}" class="dn_btn mr-3">Login</a>
-                <a href="{% url 'auth:signup' %}" class="dn_btn mr-3">Register</a>
+                <a href="{% url 'auth:signup' 'email-form' %}" class="dn_btn mr-3">Register</a>
                 {% endif %}
 
             </div>

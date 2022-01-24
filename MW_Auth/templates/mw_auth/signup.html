@@ -11,7 +11,15 @@
     <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
     <link rel="stylesheet" href="{% static 'vendors/fontawesome/css/all.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/sign.css' %}">
-
+    
+    {% if request.LANGUAGE_CODE == 'fa' %}
+    <style>
+        label {
+            right: 0 !important;
+            left: unset !important;
+        }
+    </style>
+    {% endif %}
 </head>
 <body>
     {% for msg in messages %}
@@ -32,41 +40,45 @@
         </div>
 
         <!-- with email -->
-        <section class="signup" id="mail-sec">
+        <section class="signup {% if '/phone-form' in request.path %}d-none{% endif %}" id="mail-sec">
             <div class="container">
                 <div class="signup-content">
                     <div class="signup-form">
-                        <h2 class="form-title {% if request.LANGUAGE_CODE == 'fa' %}ml-5{% endif %}">{% translate 'ثبت نام با ایمیل' %} <br><a onclick="document.getElementById('phone-sec').classList.remove('d-none');document.getElementById('mail-sec').classList.add('d-none');" style="font-size: 10pt;">{% translate 'ثبت نام با شماره تلفن' %}</a></h2>
-                        <form method="POST" action="{% url 'auth:signup-email' %}" class="register-form" id="register-form">
+                        <h2 class="form-title {% if request.LANGUAGE_CODE == 'fa' %}text-right{% endif %}">{% translate 'ثبت نام با ایمیل' %} <br><a href="{% url 'auth:signup' 'phone-form' %}" style="font-size: 10pt; color: #2782d6 !important;">{% translate 'ثبت نام با شماره تلفن' %}</a></h2>
+                        <form method="POST" class="register-form" id="register-form">
                             {% csrf_token %}
                             <div class="form-group">
                                 <label for="fname"><i class="fa fa-user"></i></label>
-                                {% render_field form_email.first_name id="fname" %}
-                                {% for msg in form_email.first_name.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
+                                {% render_field form.first_name id="fname" %}
+                                {% for msg in form.first_name.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
                             </div>
                             <div class="form-group">
                                 <label for="lname"><i class="fa fa-user"></i></label>
-                                {% render_field form_email.last_name id="lname" %}
-                                {% for msg in form_email.last_name.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
+                                {% render_field form.last_name id="lname" %}
+                                {% for msg in form.last_name.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
                             </div>
                             <div class="form-group">
-                                <label for="email"><i class="fa fa-envelope"></i></label>
-                                {% render_field form_email.email id="email" %}
-                                {% for msg in form_email.email.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
+                                <label for="email"><i class="fa fa-envelope text-primary"></i></label>
+                                {% render_field form.email id="email" %}
+                                {% for msg in form.email.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
                             </div>
                             <div class="form-group">
                                 <label for="ntcode"><i class="fa fa-edit"></i></label>
-                                {% render_field form_email.national_code id="ntcode" %}
-                                {% for msg in form_email.national_code.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
+                                {% render_field form.national_code id="ntcode" %}
+                                {% for msg in form.national_code.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
                             </div>
                             <div class="form-group">
                                 <label for="passcode"><i class="fa fa-lock"></i></label>
-                                {% render_field form_email.passcode id="passcode" %}
-                                {% for msg in form_email.passcode.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
-                                {% for msg in form_email.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
+                                {% render_field form.passcode id="passcode" %}
+                                {% for msg in form.passcode.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
+                            </div>
+                            <div class="form-group">
+                                <label for="captcha"></label>
+                                {% render_field form.captcha id="captcha" %}
+                                {% for msg in form.captcha.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
                             </div>
                             <div class="form-group form-button">
-                                <input type="submit" name="signup" id="signup" class="form-submit" value="{% translate 'ثبت نام' %}">
+                                <input type="submit" id="signup" class="form-submit" value="{% translate 'ثبت نام' %}">
                             </div>
                         </form>
                     </div>
@@ -79,41 +91,45 @@
         </section>
 
         <!-- with phone -->
-        <section class="signup d-none" id="phone-sec">
+        <section class="signup {% if '/email-form' in request.path %}d-none{% endif %}" id="phone-sec">
             <div class="container">
                 <div class="signup-content">
                     <div class="signup-form">
-                        <h2 class="form-title ml-5">{% translate 'ثبت نام با تلفن' %} <br><a onclick="document.getElementById('phone-sec').classList.add('d-none');document.getElementById('mail-sec').classList.remove('d-none');" style="font-size: 10pt;" style="font-size: 10pt;">{% translate 'ثبت نام با ایمیل' %}</a></h2>
-                        <form method="POST" action="{% url 'auth:signup-phone' %}" class="register-form" id="register-form">
+                        <h2 class="form-title {% if request.LANGUAGE_CODE == 'fa' %}text-right{% endif %}">{% translate 'ثبت نام با تلفن' %} <br><a href="{% url 'auth:signup' 'email-form' %}" style="font-size: 10pt; color: #2782d6 !important;">{% translate 'ثبت نام با ایمیل' %}</a></h2>
+                        <form method="POST" class="register-form" id="register-form">
                             {% csrf_token %}
                             <div class="form-group">
                                 <label for="fname"><i class="fa fa-user"></i></label>
-                                {% render_field form_phone.first_name id="fname" %}
-                                {% for msg in form_phone.first_name.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
+                                {% render_field form.first_name id="fname" %}
+                                {% for msg in form.first_name.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
                             </div>
                             <div class="form-group">
                                 <label for="lname"><i class="fa fa-user"></i></label>
-                                {% render_field form_phone.last_name id="lname" %}
-                                {% for msg in form_phone.last_name.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
+                                {% render_field form.last_name id="lname" %}
+                                {% for msg in form.last_name.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
                             </div>
                             <div class="form-group">
-                                <label for="email"><i class="fa fa-phone"></i></label>
-                                {% render_field form_phone.phone id="email" %}
-                                {% for msg in form_phone.phone.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
+                                <label for="phone"><i class="fa fa-phone text-primary"></i></label>
+                                {% render_field form.phone id="phone" %}
+                                {% for msg in form.phone.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
                             </div>
                             <div class="form-group">
                                 <label for="ntcode"><i class="fa fa-edit"></i></label>
-                                {% render_field form_phone.national_code id="ntcode" %}
-                                {% for msg in form_phone.national_code.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
+                                {% render_field form.national_code id="ntcode" %}
+                                {% for msg in form.national_code.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
                             </div>
                             <div class="form-group">
                                 <label for="passcode"><i class="fa fa-lock"></i></label>
-                                {% render_field form_phone.passcode id="passcode" %}
-                                {% for msg in form_phone.passcode.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
-                                {% for msg in form_phone.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
+                                {% render_field form.passcode id="passcode" %}
+                                {% for msg in form.passcode.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
+                            </div>
+                            <div class="form-group">
+                                <label for="captcha"></label>
+                                {% render_field form.captcha id="captcha" %}
+                                {% for msg in form.captcha.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
                             </div>
                             <div class="form-group form-button">
-                                <input type="submit" name="signup" id="signup" class="form-submit" value="{% translate 'ثبت نام' %}">
+                                <input type="submit" id="signup" class="form-submit" value="{% translate 'ثبت نام' %}">
                             </div>
                         </form>
                     </div>
@@ -133,5 +149,23 @@
     setTimeout(() => {
         alert.style.display = 'none'
     }, 5000)
+
+    $('.captcha').click(function () {
+        $.getJSON("/captcha/refresh/", function (result) {
+            $('.captcha').attr('src', result['image_url']);
+            $('#id_captcha_0').val(result['key'])
+        });
+    });
+
+    $('.js-captcha-refresh').click(function(){
+        $form = $(this).parents('form');
+
+        $.getJSON($(this).data('url'), {}, function(json) {
+            // This should update your captcha image src and captcha hidden input
+        });
+
+        return false;
+    });
 </script>
+
 </html>
