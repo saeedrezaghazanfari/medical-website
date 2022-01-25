@@ -1,0 +1,115 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-25 20:18+0330\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\apps.py:8
+msgid "تنظیمات"
+msgstr ""
+
+#: .\models.py:7
+msgid "مقیاس ایکس"
+msgstr ""
+
+#: .\models.py:8
+msgid "مقیاس ایگرگ"
+msgstr ""
+
+#: .\models.py:9
+msgid "متن شما روی نقشه"
+msgstr ""
+
+#: .\models.py:10
+msgid "کشور"
+msgstr ""
+
+#: .\models.py:11
+msgid "استان"
+msgstr ""
+
+#: .\models.py:12
+msgid "شهرستان"
+msgstr ""
+
+#: .\models.py:13
+msgid "تلفن"
+msgstr ""
+
+#: .\models.py:14
+msgid "زمان گشایش"
+msgstr ""
+
+#: .\models.py:15 .\models.py:56
+msgid "ایمیل"
+msgstr ""
+
+#: .\models.py:16
+msgid "متن شما درمورد ارتباط"
+msgstr ""
+
+#: .\models.py:20 .\models.py:21
+msgid "‌تنظیمات"
+msgstr ""
+
+#: .\models.py:24
+msgid "شما حتما باید یک مقدار در این جدول ذخیره کنید."
+msgstr ""
+
+#: .\models.py:28
+msgid "تصویر برند"
+msgstr ""
+
+#: .\models.py:32
+msgid "تصویر برند‌"
+msgstr ""
+
+#: .\models.py:33
+msgid "تصاویر برند‌ها"
+msgstr ""
+
+#: .\models.py:40
+msgid "متن ارتباط"
+msgstr ""
+
+#: .\models.py:41
+msgid "نام کاربر"
+msgstr ""
+
+#: .\models.py:42
+msgid "ایمیل کاربر"
+msgstr ""
+
+#: .\models.py:43
+msgid "عنوان ارتباط"
+msgstr ""
+
+#: .\models.py:48
+msgid "پیام مخاطب"
+msgstr ""
+
+#: .\models.py:49
+msgid "پیام های مخاطبان"
+msgstr ""
+
+#: .\models.py:60
+msgid "ایمیل - ارسال خبر"
+msgstr ""
+
+#: .\models.py:61
+msgid "ایمیل‌ها - ارسال اخبار"
+msgstr ""
