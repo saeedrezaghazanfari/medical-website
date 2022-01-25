@@ -1,6 +1,5 @@
 
 # tasks ~ features
-pages is better => -
 
 # technologies
 cache table => -
