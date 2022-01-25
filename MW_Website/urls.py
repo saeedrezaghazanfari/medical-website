@@ -17,5 +17,5 @@ urlpatterns = [
     path('blogs/search/tags/', views.SearchTagURL.as_view(), name='blog_search_tag'),
     path('blogs/search/categories/', views.SearchCategoryURL.as_view(), name='blog_search_category'),
     path('save/email', views.EmailForNewsUrl.as_view(), name='savemail'),
-    path('contact-us', views.ContactIsPage.as_view(), name='contactus'),
+    path('contact-us', views.ContactUsPage.as_view(), name='contactus'),
 ]

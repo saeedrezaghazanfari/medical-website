@@ -122,6 +122,7 @@ EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 # kavenegar API
 KAVENEGAR_API = config('KAVENEGAR_API')
+LOGIN_URL = '/fa/sign-in'
 
 # captcha
 CAPTCHA_FONT_SIZE = 30

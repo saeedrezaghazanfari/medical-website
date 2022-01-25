@@ -3,6 +3,7 @@ from django.urls import reverse_lazy
 from django.shortcuts import redirect
 from django.db.models import Q
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.translation import gettext_lazy as _
 from MW_Setting.models import SettingModel, ContactUsModel, NewsEmailModel
 from django.http import JsonResponse
@@ -54,7 +55,7 @@ class BlogsPage(generic.ListView):
 
 
 # url: /blogs/like/<slug:slug>
-class BlogLikePage(generic.View):
+class BlogLikePage(LoginRequiredMixin, generic.View):
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             exist = BlogLikesModel.objects.filter(user=request.user, blog=BlogModel.objects.get(slug=kwargs['slug'])).first()
@@ -74,7 +75,7 @@ class BlogLikePage(generic.View):
 
 
 # url: /blogs/<slug:slug>
-class BlogDetailPage(generic.DetailView):
+class BlogDetailPage(LoginRequiredMixin, generic.DetailView):
     model = BlogModel
     context_object_name = 'blog'
     def get_context_data(self, **kwargs):
@@ -90,17 +91,8 @@ class BlogDetailPage(generic.DetailView):
     template_name = 'mw_website/blog_detail_page.html'
 
 
-# url: blogs/like/<slug:slug>
-# class BlogDetailPage(generic.View):
-    # def get(self, request):
-        # slug = request.kwargs['slug']
-        # blog = BlogModel.objects.filter(slug=slug).first()
-        # BlogLikesModel.objects.create(user=request.user, blog=blog)
-        # pass
-
-
 # url: /blogs/comment/save 
-class CommentSaveURL(generic.View):
+class CommentSaveURL(LoginRequiredMixin, generic.View):
     def post(self, request):
         msg = request.POST['message']
         blog_slug = request.POST['at_blog']
@@ -130,7 +122,7 @@ class CommentSaveURL(generic.View):
 
 
 # url: /blogs/<slug:slug>
-class EmailForNewsUrl(generic.View):
+class EmailForNewsUrl(LoginRequiredMixin, generic.View):
     def post(self, request):
         email = request.POST['emailfield']
         if email:
@@ -197,7 +189,7 @@ class SearchCategoryURL(generic.ListView):
     paginate_by = 3
 
 # url: /contact-us
-class ContactIsPage(generic.CreateView):
+class ContactUsPage(generic.CreateView):
     template_name = 'mw_website/contactus_page.html'
     model = ContactUsModel
     success_url = reverse_lazy('website:index')

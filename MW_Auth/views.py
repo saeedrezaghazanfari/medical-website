@@ -2,6 +2,8 @@ import re
 from kavenegar import *
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from .decorators import login_not_required
 from django.utils.translation import gettext_lazy as _
 from django.contrib import messages
 from django.conf import settings
@@ -16,6 +18,7 @@ from .tokens import account_activation_token
 
 
 # url: /sign-up/<str:type_form>
+@login_not_required
 def sign_up_page(request, *args, **kwargs):
     type_form = kwargs.get('type_form')
 
@@ -82,6 +85,7 @@ def sign_up_page(request, *args, **kwargs):
 
 
 # url: /sign-in
+@login_not_required
 def sign_in_page(request): 
     form = SignInForm(request.POST or None)         # TODO cache with REDIS 
 
@@ -110,6 +114,7 @@ def sign_in_page(request):
 
 
 # url: account/activation/<uidb64>/<token>
+@login_not_required
 def account_activate(request, uidb64, token):
 	try:
 		uid = force_str(urlsafe_base64_decode(uidb64))
@@ -130,6 +135,7 @@ def account_activate(request, uidb64, token):
 
 
 # url: forget-pw/enter-phone-email
+@login_not_required
 def forget_pw_email_phone(request):
     if request.POST:
         user_text = request.POST.get('phone-or-email')
@@ -192,6 +198,7 @@ def forget_pw_email_phone(request):
 
 
 # url: account/reset-password/<uidb64>/<token>
+@login_not_required
 def account_reset_password(request, uidb64, token):
 	try:
 		uid = force_str(urlsafe_base64_decode(uidb64))
@@ -215,6 +222,7 @@ def account_reset_password(request, uidb64, token):
 
 
 # url: /sign-out
+@login_required
 def sign_out_page(request):
     logout(request)
     messages.info(request, _('شما با موفقیت خارج شدید'))
