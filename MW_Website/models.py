@@ -1,8 +1,12 @@
+import redis
 import datetime
 from statistics import mode
 from django.db import models
-from MW_Auth.models import User
 from django.utils.translation import gettext_lazy as _
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.conf import settings
+from MW_Auth.models import User
 from Extentions.utils import jalali_convertor, blog_image_path
 
 
@@ -157,3 +161,24 @@ class BlogLikesModel(models.Model):
 
     def __str__(self):
         return str(self.id)
+
+
+# ####### Signals ####### #
+
+# redis connection
+rd = redis.Redis(settings.REDIS_HOST, settings.REDIS_PORT, settings.REDIS_DB,  charset="utf-8", decode_responses=True)
+
+@receiver(post_save, sender=CommentModel)
+def save_profile(sender, instance, created, **kwargs):
+    if instance.is_show == True:
+        this_post = BlogModel.objects.get(slug=instance.blog.slug)
+        comments = CommentModel.objects.filter(blog=this_post, is_reply=False, is_show=True).count()
+        replies = CommentModel.objects.filter(blog=this_post, is_reply=True, is_show=True).count()
+        comments_nums = comments + replies
+
+        rd_exitst = rd.hget('blog_comment_nums', this_post.slug)
+        if rd_exitst:
+            rd.hdel('blog_comment_nums', this_post.slug)
+            rd.hsetnx('blog_comment_nums', this_post.slug, comments_nums)
+        else:
+            rd.hsetnx('blog_comment_nums', this_post.slug, comments_nums)

@@ -96,19 +96,15 @@ class BlogDetailPage(LoginRequiredMixin, generic.DetailView):
         context['comments'] = CommentModel.objects.filter(blog=thispost, is_reply=False, is_show=True)    # send comments
         context['replies'] = CommentModel.objects.filter(blog=thispost, is_reply=True, is_show=True)    # send replyes
         context['is_like'] = bool(BlogLikesModel.objects.filter(blog=thispost, user=self.request.user).first())   # like it?     
-        context['comments_nums'] = context['comments'].count() + context['replies'].count()     # send comments numbers
-        context['likes'] = BlogLikesModel.objects.filter(blog=thispost).count()                # send likes numbers
+        context['comments_nums'] = rd.hget('blog_comment_nums', thispost.slug)     # send comments numbers
+        context['likes'] = BlogLikesModel.objects.filter(blog=thispost).count()               # send likes numbers
 
-        # save or update - redis
-        rd_exitst = rd.hget('blog_comment_nums', thispost.slug)
+        rd_exitst = rd.hget('blog_like_nums', thispost.slug)
         if rd_exitst:
-            rd.hdel('blog_comment_nums', thispost.slug)
             rd.hdel('blog_like_nums', thispost.slug)
-            rd.hsetnx('blog_comment_nums', thispost.slug, context['comments_nums'])
-            rd.hsetnx('blog_like_nums', thispost.slug, BlogLikesModel.objects.filter(blog=thispost).count())
+            rd.hsetnx('blog_like_nums', thispost.slug, context['likes'])
         else:
-            rd.hsetnx('blog_comment_nums', thispost.slug, context['comments_nums'])
-            rd.hsetnx('blog_like_nums', thispost.slug, BlogLikesModel.objects.filter(blog=thispost).count())
+            rd.hsetnx('blog_like_nums', thispost.slug, context['likes'])
 
         return context
     template_name = 'mw_website/blog_detail_page.html'

@@ -35,14 +35,14 @@
                     <div class="blog_details">
                         <h2>{{ blog.title }}</h2>
                         <ul class="blog-info-link mt-3 mb-4">
-                            <li><a href="#"><i class="far fa-user"></i> {% for cate in blog.categories.all %}{{cate.title}} {% if not forloop.last %}-{% endif %} {% endfor %}</a></li>
-                            <li><a href="#"><i class="far fa-comments"></i> {{ comments_nums }} نظر</a></li>
+                            <li><a><i class="far fa-user"></i> {% for cate in blog.categories.all %}{{cate.title}} {% if not forloop.last %}-{% endif %} {% endfor %}</a></li>
+                            <li><a><i class="far fa-comments"></i> {{ comments_nums }} نظر</a></li>
                         </ul>
                         <p class="excert">
                             {{ blog.short_desc }}
                         </p>
                         <div class="quote-wrapper">
-                            <div class="quotes">
+                            <div class="quotes text-justify">
                                 {{ blog.desc }}
                             </div>
                         </div>
@@ -60,7 +60,15 @@
                 </div>
                 <div class="navigation-top">
                     <div class="d-sm-flex justify-content-between text-center">
-                        <p class="like-info"><a href="javascript:void(0);" onclick="likeblog('{{ blog.slug }}')" id="hearticon"><span class="align-middle"><i class="far fa-heart {% if is_like %}text-danger{% endif %}"></i></span> <span id="counterlikes" class="{% if is_like %}text-danger{% endif %}">{{ likes }} </span> <span id="youareliked" {% if not is_like %} style="display: none;"{% endif %} class="{% if is_like %}text-danger{% endif %}">{% translate 'شما این پست را لایک کرده اید' %}</span> </a></p>
+                        <p class="like-info">
+                            <a href="javascript:void(0);" onclick="likeblog('{{ blog.slug }}')" id="hearticon">
+                                <span class="align-middle"><i id="heartcolor" class="far fa-heart {% if is_like %}text-danger{% endif %}"></i></span> 
+                                <span id="counterlikes" class="{% if is_like %}text-danger{% endif %}">{{ likes }} </span> 
+                                <span id="youareliked" {% if not is_like %} style="display: none;"{% endif %} class="btn btn-outline-danger btn-sm mx-3">
+                                    {% translate 'شما این پست را لایک کرده اید' %}
+                                </span> 
+                            </a>
+                        </p>
                         <div class="col-sm-4 text-center my-2 my-sm-0">
                             <p class="comment-count"><span class="align-middle"><i class="far fa-comment"></i></span> {{ comments_nums }} نظر</p>
                         </div>
@@ -118,7 +126,7 @@
                     <div class="media align-items-center">
                         {% if blog.writer.user.profile %}<img style="height: 90px; width: 90px;" src="{{ blog.writer.user.profile.url }}" alt="">{% endif %}
                         <div class="media-body">
-                            <a href="#">
+                            <a>
                                 <h4>{{ blog.writer.get_full_name }}</h4>
                             </a>
                             <p>{{ blog.writer.bio }}</p>
@@ -143,7 +151,7 @@
                                     <div class="d-flex justify-content-between">
                                         <div class="d-flex align-items-center">
                                             <h5>
-                                                <a href="#">{{ comment.user.get_full_name }}</a>
+                                                <a>{{ comment.user.get_full_name }}</a>
                                             </h5>
                                             <p class="date">{{ comment.j_created }} </p>
                                         </div>
@@ -184,7 +192,7 @@
                                         <div class="d-flex justify-content-between">
                                             <div class="d-flex align-items-center">
                                                 <h5>
-                                                    <a href="#">{{ reply.user.get_full_name }}</a>
+                                                    <a>{{ reply.user.get_full_name }}</a>
                                                 </h5>
                                                 <p class="date">{{ reply.j_created }} </p>
                                             </div>

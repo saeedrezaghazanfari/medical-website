@@ -3,7 +3,6 @@
 
 # technologies
 cache table => -
-Redis => - 
 Celery - send mails with celery => - 
 database with POSTGRESQL => -
 

@@ -89,11 +89,13 @@
             success: (res) => {
                 if(res.status == '200'){
                     document.getElementById('hearticon').classList.add('text-danger');
+                    document.getElementById('heartcolor').classList.add('text-danger');
                     document.getElementById('youareliked').style.display = 'inline';
                     document.getElementById('counterlikes').innerHTML = res.counter;
                 }
                 else if(res.status == '203'){
                     document.getElementById('hearticon').classList.remove('text-danger');
+                    document.getElementById('heartcolor').classList.remove('text-danger');
                     document.getElementById('youareliked').style.display = 'none';
                     document.getElementById('counterlikes').innerHTML = res.counter;
                 }
