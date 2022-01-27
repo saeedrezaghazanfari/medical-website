@@ -1,5 +1,6 @@
 
 # tasks ~ features
+django-cleanup
 
 # technologies
 cache table => -
