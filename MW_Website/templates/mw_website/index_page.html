@@ -161,11 +161,11 @@
                         </div>
                         
                         <a class="d-block" href="{% url 'website:blog_details' blog.blog.slug %}">
-                            <h4>{{ blog.blog.short_desc }}</h4>
+                            <h4 style="text-align: justify;">{{ blog.blog.short_desc|truncatewords:20 }}</h4>
                         </a>
                         <div class="meta-bottom d-flex">
-                            <a href="#"><i class="ti-comments"></i>{{ blog.comments }} نظر</a>
-                            <a href="#"><i class="ti-heart"></i> {{ blog.likes }} لایک</a>
+                            <a><i class="ti-comments"></i>{{ blog.comments }} نظر</a>
+                            <a><i class="ti-heart"></i> {{ blog.likes }} لایک</a>
                         </div>
                     </div>
                 </div>

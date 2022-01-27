@@ -3,6 +3,9 @@
 
 # technologies
 cache table => -
-Redis - cache the username and pw for automatic login => - 
+Redis => - 
 Celery - send mails with celery => - 
 database with POSTGRESQL => -
+
+# docs
+https://redis-py.readthedocs.io/en/stable/commands.html  ==> for redis

@@ -29,7 +29,7 @@
             <div class="col-lg-8 posts-list">
                 <div class="single-post">
                     <div class="feature-img">
-                        <img class="img-fluid" src="{% static 'img/blog/main-blog/m-blog-1.jpg' %}" alt="">
+                        <img class="img-fluid" src="{{ blog.image.url }}" alt="">
                     </div>
 
                     <div class="blog_details">
@@ -60,7 +60,7 @@
                 </div>
                 <div class="navigation-top">
                     <div class="d-sm-flex justify-content-between text-center">
-                        <p class="like-info"><a href="javascript:void(0);" onclick="likeblog('{{ blog.slug }}')" id="hearticon"><span class="align-middle"><i class="far fa-heart {% if is_like %}text-danger{% endif %}"></i></span> <span id="counterlikes" class="{% if is_like %}text-danger{% endif %}">{{ likes }}</span> <span id="youareliked" {% if not is_like %} style="display: none;"{% endif %} class="{% if is_like %}text-danger{% endif %}">{% translate 'شما این پست را لایک کرده اید' %}</span> </a></p>
+                        <p class="like-info"><a href="javascript:void(0);" onclick="likeblog('{{ blog.slug }}')" id="hearticon"><span class="align-middle"><i class="far fa-heart {% if is_like %}text-danger{% endif %}"></i></span> <span id="counterlikes" class="{% if is_like %}text-danger{% endif %}">{{ likes }} </span> <span id="youareliked" {% if not is_like %} style="display: none;"{% endif %} class="{% if is_like %}text-danger{% endif %}">{% translate 'شما این پست را لایک کرده اید' %}</span> </a></p>
                         <div class="col-sm-4 text-center my-2 my-sm-0">
                             <p class="comment-count"><span class="align-middle"><i class="far fa-comment"></i></span> {{ comments_nums }} نظر</p>
                         </div>

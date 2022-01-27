@@ -32,13 +32,13 @@ def last_categories():
     categories = CategoryModel.objects.all()
     if categories:
         for category in categories:
-            num = category.blogmodel_set.count()
-            categories_numblogs.append({'category_name': category.title, 'num': num})
+            categories_numblogs.append({
+                'category_name': category.title, 
+                'num': category.blogmodel_set.count()
+            })
         return categories_numblogs
     return None
     
-
-
 @register.simple_tag
 def last_posts():
     blogs = BlogModel.objects.filter(is_published=True).all()[:4]

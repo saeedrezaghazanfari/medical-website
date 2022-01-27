@@ -1,7 +1,9 @@
+import redis
 from django.views import generic
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
 from django.db.models import Q
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.translation import gettext_lazy as _
@@ -12,6 +14,9 @@ from .models import BlogModel, CommentModel, BlogLikesModel
 from .forms import CommentForm
 
 
+# redis connection
+rd = redis.Redis(settings.REDIS_HOST, settings.REDIS_PORT, settings.REDIS_DB,  charset="utf-8", decode_responses=True)
+
 # url: /
 class IndexPage(generic.TemplateView):
     template_name = 'mw_website/index_page.html'
@@ -20,7 +25,11 @@ class IndexPage(generic.TemplateView):
         blogs = BlogModel.objects.filter(is_published=True).all()[:3]
         list_blogs = []
         for blog in blogs:
-            list_blogs.append({'blog':blog, 'likes': blog.bloglikesmodel_set.count(), 'comments': blog.commentmodel_set.filter(is_show=True).count()})
+            list_blogs.append({
+                'blog':blog, 
+                'likes': rd.hget('blog_like_nums', blog.slug),   # read from redis
+                'comments': rd.hget('blog_comment_nums', blog.slug) # read from redis
+            })
         context['last_blogs'] = list_blogs
         return context
 
@@ -48,8 +57,10 @@ class BlogsPage(generic.ListView):
         blogs = BlogModel.objects.filter(is_published=True).all()
         blogs_comments = []
         for blog in blogs:
-            counter = blog.commentmodel_set.filter(is_show=True).count()
-            blogs_comments.append({'blog': blog, 'num_comments': counter})
+            blogs_comments.append({
+                'blog': blog, 
+                'num_comments': rd.hget('blog_comment_nums', blog.slug)
+            })
         return blogs_comments
     paginate_by = 3
 
@@ -81,12 +92,24 @@ class BlogDetailPage(LoginRequiredMixin, generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         thispost = context['object']
-        context['form'] = CommentForm()                                                   # send form
-        context['comments'] = CommentModel.objects.filter(blog=thispost, is_reply=False, is_show=True)  # send comments
-        context['replies'] = CommentModel.objects.filter(blog=thispost, is_reply=True, is_show=True)  # send replyes
-        context['comments_nums'] = context['comments'].count() + context['replies'].count()   # send comments numbers
-        context['likes'] = BlogLikesModel.objects.filter(blog=thispost).count()   # send likes
-        context['is_like'] = bool(BlogLikesModel.objects.filter(blog=thispost, user=self.request.user).first())   # like it?
+        context['form'] = CommentForm()                                                                      # send form
+        context['comments'] = CommentModel.objects.filter(blog=thispost, is_reply=False, is_show=True)    # send comments
+        context['replies'] = CommentModel.objects.filter(blog=thispost, is_reply=True, is_show=True)    # send replyes
+        context['is_like'] = bool(BlogLikesModel.objects.filter(blog=thispost, user=self.request.user).first())   # like it?     
+        context['comments_nums'] = context['comments'].count() + context['replies'].count()     # send comments numbers
+        context['likes'] = BlogLikesModel.objects.filter(blog=thispost).count()                # send likes numbers
+
+        # save or update - redis
+        rd_exitst = rd.hget('blog_comment_nums', thispost.slug)
+        if rd_exitst:
+            rd.hdel('blog_comment_nums', thispost.slug)
+            rd.hdel('blog_like_nums', thispost.slug)
+            rd.hsetnx('blog_comment_nums', thispost.slug, context['comments_nums'])
+            rd.hsetnx('blog_like_nums', thispost.slug, BlogLikesModel.objects.filter(blog=thispost).count())
+        else:
+            rd.hsetnx('blog_comment_nums', thispost.slug, context['comments_nums'])
+            rd.hsetnx('blog_like_nums', thispost.slug, BlogLikesModel.objects.filter(blog=thispost).count())
+
         return context
     template_name = 'mw_website/blog_detail_page.html'
 
