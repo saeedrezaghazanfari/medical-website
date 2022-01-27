@@ -147,3 +147,8 @@ CAPTCHA_IMAGE_SIZE = (100, 50)
 REDIS_DB = config('REDIS_DB')
 REDIS_HOST = config('REDIS_HOST')
 REDIS_PORT = config('REDIS_PORT')
+
+# Celery
+CELERY_BROKER_URL = 'redis://localhost:6379/2'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/2'
+CELERY_TASK_TIME_LIMIT = 30 * 60
