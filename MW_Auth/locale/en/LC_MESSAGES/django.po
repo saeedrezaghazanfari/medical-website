@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-25 20:18+0330\n"
+"POT-Creation-Date: 2022-01-29 00:25+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,236 +18,240 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\apps.py:8
+#: apps.py:8
 msgid "احراز هویت"
 msgstr ""
 
-#: .\forms.py:9 .\forms.py:61 .\forms.py:112 .\forms.py:127
+#: forms.py:9 forms.py:61 forms.py:112 forms.py:127
 msgid "گذر واژه"
 msgstr ""
 
-#: .\forms.py:11 .\forms.py:63 .\forms.py:114 .\forms.py:129
+#: forms.py:11 forms.py:63 forms.py:114 forms.py:129
 msgid "رمزعبور خود را وارد کنید"
 msgstr ""
 
-#: .\forms.py:19 .\forms.py:71
+#: forms.py:19 forms.py:71
 msgid "نام خود را وارد کنید"
 msgstr ""
 
-#: .\forms.py:20 .\forms.py:72
+#: forms.py:20 forms.py:72
 msgid "نام خانوادگی خود را وارد کنید"
 msgstr ""
 
-#: .\forms.py:21
+#: forms.py:21
 msgid "ایمیل خود را وارد کنید"
 msgstr ""
 
-#: .\forms.py:22 .\forms.py:74 .\forms.py:116
+#: forms.py:22 forms.py:74 forms.py:116
 msgid "کدملی خود را وارد کنید"
 msgstr ""
 
-#: .\forms.py:29 .\forms.py:81
+#: forms.py:29 forms.py:81
 msgid "نام باید شامل کاراکترهای فارسی باشد"
 msgstr ""
 
-#: .\forms.py:36 .\forms.py:88
+#: forms.py:36 forms.py:88
 msgid " نام‌خانوادگی باید شامل کاراکترهای فارسی باشد"
 msgstr ""
 
-#: .\forms.py:43 .\forms.py:95 .\forms.py:141
+#: forms.py:43 forms.py:95 forms.py:141
 msgid "رمزعبور باید شامل کاراکترهای انگلیسی باشد"
 msgstr ""
 
-#: .\forms.py:49
+#: forms.py:49
 msgid "این ایمیل در سیستم ثبت شده است"
 msgstr ""
 
-#: .\forms.py:55 .\forms.py:107
+#: forms.py:55 forms.py:107
 msgid "این کدملی در سیستم ثبت شده است"
 msgstr ""
 
-#: .\forms.py:73
+#: forms.py:73
 msgid "شماره تلفن خود را وارد کنید"
 msgstr ""
 
-#: .\forms.py:101
+#: forms.py:101
 msgid "این شماره تلفن در سیستم ثبت شده است"
 msgstr ""
 
-#: .\forms.py:121
+#: forms.py:121
 msgid "این کدملی در سیستم ثبت نشده است"
 msgstr ""
 
-#: .\forms.py:132
+#: forms.py:132
 msgid "تکرار گذر واژه"
 msgstr ""
 
-#: .\forms.py:134
+#: forms.py:134
 msgid "رمزعبور خود را تکرار کنید"
 msgstr ""
 
-#: .\forms.py:149
+#: forms.py:149
 msgid "باید هردو پسورد با هم برابر باشند"
 msgstr ""
 
-#: .\models.py:9
+#: models.py:9
 msgid "کد کاربری"
 msgstr ""
 
-#: .\models.py:10
+#: models.py:10
 msgid "آیپی"
 msgstr ""
 
-#: .\models.py:11
+#: models.py:11
 msgid "شماره تلفن"
 msgstr ""
 
-#: .\models.py:12
+#: models.py:12
 msgid "کدملی"
 msgstr ""
 
-#: .\models.py:13 .\models.py:20
+#: models.py:13 models.py:20
 msgid "پروفایل"
 msgstr ""
 
-#: .\models.py:24
+#: models.py:24
 msgid "نام و نام خانوادگی"
 msgstr ""
 
-#: .\models.py:28
+#: models.py:28
 msgid "کاربر"
 msgstr ""
 
-#: .\models.py:29
+#: models.py:29
 msgid "کاربران"
 msgstr ""
 
-#: .\templates\mw_auth\enter_email_phone.html:7
-#: .\templates\mw_auth\enter_email_phone.html:46
-#: .\templates\mw_auth\signin.html:67
+#: templates/mw_auth/enter_email_phone.html:7
+#: templates/mw_auth/enter_email_phone.html:46 templates/mw_auth/signin.html:67
 msgid "فراموشی رمزعبور"
 msgstr ""
 
-#: .\templates\mw_auth\enter_email_phone.html:37
-#: .\templates\mw_auth\reset_password.html:36
-#: .\templates\mw_auth\signin.html:37 .\templates\mw_auth\signup.html:54
+#: templates/mw_auth/enter_email_phone.html:37
+#: templates/mw_auth/reset_password.html:36 templates/mw_auth/signin.html:37
+#: templates/mw_auth/signup.html:54
 msgid "انتخاب زبان:"
 msgstr ""
 
-#: .\templates\mw_auth\enter_email_phone.html:51
+#: templates/mw_auth/enter_email_phone.html:49
+msgid "سرویس ارسال پیامک قطع میباشد. لطفا با ایمیل تست فرمایید"
+msgstr ""
+
+#: templates/mw_auth/enter_email_phone.html:52
 msgid "تلفن یا ایمیل خود را وارد کنید"
 msgstr ""
 
-#: .\templates\mw_auth\enter_email_phone.html:54
+#: templates/mw_auth/enter_email_phone.html:55
 msgid "ارسال"
 msgstr ""
 
-#: .\templates\mw_auth\reset_password.html:7
-#: .\templates\mw_auth\reset_password.html:45
+#: templates/mw_auth/enter_email_phone.html:61
+#: templates/mw_auth/signup.html:103 templates/mw_auth/signup.html:154
+msgid "آیا حسابی دارید؟ وارد شوید"
+msgstr ""
+
+#: templates/mw_auth/enter_email_phone.html:62
+msgid "ثبت نام در سابت"
+msgstr ""
+
+#: templates/mw_auth/reset_password.html:7
+#: templates/mw_auth/reset_password.html:45
 msgid "ریست کردن رمزعبور"
 msgstr ""
 
-#: .\templates\mw_auth\reset_password.html:59
+#: templates/mw_auth/reset_password.html:59
 msgid "ریست رمزعبور"
 msgstr ""
 
-#: .\templates\mw_auth\signin.html:7 .\templates\mw_auth\signin.html:60
+#: templates/mw_auth/signin.html:7 templates/mw_auth/signin.html:60
 msgid "ورود"
 msgstr ""
 
-#: .\templates\mw_auth\signin.html:46
+#: templates/mw_auth/signin.html:46
 msgid "فرم ورود"
 msgstr ""
 
-#: .\templates\mw_auth\signin.html:66
+#: templates/mw_auth/signin.html:66
 msgid "ثبت نام در سایت"
 msgstr ""
 
-#: .\templates\mw_auth\signup.html:7 .\templates\mw_auth\signup.html:97
-#: .\templates\mw_auth\signup.html:147
+#: templates/mw_auth/signup.html:7 templates/mw_auth/signup.html:97
+#: templates/mw_auth/signup.html:148
 msgid "ثبت نام"
 msgstr ""
 
-#: .\templates\mw_auth\signup.html:64 .\templates\mw_auth\signup.html:114
+#: templates/mw_auth/signup.html:64 templates/mw_auth/signup.html:114
 msgid "ثبت نام با ایمیل"
 msgstr ""
 
-#: .\templates\mw_auth\signup.html:64
+#: templates/mw_auth/signup.html:64
 msgid "ثبت نام با شماره تلفن"
 msgstr ""
 
-#: .\templates\mw_auth\signup.html:103 .\templates\mw_auth\signup.html:153
-msgid "ورود به سایت"
-msgstr ""
-
-#: .\templates\mw_auth\signup.html:114
+#: templates/mw_auth/signup.html:114
 msgid "ثبت نام با تلفن"
 msgstr ""
 
-#: .\views.py:38
-msgid "اکتیویت حساب کاربری | MW"
+#: templates/mw_auth/signup.html:117
+msgid "سرویس ارسال پیامک غیرفعال است"
 msgstr ""
 
-#: .\views.py:46
+#: views.py:38
 msgid "حساب شما با موفقیت ساخته شد. برای فعالسازی حساب، ایمیل خود را چک کنید"
 msgstr ""
 
-#: .\views.py:70
+#: views.py:56
 msgid "لینک فعالسازی حساب کاربری برای شما ارسال شد. منتظر بمانید"
 msgstr ""
 
-#: .\views.py:80 .\views.py:194
+#: views.py:67 views.py:161
 msgid "مشکلی بوجود آمده است"
 msgstr ""
 
-#: .\views.py:102
+#: views.py:89
 msgid "شما با موفقیت وارد شدید"
 msgstr ""
 
-#: .\views.py:105
+#: views.py:92
 msgid "کدملی و یا رمزعبور شما اشتباه است"
 msgstr ""
 
-#: .\views.py:108
+#: views.py:95
 msgid "کدملی شما اشتباه است و یا در سیستم موجود نیست"
 msgstr ""
 
-#: .\views.py:129
+#: views.py:116
 msgid "حساب کاربری شما فعال گردید."
 msgstr ""
 
-#: .\views.py:130
+#: views.py:117
 msgid "حساب کاربری شما فعال گردید. برای ورود به حساب، اطلاعات خود را وارد کنید"
 msgstr ""
 
-#: .\views.py:133
+#: views.py:120
 msgid "لینک فعالسازی شما نامعتبر است."
 msgstr ""
 
-#: .\views.py:155
-msgid "بازیابی رمزعبور | MW"
-msgstr ""
-
-#: .\views.py:163
+#: views.py:138
 msgid "ایمیل تغییر رمزعبور برای شما ارسال شد. ایمیل خود را چک کنید"
 msgstr ""
 
-#: .\views.py:180
+#: views.py:147
 msgid "پیامک تغییر رمزعبور برای شما ارسال شد. منتظر بمانید"
 msgstr ""
 
-#: .\views.py:191
+#: views.py:158
 msgid "فرمت ایمیل یا تلفن شما اشتباه است"
 msgstr ""
 
-#: .\views.py:215
+#: views.py:182
 msgid "رمز شما با موفقیت تغییر کرد. اطلاعات خود را وارد کنید"
 msgstr ""
 
-#: .\views.py:220
+#: views.py:187
 msgid "لینک شما نامعتبر و یا منقضی شده است"
 msgstr ""
 
-#: .\views.py:228
+#: views.py:195
 msgid "شما با موفقیت خارج شدید"
 msgstr ""

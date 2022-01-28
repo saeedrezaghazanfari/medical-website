@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-25 20:19+0330\n"
+"POT-Creation-Date: 2022-01-29 00:25+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,457 +18,457 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\admin.py:21 .\models.py:11
+#: admin.py:21 models.py:15
 msgid "تخصص‌ها"
 msgstr ""
 
-#: .\apps.py:7
+#: apps.py:7
 msgid "ماژول های وبسایت"
 msgstr ""
 
-#: .\models.py:10 .\models.py:107 .\models.py:150
+#: models.py:14 models.py:111 models.py:154
 msgid "کاربر"
 msgstr ""
 
-#: .\models.py:12
+#: models.py:16
 msgid "بیوگرافی"
 msgstr ""
 
-#: .\models.py:16 .\models.py:40
+#: models.py:20 models.py:44
 msgid "پزشک"
 msgstr ""
 
-#: .\models.py:17
+#: models.py:21
 msgid "پزشک ها"
 msgstr ""
 
-#: .\models.py:24 .\models.py:55
+#: models.py:28 models.py:59
 msgid "نام پزشک"
 msgstr ""
 
-#: .\models.py:28
+#: models.py:32
 msgid "عنوان تخصص"
 msgstr ""
 
-#: .\models.py:32
+#: models.py:36
 msgid "تخصص"
 msgstr ""
 
-#: .\models.py:33
+#: models.py:37
 msgid "تخصص ‌ها"
 msgstr ""
 
-#: .\models.py:41
+#: models.py:45
 msgid "عنوان کوتاه"
 msgstr ""
 
-#: .\models.py:42
+#: models.py:46
 msgid "متن"
 msgstr ""
 
-#: .\models.py:47
+#: models.py:51
 msgid "نوت پزشک"
 msgstr ""
 
-#: .\models.py:48
+#: models.py:52
 msgid "نوت های پرشکان"
 msgstr ""
 
-#: .\models.py:59
+#: models.py:63
 msgid "مقدار در url"
 msgstr ""
 
-#: .\models.py:60
+#: models.py:64
 msgid "تصویر"
 msgstr ""
 
-#: .\models.py:61
+#: models.py:65
 msgid "نویسنده"
 msgstr ""
 
-#: .\models.py:62 .\models.py:131
+#: models.py:66 models.py:135
 msgid "دسته بندی ها"
 msgstr ""
 
-#: .\models.py:63 .\models.py:143
+#: models.py:67 models.py:147
 msgid "تگ ها"
 msgstr ""
 
-#: .\models.py:64 .\models.py:126 .\models.py:138
-#: .\templates\mw_website\contactus_page.html:70
+#: models.py:68 models.py:130 models.py:142
+#: templates/mw_website/contactus_page.html:70
 msgid "عنوان"
 msgstr ""
 
-#: .\models.py:65
+#: models.py:69
 msgid "متن مقاله"
 msgstr ""
 
-#: .\models.py:66
+#: models.py:70
 msgid "متن کوتاه"
 msgstr ""
 
-#: .\models.py:67
+#: models.py:71
 msgid "منتشر شود؟"
 msgstr ""
 
-#: .\models.py:72 .\models.py:108 .\models.py:151
+#: models.py:76 models.py:112 models.py:155
 msgid "بلاگ"
 msgstr ""
 
-#: .\models.py:73
+#: models.py:77
 msgid "بلاگ‌ها"
 msgstr ""
 
-#: .\models.py:80
+#: models.py:84
 msgid "تاریخ انتشار"
 msgstr ""
 
-#: .\models.py:101
+#: models.py:105
 msgid "نام نویسنده"
 msgstr ""
 
-#: .\models.py:105
+#: models.py:109
 msgid "پاسخ"
 msgstr ""
 
-#: .\models.py:106 .\templates\mw_website\blog_detail_page.html:130
+#: models.py:110 templates/mw_website/blog_detail_page.html:138
 msgid "نظر"
 msgstr ""
 
-#: .\models.py:110
+#: models.py:114
 msgid "پاسخ؟"
 msgstr ""
 
-#: .\models.py:111
+#: models.py:115
 msgid "نمایش؟"
 msgstr ""
 
-#: .\models.py:115
+#: models.py:119
 msgid "نظر کاربر"
 msgstr ""
 
-#: .\models.py:116
+#: models.py:120
 msgid "نظرات کاربران"
 msgstr ""
 
-#: .\models.py:120
+#: models.py:124
 msgid "تاریخ نظر"
 msgstr ""
 
-#: .\models.py:130 .\templates\partials_mw_website\blog_sidebar.html:23
+#: models.py:134 templates/partials_mw_website/blog_sidebar.html:23
 msgid "دسته بندی"
 msgstr ""
 
-#: .\models.py:142
+#: models.py:146
 msgid "تگ"
 msgstr ""
 
-#: .\models.py:155
+#: models.py:159
 msgid "پست و لایک"
 msgstr ""
 
-#: .\models.py:156
+#: models.py:160
 msgid "پست ها و لایک ها"
 msgstr ""
 
-#: .\templates\mw_website\aboutus_page.html:3
+#: templates/mw_website/aboutus_page.html:3
 msgid "درباره ی ما"
 msgstr ""
 
-#: .\templates\mw_website\aboutus_page.html:14
+#: templates/mw_website/aboutus_page.html:14
 msgid "درباره ما"
 msgstr ""
 
-#: .\templates\mw_website\aboutus_page.html:15
-#: .\templates\mw_website\blog_detail_page.html:14
-#: .\templates\mw_website\blogs_page.html:15
-#: .\templates\mw_website\contactus_page.html:18
-#: .\templates\mw_website\department_page.html:15
-#: .\templates\mw_website\doctors_page.html:15
+#: templates/mw_website/aboutus_page.html:15
+#: templates/mw_website/blog_detail_page.html:14
+#: templates/mw_website/blogs_page.html:15
+#: templates/mw_website/contactus_page.html:18
+#: templates/mw_website/department_page.html:15
+#: templates/mw_website/doctors_page.html:15
 msgid "زمین سبز پشت هوای الوده است"
 msgstr ""
 
-#: .\templates\mw_website\aboutus_page.html:18
+#: templates/mw_website/aboutus_page.html:18
 msgid "خانه / درباره ی ما"
 msgstr ""
 
-#: .\templates\mw_website\aboutus_page.html:32
-#: .\templates\mw_website\index_page.html:105
+#: templates/mw_website/aboutus_page.html:32
+#: templates/mw_website/index_page.html:105
 msgid "با ما بهترین پزشک ها را تجربه کنید"
 msgstr ""
 
-#: .\templates\mw_website\aboutus_page.html:33
-#: .\templates\mw_website\index_page.html:106
+#: templates/mw_website/aboutus_page.html:33
+#: templates/mw_website/index_page.html:106
 msgid ""
 "ما بهترین پزشک های متخصص را دور هم گرد آورده ایم تا با بهترین کیفیت به شما "
 "خدمت کنیم"
 msgstr ""
 
-#: .\templates\mw_website\aboutus_page.html:34
-#: .\templates\mw_website\index_page.html:107
+#: templates/mw_website/aboutus_page.html:34
+#: templates/mw_website/index_page.html:107
 msgid "سلامتی شما آرزوی ماست"
 msgstr ""
 
-#: .\templates\mw_website\aboutus_page.html:48
+#: templates/mw_website/aboutus_page.html:48
 msgid "سوالی دارید"
 msgstr ""
 
-#: .\templates\mw_website\aboutus_page.html:55
+#: templates/mw_website/aboutus_page.html:55
 msgid "آیا ما پشتیبانی 24 ساعته داریم؟"
 msgstr ""
 
-#: .\templates\mw_website\aboutus_page.html:63
+#: templates/mw_website/aboutus_page.html:63
 msgid "بله ما پشتیبانی 24 ساعته داریم :)"
 msgstr ""
 
-#: .\templates\mw_website\aboutus_page.html:72
+#: templates/mw_website/aboutus_page.html:72
 msgid "آیا هدف ما سلامتی شماست؟"
 msgstr ""
 
-#: .\templates\mw_website\aboutus_page.html:80
+#: templates/mw_website/aboutus_page.html:80
 msgid "بله هدف ما سلامتی شماست :)"
 msgstr ""
 
-#: .\templates\mw_website\aboutus_page.html:89
+#: templates/mw_website/aboutus_page.html:89
 msgid "آیا ما دکترهای خوب داریم؟"
 msgstr ""
 
-#: .\templates\mw_website\aboutus_page.html:97
+#: templates/mw_website/aboutus_page.html:97
 msgid "بله ما ما دکترهای متخصص داریم :)"
 msgstr ""
 
-#: .\templates\mw_website\blog_detail_page.html:17
+#: templates/mw_website/blog_detail_page.html:17
 msgid "خانه / بلاگ ها / اطلاعات بلاگ"
 msgstr ""
 
-#: .\templates\mw_website\blog_detail_page.html:63
+#: templates/mw_website/blog_detail_page.html:68
 msgid "شما این پست را لایک کرده اید"
 msgstr ""
 
-#: .\templates\mw_website\blog_detail_page.html:84
+#: templates/mw_website/blog_detail_page.html:92
 msgid "پست قبلی"
 msgstr ""
 
-#: .\templates\mw_website\blog_detail_page.html:95
+#: templates/mw_website/blog_detail_page.html:103
 msgid "پست بعدی"
 msgstr ""
 
-#: .\templates\mw_website\blog_detail_page.html:163
+#: templates/mw_website/blog_detail_page.html:171
 msgid "ارسال پاسخ"
 msgstr ""
 
-#: .\templates\mw_website\blog_detail_page.html:205
+#: templates/mw_website/blog_detail_page.html:213
 msgid "جواب دادن"
 msgstr ""
 
-#: .\templates\mw_website\blog_detail_page.html:211
+#: templates/mw_website/blog_detail_page.html:219
 msgid "خوشحال میشویم نظر خود را با ما به اشتراک بگذارید"
 msgstr ""
 
-#: .\templates\mw_website\blog_detail_page.html:220
-#: .\templates\mw_website\contactus_page.html:76
+#: templates/mw_website/blog_detail_page.html:228
+#: templates/mw_website/contactus_page.html:76
 msgid "ارسال پیام"
 msgstr ""
 
-#: .\templates\mw_website\blogs_page.html:3
-#: .\templates\mw_website\blogs_page.html:14
+#: templates/mw_website/blogs_page.html:3
+#: templates/mw_website/blogs_page.html:14
 msgid "بلاگ ها"
 msgstr ""
 
-#: .\templates\mw_website\blogs_page.html:18
+#: templates/mw_website/blogs_page.html:18
 msgid "خانه / بلاگ ها"
 msgstr ""
 
-#: .\templates\mw_website\blogs_page.html:63
+#: templates/mw_website/blogs_page.html:63
 msgid "قبلی"
 msgstr ""
 
-#: .\templates\mw_website\blogs_page.html:83
+#: templates/mw_website/blogs_page.html:83
 msgid "بعدی"
 msgstr ""
 
-#: .\templates\mw_website\contactus_page.html:3
-#: .\templates\mw_website\contactus_page.html:17
+#: templates/mw_website/contactus_page.html:3
+#: templates/mw_website/contactus_page.html:17
 msgid "ارتباط با ما"
 msgstr ""
 
-#: .\templates\mw_website\contactus_page.html:21
+#: templates/mw_website/contactus_page.html:21
 msgid "خانه / ارتباط با ما"
 msgstr ""
 
-#: .\templates\mw_website\contactus_page.html:44
+#: templates/mw_website/contactus_page.html:44
 msgid "در ارتباط بمانید"
 msgstr ""
 
-#: .\templates\mw_website\contactus_page.html:52
+#: templates/mw_website/contactus_page.html:52
 msgid "پیام"
 msgstr ""
 
-#: .\templates\mw_website\contactus_page.html:58
+#: templates/mw_website/contactus_page.html:58
 msgid "نام"
 msgstr ""
 
-#: .\templates\mw_website\contactus_page.html:64
+#: templates/mw_website/contactus_page.html:64
 msgid "ایمیل"
 msgstr ""
 
-#: .\templates\mw_website\department_page.html:3
+#: templates/mw_website/department_page.html:3
 msgid "دپارتمان"
 msgstr ""
 
-#: .\templates\mw_website\department_page.html:14
+#: templates/mw_website/department_page.html:14
 msgid "ساختمان"
 msgstr ""
 
-#: .\templates\mw_website\department_page.html:18
+#: templates/mw_website/department_page.html:18
 msgid "خانه / ساختمان"
 msgstr ""
 
-#: .\templates\mw_website\department_page.html:31
+#: templates/mw_website/department_page.html:31
 msgid "سرویس سلامتی"
 msgstr ""
 
-#: .\templates\mw_website\department_page.html:41
+#: templates/mw_website/department_page.html:41
 msgid "سرویس ها"
 msgstr ""
 
-#: .\templates\mw_website\department_page.html:50
+#: templates/mw_website/department_page.html:50
 msgid "کلینیک دندان پزشکی"
 msgstr ""
 
-#: .\templates\mw_website\department_page.html:59
-#: .\templates\mw_website\index_page.html:89
+#: templates/mw_website/department_page.html:59
+#: templates/mw_website/index_page.html:89
 msgid "جراحی پلاستیک"
 msgstr ""
 
-#: .\templates\mw_website\doctors_page.html:3
-#: .\templates\mw_website\doctors_page.html:14
+#: templates/mw_website/doctors_page.html:3
+#: templates/mw_website/doctors_page.html:14
 msgid "دکترها"
 msgstr ""
 
-#: .\templates\mw_website\doctors_page.html:18
+#: templates/mw_website/doctors_page.html:18
 msgid "خانه / دکتر ها"
 msgstr ""
 
-#: .\templates\mw_website\doctors_page.html:35
+#: templates/mw_website/doctors_page.html:35
 msgid "اورژانسی"
 msgstr ""
 
-#: .\templates\mw_website\doctors_page.html:37
-#: .\templates\mw_website\index_page.html:130
+#: templates/mw_website/doctors_page.html:37
+#: templates/mw_website/index_page.html:130
 msgid "ما برای سلامتی شما سرویس 24 ساعته در نظر داریم"
 msgstr ""
 
-#: .\templates\mw_website\index_page.html:3
+#: templates/mw_website/index_page.html:3
 msgid "خانه"
 msgstr ""
 
-#: .\templates\mw_website\index_page.html:12
+#: templates/mw_website/index_page.html:12
 msgid "سلامتی را با هم بسازیم"
 msgstr ""
 
-#: .\templates\mw_website\index_page.html:13
+#: templates/mw_website/index_page.html:13
 msgid ""
 "ما اینجا هستیم تا شما بتوانید با صرفه جویی در زمان، امورات پزشکی خود را "
 "انجام دهید."
 msgstr ""
 
-#: .\templates\mw_website\index_page.html:14
+#: templates/mw_website/index_page.html:14
 msgid "دیدن دپارتمان"
 msgstr ""
 
-#: .\templates\mw_website\index_page.html:30
+#: templates/mw_website/index_page.html:30
 msgid "مراقبت ویژه"
 msgstr ""
 
-#: .\templates\mw_website\index_page.html:31
+#: templates/mw_website/index_page.html:31
 msgid ""
 "در واقع شرایط بیماران بستری در بخش مراقبت ویژه به گونه ای است که امکان "
 "مراقبت ونگهداری از آنها در سایر بخش‌ها و در کنار دیگر بیماران وجود ندارد."
 msgstr ""
 
-#: .\templates\mw_website\index_page.html:39
+#: templates/mw_website/index_page.html:39
 msgid "موارد اظطراری"
 msgstr ""
 
-#: .\templates\mw_website\index_page.html:40
+#: templates/mw_website/index_page.html:40
 msgid "پیشگیری بهتر از درمان است. در حفظ سلامتی خود کوشا باشید."
 msgstr ""
 
-#: .\templates\mw_website\index_page.html:48
+#: templates/mw_website/index_page.html:48
 msgid "قرار انلاین"
 msgstr ""
 
-#: .\templates\mw_website\index_page.html:49
+#: templates/mw_website/index_page.html:49
 msgid ""
 "شما میتوانید در همه‌ی اوقات شبانه روز، برای ملاقات با پزشک موردنظر خود، تایم "
 "رزرو کنید."
 msgstr ""
 
-#: .\templates\mw_website\index_page.html:62
+#: templates/mw_website/index_page.html:62
 msgid "فوق العاده ترین مراقبت ها"
 msgstr ""
 
-#: .\templates\mw_website\index_page.html:71
+#: templates/mw_website/index_page.html:71
 msgid "سرویس پزشکی"
 msgstr ""
 
-#: .\templates\mw_website\index_page.html:80
+#: templates/mw_website/index_page.html:80
 msgid "دندانی کلینک"
 msgstr ""
 
-#: .\templates\mw_website\index_page.html:128
+#: templates/mw_website/index_page.html:128
 msgid "خط ویژه"
 msgstr ""
 
-#: .\templates\mw_website\index_page.html:142
+#: templates/mw_website/index_page.html:142
 msgid "آخرین بلاگ‌ها"
 msgstr ""
 
-#: .\templates\partials_mw_website\blog_sidebar.html:18
+#: templates/partials_mw_website/blog_sidebar.html:18
 msgid "جستجو"
 msgstr ""
 
-#: .\templates\partials_mw_website\blog_sidebar.html:37
+#: templates/partials_mw_website/blog_sidebar.html:37
 msgid "پست های اخیر"
 msgstr ""
 
-#: .\templates\partials_mw_website\blog_sidebar.html:53
+#: templates/partials_mw_website/blog_sidebar.html:53
 msgid "اخبار"
 msgstr ""
 
-#: .\templates\partials_mw_website\blog_sidebar.html:60
+#: templates/partials_mw_website/blog_sidebar.html:60
 msgid "اشتراک"
 msgstr ""
 
-#: .\templates\partials_mw_website\doctor_cards.html:7
+#: templates/partials_mw_website/doctor_cards.html:7
 msgid "پزشکی دکتر های باتجربه"
 msgstr ""
 
-#: .\views.py:106
+#: views.py:129
 msgid "نظر شما ثبت شد. بعد از تایید در سایت نمایش خواهد شد"
 msgstr ""
 
-#: .\views.py:109 .\views.py:120
+#: views.py:132 views.py:143
 msgid "مشکلی به وجود آمده است"
 msgstr ""
 
-#: .\views.py:117
+#: views.py:140
 msgid "پاسخ شما ثبت شد. بعد از تایید در سایت نمایش خواهد شد"
 msgstr ""
 
-#: .\views.py:132
+#: views.py:155
 msgid "ایمیل شما با موفقیت ذخیره شد"
 msgstr ""
 
-#: .\views.py:134
+#: views.py:157
 msgid "مشکلی در ثبت ایمیل پیش آمد"
 msgstr ""
 
-#: .\views.py:136
+#: views.py:159
 msgid "این ایمیل قبلا وارد شده است"
 msgstr ""
 
-#: .\views.py:138
+#: views.py:161
 msgid "فرمت ایمیل را درست وارد کنید"
 msgstr ""
