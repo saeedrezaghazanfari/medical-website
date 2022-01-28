@@ -100,7 +100,7 @@
                     </div>
                     <div class="signup-image">
                         <figure><img src="{% static 'img/background/signup-image.jpg' %}" alt="sing up image"></figure>
-                        <a href="{% url 'auth:signin' %}" class="signup-image-link ">{% translate 'ورود به سایت' %}</a>
+                        <a href="{% url 'auth:signin' %}" class="signup-image-link ">{% translate 'آیا حسابی دارید؟ وارد شوید' %}</a>
                     </div>
                 </div>
             </div>
@@ -114,6 +114,7 @@
                         <h2 class="form-title {% if request.LANGUAGE_CODE == 'fa' %}text-right{% endif %}">{% translate 'ثبت نام با تلفن' %} <br><a href="{% url 'auth:signup' 'email-form' %}" style="font-size: 10pt; color: #2782d6 !important;">{% translate 'ثبت نام با ایمیل' %}</a></h2>
                         <form method="POST" class="register-form" id="register-form">
                             {% csrf_token %}
+                            <p class="alert alert-danger">{% translate 'سرویس ارسال پیامک غیرفعال است' %}</p>
                             <div class="form-group">
                                 <label for="fname"><i class="fa fa-user"></i></label>
                                 {% render_field form.first_name id="fname" %}
@@ -143,14 +144,14 @@
                                 <div class="wrapper-captcha">{% render_field form.captcha id="captcha" %}</div>
                                 {% for msg in form.captcha.errors %}<p class="text-danger">{{ msg }}</p>{% endfor %}
                             </div>
-                            <div class="form-group form-button">
+                            <div class="form-group form-button d-none">
                                 <input type="submit" id="signup" class="form-submit" value="{% translate 'ثبت نام' %}">
                             </div>
                         </form>
                     </div>
                     <div class="signup-image">
                         <figure><img src="{% static 'img/background/signup-image.jpg' %}" alt="sing up image"></figure>
-                        <a href="{% url 'auth:signin' %}" class="signup-image-link ">{% translate 'ورود به سایت' %}</a>
+                        <a href="{% url 'auth:signin' %}" class="signup-image-link ">{% translate 'آیا حسابی دارید؟ وارد شوید' %}</a>
                     </div>
                 </div>
             </div>

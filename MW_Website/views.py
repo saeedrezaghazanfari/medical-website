@@ -12,6 +12,7 @@ from django.http import JsonResponse
 from MW_Auth.models import User
 from .models import BlogModel, CommentModel, BlogLikesModel
 from .forms import CommentForm
+from .tasks import set_blog_like_numbers
 
 
 # redis connection
@@ -27,8 +28,8 @@ class IndexPage(generic.TemplateView):
         for blog in blogs:
             list_blogs.append({
                 'blog':blog, 
-                'likes': rd.hget('blog_like_nums', blog.slug),   # read from redis
-                'comments': rd.hget('blog_comment_nums', blog.slug) # read from redis
+                'likes': rd.hget('blog_like_nums', blog.slug),        # read from redis
+                'comments': rd.hget('blog_comment_nums', blog.slug)   # read from redis
             })
         context['last_blogs'] = list_blogs
         return context
@@ -69,17 +70,27 @@ class BlogsPage(generic.ListView):
 class BlogLikePage(LoginRequiredMixin, generic.View):
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            exist = BlogLikesModel.objects.filter(user=request.user, blog=BlogModel.objects.get(slug=kwargs['slug'])).first()
+            this_blog = BlogModel.objects.get(slug=kwargs['slug'])
+            exist = BlogLikesModel.objects.filter(user=request.user, blog=this_blog).first()
+
             if not exist:
-                like = BlogLikesModel.objects.create(user=request.user, blog=BlogModel.objects.get(slug=kwargs['slug']))
+                like = BlogLikesModel.objects.create(user=request.user, blog=this_blog)
                 if like:
-                    likes = BlogLikesModel.objects.filter(blog=BlogModel.objects.get(slug=kwargs['slug'])).count()
+                    likes = BlogLikesModel.objects.filter(blog=this_blog).count()
+                    
+                    # update like numbers in redis with celery
+                    set_blog_like_numbers.delay(this_blog.slug, likes)
+
                     return JsonResponse({'counter': likes, 'status': 200}, safe=False)
             
             elif exist:
-                dislike = BlogLikesModel.objects.get(user=request.user, blog=BlogModel.objects.get(slug=kwargs['slug'])).delete()
+                dislike = BlogLikesModel.objects.get(user=request.user, blog=this_blog).delete()
                 if dislike:
-                    likes = BlogLikesModel.objects.filter(blog=BlogModel.objects.get(slug=kwargs['slug'])).count()
+                    likes = BlogLikesModel.objects.filter(blog=this_blog).count()
+                    
+                    # update like numbers in redis with celery
+                    set_blog_like_numbers.delay(this_blog.slug, likes)
+
                     return JsonResponse({'counter': likes, 'status': 203}, safe=False)
 
         return JsonResponse({'status': 404}, safe=False)
@@ -92,19 +103,12 @@ class BlogDetailPage(LoginRequiredMixin, generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         thispost = context['object']
-        context['form'] = CommentForm()                                                                      # send form
-        context['comments'] = CommentModel.objects.filter(blog=thispost, is_reply=False, is_show=True)    # send comments
-        context['replies'] = CommentModel.objects.filter(blog=thispost, is_reply=True, is_show=True)    # send replyes
-        context['is_like'] = bool(BlogLikesModel.objects.filter(blog=thispost, user=self.request.user).first())   # like it?     
-        context['comments_nums'] = rd.hget('blog_comment_nums', thispost.slug)     # send comments numbers
-        context['likes'] = BlogLikesModel.objects.filter(blog=thispost).count()               # send likes numbers
-
-        rd_exitst = rd.hget('blog_like_nums', thispost.slug)
-        if rd_exitst:
-            rd.hdel('blog_like_nums', thispost.slug)
-            rd.hsetnx('blog_like_nums', thispost.slug, context['likes'])
-        else:
-            rd.hsetnx('blog_like_nums', thispost.slug, context['likes'])
+        context['form'] = CommentForm()                                                                            # send form
+        context['comments'] = CommentModel.objects.filter(blog=thispost, is_reply=False, is_show=True)             # send comments
+        context['replies'] = CommentModel.objects.filter(blog=thispost, is_reply=True, is_show=True)               # send replyes
+        context['is_like'] = bool(BlogLikesModel.objects.filter(blog=thispost, user=self.request.user).first())    # like it?     
+        context['comments_nums'] = rd.hget('blog_comment_nums', thispost.slug)                                     # send comments numbers
+        context['likes'] = rd.hget('blog_like_nums', thispost.slug)                                                # send likes numbers
 
         return context
     template_name = 'mw_website/blog_detail_page.html'

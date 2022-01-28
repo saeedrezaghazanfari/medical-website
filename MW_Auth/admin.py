@@ -17,6 +17,7 @@ class AdminUser(UserAdmin):
         'national_code'
     )
     list_display = ('username', 'email', 'get_full_name', 'phone', 'get_profile')
+    ordering = ['-id']
 
 admin.site.register(User, AdminUser)
 admin.site.unregister(Group)          # hide groups

@@ -2,8 +2,6 @@
 # tasks ~ features
 
 # technologies
-cache table => -
-Celery - send mails with celery => - 
 database with POSTGRESQL => -
 
 # docs

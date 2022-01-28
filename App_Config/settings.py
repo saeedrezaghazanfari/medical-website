@@ -123,6 +123,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # custom user
 AUTH_USER_MODEL = config('AUTH_USER_MODEL')
+LOGIN_URL = '/fa/sign-in'
 
 # email configs
 EMAIL_BACKEND = config('EMAIL_BACKEND')
@@ -134,13 +135,13 @@ EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 # kavenegar API
 KAVENEGAR_API = config('KAVENEGAR_API')
-LOGIN_URL = '/fa/sign-in'
+KAVENEGAR_SENDER = config('KAVENEGAR_SENDER')
 
 # captcha
 CAPTCHA_FONT_SIZE = 30
 CAPTCHA_BACKGROUND_COLOR = '#fff'
 CAPTCHA_FOREGROUND_COLOR = '#4f98dc'
-CAPTCHA_LENGTH = 3
+CAPTCHA_LENGTH = 4
 CAPTCHA_IMAGE_SIZE = (100, 50) 
 
 # Redis

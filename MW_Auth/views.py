@@ -1,5 +1,4 @@
 import re
-from kavenegar import *
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -10,10 +9,11 @@ from django.conf import settings
 from django.core.mail import EmailMessage
 from .models import User
 from .forms import SignUpForm_Email, SignUpForm_Phone, SignInForm, ResetPassWord
+from .tasks import send_mail_signup_email, send_sms_signup_phone, send_mail_forgetpw_email, send_sms_forgetpw_phone
 # imports for activate account
 from django.contrib.sites.shortcuts import get_current_site
-from django.utils.encoding import force_bytes, force_str
-from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.encoding import force_str
+from django.utils.http import urlsafe_base64_decode
 from .tokens import account_activation_token
 
 
@@ -31,21 +31,14 @@ def sign_up_page(request, *args, **kwargs):
             user.save()
 
             if user:
-                current_site = get_current_site(request)    # get domain site
-                uid = urlsafe_base64_encode(force_bytes(user.pk))
-                token = account_activation_token.make_token(user)
                 # sending mail
-                subject = _('اکتیویت حساب کاربری | MW')
-                message = f'<h3>سلام و عرض خسته نباشید خدمت {user.first_name} عزیز</h3><p>لینک فعالسازی حساب کاربری:</p><a href="http://{current_site.domain}/account/activation/{uid}/{token}">برای فعالسازی کلیک کنید</a>'
-                from_email = settings.EMAIL_HOST_USER
-                to_list = [user.email]
-                msg_EMAIL = EmailMessage(subject, message, from_email, to_list)
-                msg_EMAIL.content_subtype = "html" 
-                msg_EMAIL.send()
-
+                send_mail_signup_email.delay(username=user.username, domain=get_current_site(request).domain)
+                
+                form_email = SignUpForm_Email()
                 messages.success(request, _('حساب شما با موفقیت ساخته شد. برای فعالسازی حساب، ایمیل خود را چک کنید'))
                 return redirect('/sign-in')
 
+        form_email = SignUpForm_Email()
         return render(request, 'mw_auth/signup.html', {'form': form_email})
     
     elif type_form == 'phone-form':
@@ -56,27 +49,21 @@ def sign_up_page(request, *args, **kwargs):
             user.set_password(form_phone.cleaned_data.get('passcode'))
             user.save()
             if user:
-                current_site = get_current_site(request)
-                uid = urlsafe_base64_encode(force_bytes(user.pk))
-                token = account_activation_token.make_token(user)
-                message = f'سلام و عرض خسته نباشید خدمت {user.first_name} عزیز\nلینک فعالسازی حساب کاربری:\nhttp://{current_site.domain}/account/activation/{uid}/{token}'
-
                 try:
-                    api = KavenegarAPI(settings.KAVENEGAR_API)
-                    params = { 'sender' : '10008663', 'receptor': user.phone, 'message': message }
-                    # response = api.sms_send(params)
-                    # print(response)
+                    # sending sms
+                    send_sms_signup_phone.delay(username=user.username, domain=get_current_site(request).domain)
                 
                     messages.success(request, _('لینک فعالسازی حساب کاربری برای شما ارسال شد. منتظر بمانید'))
                     return redirect('/')
 
                 except APIException as e: 
-                    print('err 1')
+                    print('err 1 * in sending sms * signup')
                     print(e)
                 except HTTPException as e:
-                    print('err 2')
+                    print('err 2 * in sending sms * signup')
                     print(e)
 
+            form_phone = SignUpForm_Phone()
             messages.error(request, _('مشکلی بوجود آمده است'))
             return redirect('/sign-up/email-form')
         return render(request, 'mw_auth/signup.html', {'form': form_phone})
@@ -147,44 +134,24 @@ def forget_pw_email_phone(request):
                 user = User.objects.filter(email=user_text).first()
                 if user:
                     # send email
-                    current_site = get_current_site(request)    # get domain site
-                    domain = current_site.domain
-                    uid = urlsafe_base64_encode(force_bytes(user.pk))
-                    token = account_activation_token.make_token(user)
-                    # sending mail
-                    subject = _('بازیابی رمزعبور | MW')
-                    message = f'<h3>سلام و عرض خسته نباشید خدمت {user.first_name} عزیز</h3><p>صفحه ی بازیابی رمزعبور:</p><a href="http://{domain}/account/reset-password/{uid}/{token}">برای ورود به صفحه ی بازیابی رمزعبور کلیک کنید</a>'
-                    from_email = settings.EMAIL_HOST_USER
-                    to_list = [user.email]
-                    msg_EMAIL = EmailMessage(subject, message, from_email, to_list)
-                    msg_EMAIL.content_subtype = "html" 
-                    msg_EMAIL.send()
-                    
+                    send_mail_forgetpw_email.delay(user.username, get_current_site(request).domain)
                     messages.success(request, _('ایمیل تغییر رمزعبور برای شما ارسال شد. ایمیل خود را چک کنید'))
                     return redirect('/forget-pw/enter-phone-email')
+                    
             elif not is_email and is_phone:
                 user = User.objects.filter(phone=user_text).first()
                 if user:
-
-                    current_site = get_current_site(request)    # get domain site
-                    uid = urlsafe_base64_encode(force_bytes(user.pk))
-                    token = account_activation_token.make_token(user)
-                    message = f'سلام و عرض خسته نباشید خدمت {user.first_name} عزیز\nصفحه ی بازیابی رمزعبور\nhttp://{current_site.domain}/account/reset-password/{uid}/{token}'
-
                     try:
-                        api = KavenegarAPI(settings.KAVENEGAR_API)
-                        params = { 'sender' : '10008663', 'receptor': user_text, 'message': message }
-                        response = api.sms_send(params)
-                        print(response)
-                    
+                        # send SMS
+                        send_sms_forgetpw_phone.delay(user.username, get_current_site(request).domain)
                         messages.success(request, _('پیامک تغییر رمزعبور برای شما ارسال شد. منتظر بمانید'))
                         return redirect('/')
 
                     except APIException as e: 
-                        print('err 1')
+                        print('err 1 * in sending sms * fp')
                         print(e)
                     except HTTPException as e:
-                        print('err 2')
+                        print('err 2 * in sending sms * fp')
                         print(e)
 
             elif not is_email and not is_phone:
