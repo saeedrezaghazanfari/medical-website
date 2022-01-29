@@ -20,96 +20,96 @@ msgstr ""
 
 #: apps.py:8
 msgid "تنظیمات"
-msgstr ""
+msgstr "Settings"
 
 #: models.py:7
 msgid "مقیاس ایکس"
-msgstr ""
+msgstr "X scale"
 
 #: models.py:8
 msgid "مقیاس ایگرگ"
-msgstr ""
+msgstr "Egger Scale"
 
 #: models.py:9
 msgid "متن شما روی نقشه"
-msgstr ""
+msgstr "Your text on the map"
 
 #: models.py:10
 msgid "کشور"
-msgstr ""
+msgstr "Country"
 
 #: models.py:11
 msgid "استان"
-msgstr ""
+msgstr "State"
 
 #: models.py:12
 msgid "شهرستان"
-msgstr ""
+msgstr "City"
 
 #: models.py:13
 msgid "تلفن"
-msgstr ""
+msgstr "Phone"
 
 #: models.py:14
 msgid "زمان گشایش"
-msgstr ""
+msgstr "Opening time"
 
 #: models.py:15 models.py:56
 msgid "ایمیل"
-msgstr ""
+msgstr "email"
 
 #: models.py:16
 msgid "متن شما درمورد ارتباط"
-msgstr ""
+msgstr "Your text about communication"
 
 #: models.py:20 models.py:21
 msgid "‌تنظیمات"
-msgstr ""
+msgstr "Settings"
 
 #: models.py:24
 msgid "شما حتما باید یک مقدار در این جدول ذخیره کنید."
-msgstr ""
+msgstr "You must save a value in this table."
 
 #: models.py:28
 msgid "تصویر برند"
-msgstr ""
+msgstr "Brand image"
 
 #: models.py:32
 msgid "تصویر برند‌"
-msgstr ""
+msgstr "Winner image"
 
 #: models.py:33
 msgid "تصاویر برند‌ها"
-msgstr ""
+msgstr "Pictures of the winners"
 
 #: models.py:40
 msgid "متن ارتباط"
-msgstr ""
+msgstr "Communication text"
 
 #: models.py:41
 msgid "نام کاربر"
-msgstr ""
+msgstr "user name"
 
 #: models.py:42
 msgid "ایمیل کاربر"
-msgstr ""
+msgstr "User email"
 
 #: models.py:43
 msgid "عنوان ارتباط"
-msgstr ""
+msgstr "Communication title"
 
 #: models.py:48
 msgid "پیام مخاطب"
-msgstr ""
+msgstr "Contact message"
 
 #: models.py:49
 msgid "پیام های مخاطبان"
-msgstr ""
+msgstr "Audience messages"
 
 #: models.py:60
 msgid "ایمیل - ارسال خبر"
-msgstr ""
+msgstr "Email - Send news"
 
 #: models.py:61
 msgid "ایمیل‌ها - ارسال اخبار"
-msgstr ""
+msgstr "Emails - Send news"

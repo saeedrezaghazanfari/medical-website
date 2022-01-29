@@ -20,238 +20,238 @@ msgstr ""
 
 #: apps.py:8
 msgid "احراز هویت"
-msgstr ""
+msgstr "Authentication"
 
 #: forms.py:9 forms.py:61 forms.py:112 forms.py:127
 msgid "گذر واژه"
-msgstr ""
+msgstr "Password"
 
 #: forms.py:11 forms.py:63 forms.py:114 forms.py:129
 msgid "رمزعبور خود را وارد کنید"
-msgstr ""
+msgstr "Enter your password"
 
 #: forms.py:19 forms.py:71
 msgid "نام خود را وارد کنید"
-msgstr ""
+msgstr "Enter your name"
 
 #: forms.py:20 forms.py:72
 msgid "نام خانوادگی خود را وارد کنید"
-msgstr ""
+msgstr "Enter your last name"
 
 #: forms.py:21
 msgid "ایمیل خود را وارد کنید"
-msgstr ""
+msgstr "Enter your email"
 
 #: forms.py:22 forms.py:74 forms.py:116
 msgid "کدملی خود را وارد کنید"
-msgstr ""
+msgstr "Enter your national code"
 
 #: forms.py:29 forms.py:81
 msgid "نام باید شامل کاراکترهای فارسی باشد"
-msgstr ""
+msgstr "The name must contain Persian characters"
 
 #: forms.py:36 forms.py:88
 msgid " نام‌خانوادگی باید شامل کاراکترهای فارسی باشد"
-msgstr ""
+msgstr "The family name must contain Persian characters"
 
 #: forms.py:43 forms.py:95 forms.py:141
 msgid "رمزعبور باید شامل کاراکترهای انگلیسی باشد"
-msgstr ""
+msgstr "Password must contain English characters"
 
 #: forms.py:49
 msgid "این ایمیل در سیستم ثبت شده است"
-msgstr ""
+msgstr "This email is registered in the system"
 
 #: forms.py:55 forms.py:107
 msgid "این کدملی در سیستم ثبت شده است"
-msgstr ""
+msgstr "This code is registered in the system"
 
 #: forms.py:73
 msgid "شماره تلفن خود را وارد کنید"
-msgstr ""
+msgstr "Enter your phone number"
 
 #: forms.py:101
 msgid "این شماره تلفن در سیستم ثبت شده است"
-msgstr ""
+msgstr "This phone number is registered in the system"
 
 #: forms.py:121
 msgid "این کدملی در سیستم ثبت نشده است"
-msgstr ""
+msgstr "This code is not registered in the system"
 
 #: forms.py:132
 msgid "تکرار گذر واژه"
-msgstr ""
+msgstr "Repeat the password"
 
 #: forms.py:134
 msgid "رمزعبور خود را تکرار کنید"
-msgstr ""
+msgstr "Repeat your password"
 
 #: forms.py:149
 msgid "باید هردو پسورد با هم برابر باشند"
-msgstr ""
+msgstr "Both passwords must be the same"
 
 #: models.py:9
 msgid "کد کاربری"
-msgstr ""
+msgstr "User code"
 
 #: models.py:10
 msgid "آیپی"
-msgstr ""
+msgstr "IP"
 
 #: models.py:11
 msgid "شماره تلفن"
-msgstr ""
+msgstr "phone number"
 
 #: models.py:12
 msgid "کدملی"
-msgstr ""
+msgstr "National Code"
 
 #: models.py:13 models.py:20
 msgid "پروفایل"
-msgstr ""
+msgstr "profile"
 
 #: models.py:24
 msgid "نام و نام خانوادگی"
-msgstr ""
+msgstr "first name and last name"
 
 #: models.py:28
 msgid "کاربر"
-msgstr ""
+msgstr "User"
 
 #: models.py:29
 msgid "کاربران"
-msgstr ""
+msgstr "users"
 
 #: templates/mw_auth/enter_email_phone.html:7
 #: templates/mw_auth/enter_email_phone.html:46 templates/mw_auth/signin.html:67
 msgid "فراموشی رمزعبور"
-msgstr ""
+msgstr "forget password"
 
 #: templates/mw_auth/enter_email_phone.html:37
 #: templates/mw_auth/reset_password.html:36 templates/mw_auth/signin.html:37
 #: templates/mw_auth/signup.html:54
 msgid "انتخاب زبان:"
-msgstr ""
+msgstr "Selecting Language, language selection:"
 
 #: templates/mw_auth/enter_email_phone.html:49
 msgid "سرویس ارسال پیامک قطع میباشد. لطفا با ایمیل تست فرمایید"
-msgstr ""
+msgstr "SMS service is disconnected. Please test by email"
 
 #: templates/mw_auth/enter_email_phone.html:52
 msgid "تلفن یا ایمیل خود را وارد کنید"
-msgstr ""
+msgstr "Enter your phone or email"
 
 #: templates/mw_auth/enter_email_phone.html:55
 msgid "ارسال"
-msgstr ""
+msgstr "submit"
 
 #: templates/mw_auth/enter_email_phone.html:61
 #: templates/mw_auth/signup.html:103 templates/mw_auth/signup.html:154
 msgid "آیا حسابی دارید؟ وارد شوید"
-msgstr ""
+msgstr "Do you have an account? enter"
 
 #: templates/mw_auth/enter_email_phone.html:62
 msgid "ثبت نام در سابت"
-msgstr ""
+msgstr "Register on Sabet"
 
 #: templates/mw_auth/reset_password.html:7
 #: templates/mw_auth/reset_password.html:45
 msgid "ریست کردن رمزعبور"
-msgstr ""
+msgstr "Reset the password"
 
 #: templates/mw_auth/reset_password.html:59
 msgid "ریست رمزعبور"
-msgstr ""
+msgstr "Password reset"
 
 #: templates/mw_auth/signin.html:7 templates/mw_auth/signin.html:60
 msgid "ورود"
-msgstr ""
+msgstr "log in"
 
 #: templates/mw_auth/signin.html:46
 msgid "فرم ورود"
-msgstr ""
+msgstr "Login form"
 
 #: templates/mw_auth/signin.html:66
 msgid "ثبت نام در سایت"
-msgstr ""
+msgstr "Register on the site"
 
 #: templates/mw_auth/signup.html:7 templates/mw_auth/signup.html:97
 #: templates/mw_auth/signup.html:148
 msgid "ثبت نام"
-msgstr ""
+msgstr "Register"
 
 #: templates/mw_auth/signup.html:64 templates/mw_auth/signup.html:114
 msgid "ثبت نام با ایمیل"
-msgstr ""
+msgstr "Register by email"
 
 #: templates/mw_auth/signup.html:64
 msgid "ثبت نام با شماره تلفن"
-msgstr ""
+msgstr "Register by phone number"
 
 #: templates/mw_auth/signup.html:114
 msgid "ثبت نام با تلفن"
-msgstr ""
+msgstr "Register by phone"
 
 #: templates/mw_auth/signup.html:117
 msgid "سرویس ارسال پیامک غیرفعال است"
-msgstr ""
+msgstr "SMS service is disabled"
 
 #: views.py:38
 msgid "حساب شما با موفقیت ساخته شد. برای فعالسازی حساب، ایمیل خود را چک کنید"
-msgstr ""
+msgstr "Your account was created successfully. Check your email to activate your account"
 
 #: views.py:56
 msgid "لینک فعالسازی حساب کاربری برای شما ارسال شد. منتظر بمانید"
-msgstr ""
+msgstr "An account activation link has been sent to you. wait"
 
 #: views.py:67 views.py:161
 msgid "مشکلی بوجود آمده است"
-msgstr ""
+msgstr "There is a problem"
 
 #: views.py:89
 msgid "شما با موفقیت وارد شدید"
-msgstr ""
+msgstr "You have successfully logged in"
 
 #: views.py:92
 msgid "کدملی و یا رمزعبور شما اشتباه است"
-msgstr ""
+msgstr "Your username or password is incorrect"
 
 #: views.py:95
 msgid "کدملی شما اشتباه است و یا در سیستم موجود نیست"
-msgstr ""
+msgstr "Your code is incorrect or not in the system"
 
 #: views.py:116
 msgid "حساب کاربری شما فعال گردید."
-msgstr ""
+msgstr "Your account has been activated."
 
 #: views.py:117
 msgid "حساب کاربری شما فعال گردید. برای ورود به حساب، اطلاعات خود را وارد کنید"
-msgstr ""
+msgstr "Your account has been activated. Enter your information to log in"
 
 #: views.py:120
 msgid "لینک فعالسازی شما نامعتبر است."
-msgstr ""
+msgstr "Your activation link is invalid."
 
 #: views.py:138
 msgid "ایمیل تغییر رمزعبور برای شما ارسال شد. ایمیل خود را چک کنید"
-msgstr ""
+msgstr "A password change email was sent to you. check your mail"
 
 #: views.py:147
 msgid "پیامک تغییر رمزعبور برای شما ارسال شد. منتظر بمانید"
-msgstr ""
+msgstr "A password change SMS was sent to you. wait"
 
 #: views.py:158
 msgid "فرمت ایمیل یا تلفن شما اشتباه است"
-msgstr ""
+msgstr "Your email or phone format is incorrect"
 
 #: views.py:182
 msgid "رمز شما با موفقیت تغییر کرد. اطلاعات خود را وارد کنید"
-msgstr ""
+msgstr "Your password was changed successfully. Enter your information"
 
 #: views.py:187
 msgid "لینک شما نامعتبر و یا منقضی شده است"
-msgstr ""
+msgstr "Your link is invalid or has expired"
 
 #: views.py:195
 msgid "شما با موفقیت خارج شدید"
-msgstr ""
+msgstr "You have successfully logged out"

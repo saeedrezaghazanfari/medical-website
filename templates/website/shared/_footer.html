@@ -30,51 +30,40 @@
             <div class="col-lg-4 col-sm-6 single-footer-widget">
                 <h4>{% translate 'لینک های سریع' %}</h4>
                 <ul>
-                    <li><a href="">{% translate 'حساب کاربری' %}</a></li>
-                    <li><a href="">{% translate 'دکتر‌ها' %}</a></li>
-                    <li><a href="">{% translate 'بلاگ‌ها' %}</a></li>
-                    <li><a href="">{% translate 'تماس باما' %}</a></li>
+                    <li><a href="#TODO">{% if request.LANGUAGE_CODE == 'fa' %}حساب کاربری{% else %}Account{% endif %}</a></li>
+                    <li><a href="{% url 'website:doctors' %}">{% if request.LANGUAGE_CODE == 'fa' %}دکتر‌ها{% else %}Doctors{% endif %}</a></li>
+                    <li><a href="{% url 'website:blogs' %}">{% if request.LANGUAGE_CODE == 'fa' %}بلاگ ها{% else %}Blogs{% endif %}</a></li>
+                    <li><a href="{% url 'website:contactus' %}">{% if request.LANGUAGE_CODE == 'fa' %}تماس باما{% else %}contact us{% endif %}</a></li>
                 </ul>
             </div>
             <div class="col-lg-4 col-sm-6 single-footer-widget">
                 <h4>امکانات</h4>
                 <ul>
-                    <li>{% translate 'رزور کردن وقت' %}</li>
-                    <li>{% translate 'مشاوره گرفتن از پزشک' %}</li>
-                    <li>{% translate 'مشاهده ی مدارک پزشک‌ها' %}</li>
-                    <li>{% translate 'مطالعه کردن بلاگ‌ها' %}</li>
+                    <li>{% if request.LANGUAGE_CODE == 'fa' %}رزور کردن وقت{% else %}Book time{% endif %}</li>
+                    <li>{% if request.LANGUAGE_CODE == 'fa' %}مشاوره گرفتن از پزشک{% else %}Get medical advice{% endif %}</li>
+                    <li>{% if request.LANGUAGE_CODE == 'fa' %}مشاهده ی مدارک پزشک‌ها{% else %}View doctors' records{% endif %}</li>
+                    <li>{% if request.LANGUAGE_CODE == 'fa' %}مطالعه کردن بلاگ‌ها{% else %}Reading blogs{% endif %}</li>
                 </ul>
             </div>
             <div class="col-lg-4 col-md-6 single-footer-widget">
                 <h4>{% translate 'اخبار' %}</h4>
-                <p>{% translate 'با ما همراه باشید' %}</p>
+                <p>{% if request.LANGUAGE_CODE == 'fa' %}با ما همراه باشید{% else %}Stay with us{% endif %}</p>
                 <div class="form-wrap" id="mc_embed_signup">
-                    <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-                    method="get" class="form-inline">
-                    <input class="form-control" name="EMAIL" placeholder="{% translate 'ایمیل خود را وارد کنید' %}" required="" type="email" />
-                    <button class="click-btn btn btn-default">
-                        <i class="ti-arrow-right"></i>
-                    </button>
-                    <div style="position: absolute; left: -5000px;">
-                        <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text" />
-                    </div>
-
-                    <div class="info"></div>
-                </form>
+                    <form action="{% url 'website:savemail' %}" method="POST" class="form-inline">
+                        {% csrf_token %}
+                        <input class="form-control" name="emailfield" placeholder="{% if request.LANGUAGE_CODE == 'fa' %}ایمیل خود را وارد کنید{% else %}Enter Your E-mail{% endif %}" required type="email" />
+                        <button class="click-btn btn btn-default">
+                            <i class="ti-arrow-right"></i>
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
     <div class="row footer-bottom d-flex justify-content-between">
         <p class="col-lg-8 col-sm-12 footer-text m-0">
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            {% translate 'این وبسایت توسط' %} <a class="text-dark font-weight-bold" href="https://www.instagram.com/saeedreza_wu/" target="_blank">{% translate 'سعیدرضا غضنفری' %}</a> {% translate 'طراحی شده است' %} 
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            {% if request.LANGUAGE_CODE == 'fa' %}این وبسایت توسط{% else %}This website has been designed by {% endif %} <a class="text-dark font-weight-bold" href="https://www.instagram.com/saeedreza_wu/" target="_blank">{% if request.LANGUAGE_CODE == 'fa' %}سعیدرضا غضنفری{% else %}SaeedReza Ghazanfari{% endif %}</a> {% if request.LANGUAGE_CODE == 'fa' %}طراحی شده است (بک اند){% else %}(BackEnd){% endif %} 
         </p>
-        <div class="col-lg-4 col-sm-12 footer-social">
-            <a href="https://www.linkedin.com/in/%D8%B3%D8%B9%DB%8C%D8%AF%D8%B1%D8%B6%D8%A7-%D8%BA%D8%B6%D9%86%D9%81%D8%B1%DB%8C-7b2944220/" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://www.instagram.com/saeedreza_wu/" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="live:.cid.f18c8ab4ed801bf9"><i class="fab fa-skype"></i></a>
-        </div>
     </div>
     </div>
 </footer>

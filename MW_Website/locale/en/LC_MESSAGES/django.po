@@ -20,164 +20,164 @@ msgstr ""
 
 #: admin.py:21 models.py:15
 msgid "تخصص‌ها"
-msgstr ""
+msgstr "Specialties"
 
 #: apps.py:7
 msgid "ماژول های وبسایت"
-msgstr ""
+msgstr "Website modules"
 
 #: models.py:14 models.py:111 models.py:154
 msgid "کاربر"
-msgstr ""
+msgstr "User"
 
 #: models.py:16
 msgid "بیوگرافی"
-msgstr ""
+msgstr "Biography"
 
 #: models.py:20 models.py:44
 msgid "پزشک"
-msgstr ""
+msgstr "Doctor"
 
 #: models.py:21
 msgid "پزشک ها"
-msgstr ""
+msgstr "Doctors"
 
 #: models.py:28 models.py:59
 msgid "نام پزشک"
-msgstr ""
+msgstr "Doctor's name"
 
 #: models.py:32
 msgid "عنوان تخصص"
-msgstr ""
+msgstr "Title of specialty"
 
 #: models.py:36
 msgid "تخصص"
-msgstr ""
+msgstr "Expertise"
 
 #: models.py:37
 msgid "تخصص ‌ها"
-msgstr ""
+msgstr "Specialties"
 
 #: models.py:45
 msgid "عنوان کوتاه"
-msgstr ""
+msgstr "Short title"
 
 #: models.py:46
 msgid "متن"
-msgstr ""
+msgstr "Text"
 
 #: models.py:51
 msgid "نوت پزشک"
-msgstr ""
+msgstr "Note doctor"
 
 #: models.py:52
 msgid "نوت های پرشکان"
-msgstr ""
+msgstr "Persistent notes"
 
 #: models.py:63
 msgid "مقدار در url"
-msgstr ""
+msgstr "Value in url"
 
 #: models.py:64
 msgid "تصویر"
-msgstr ""
+msgstr "Image"
 
 #: models.py:65
 msgid "نویسنده"
-msgstr ""
+msgstr "the writer"
 
 #: models.py:66 models.py:135
 msgid "دسته بندی ها"
-msgstr ""
+msgstr "categories"
 
 #: models.py:67 models.py:147
 msgid "تگ ها"
-msgstr ""
+msgstr "Tags"
 
 #: models.py:68 models.py:130 models.py:142
 #: templates/mw_website/contactus_page.html:70
 msgid "عنوان"
-msgstr ""
+msgstr "Title"
 
 #: models.py:69
 msgid "متن مقاله"
-msgstr ""
+msgstr "Article text"
 
 #: models.py:70
 msgid "متن کوتاه"
-msgstr ""
+msgstr "Short text"
 
 #: models.py:71
 msgid "منتشر شود؟"
-msgstr ""
+msgstr "To be published?"
 
 #: models.py:76 models.py:112 models.py:155
 msgid "بلاگ"
-msgstr ""
+msgstr "blog"
 
 #: models.py:77
 msgid "بلاگ‌ها"
-msgstr ""
+msgstr "Blogs"
 
 #: models.py:84
 msgid "تاریخ انتشار"
-msgstr ""
+msgstr "Release date"
 
 #: models.py:105
 msgid "نام نویسنده"
-msgstr ""
+msgstr "Author Name"
 
 #: models.py:109
 msgid "پاسخ"
-msgstr ""
+msgstr "Response"
 
 #: models.py:110 templates/mw_website/blog_detail_page.html:138
 msgid "نظر"
-msgstr ""
+msgstr "Opinion"
 
 #: models.py:114
 msgid "پاسخ؟"
-msgstr ""
+msgstr "Response?"
 
 #: models.py:115
 msgid "نمایش؟"
-msgstr ""
+msgstr "the show?"
 
 #: models.py:119
 msgid "نظر کاربر"
-msgstr ""
+msgstr "User comment"
 
 #: models.py:120
 msgid "نظرات کاربران"
-msgstr ""
+msgstr "User comments"
 
 #: models.py:124
 msgid "تاریخ نظر"
-msgstr ""
+msgstr "Date of comment"
 
 #: models.py:134 templates/partials_mw_website/blog_sidebar.html:23
 msgid "دسته بندی"
-msgstr ""
+msgstr "Grouping"
 
 #: models.py:146
 msgid "تگ"
-msgstr ""
+msgstr "tag"
 
 #: models.py:159
 msgid "پست و لایک"
-msgstr ""
+msgstr "Posts and likes"
 
 #: models.py:160
 msgid "پست ها و لایک ها"
-msgstr ""
+msgstr "Posts and Likes"
 
 #: templates/mw_website/aboutus_page.html:3
 msgid "درباره ی ما"
-msgstr ""
+msgstr "about us"
 
 #: templates/mw_website/aboutus_page.html:14
 msgid "درباره ما"
-msgstr ""
+msgstr "about us"
 
 #: templates/mw_website/aboutus_page.html:15
 #: templates/mw_website/blog_detail_page.html:14
@@ -186,289 +186,281 @@ msgstr ""
 #: templates/mw_website/department_page.html:15
 #: templates/mw_website/doctors_page.html:15
 msgid "زمین سبز پشت هوای الوده است"
-msgstr ""
+msgstr "The green earth is behind the polluted air"
 
 #: templates/mw_website/aboutus_page.html:18
 msgid "خانه / درباره ی ما"
-msgstr ""
+msgstr "Home / About us"
 
 #: templates/mw_website/aboutus_page.html:32
 #: templates/mw_website/index_page.html:105
 msgid "با ما بهترین پزشک ها را تجربه کنید"
-msgstr ""
+msgstr "Experience the best doctors with us"
 
 #: templates/mw_website/aboutus_page.html:33
 #: templates/mw_website/index_page.html:106
-msgid ""
-"ما بهترین پزشک های متخصص را دور هم گرد آورده ایم تا با بهترین کیفیت به شما "
-"خدمت کنیم"
-msgstr ""
+msgid "ما بهترین پزشک های متخصص را دور هم گرد آورده ایم تا با بهترین کیفیت به شما خدمت کنیم"
+msgstr "We have gathered the best specialist doctors to serve you with the best quality"
 
 #: templates/mw_website/aboutus_page.html:34
 #: templates/mw_website/index_page.html:107
 msgid "سلامتی شما آرزوی ماست"
-msgstr ""
+msgstr "We wish you good health"
 
 #: templates/mw_website/aboutus_page.html:48
 msgid "سوالی دارید"
-msgstr ""
+msgstr "Do you have any question"
 
 #: templates/mw_website/aboutus_page.html:55
 msgid "آیا ما پشتیبانی 24 ساعته داریم؟"
-msgstr ""
+msgstr "Do we have 24-hour support?"
 
 #: templates/mw_website/aboutus_page.html:63
 msgid "بله ما پشتیبانی 24 ساعته داریم :)"
-msgstr ""
+msgstr "Yes we have 24 hour support :)"
 
 #: templates/mw_website/aboutus_page.html:72
 msgid "آیا هدف ما سلامتی شماست؟"
-msgstr ""
+msgstr "Is our goal your health?"
 
 #: templates/mw_website/aboutus_page.html:80
 msgid "بله هدف ما سلامتی شماست :)"
-msgstr ""
+msgstr "Yes, our goal is your health :)"
 
 #: templates/mw_website/aboutus_page.html:89
 msgid "آیا ما دکترهای خوب داریم؟"
-msgstr ""
+msgstr "Do we have good doctors?"
 
 #: templates/mw_website/aboutus_page.html:97
 msgid "بله ما ما دکترهای متخصص داریم :)"
-msgstr ""
+msgstr "Yes we have specialist doctors :)"
 
 #: templates/mw_website/blog_detail_page.html:17
 msgid "خانه / بلاگ ها / اطلاعات بلاگ"
-msgstr ""
+msgstr "Home / Blogs / Blog Information"
 
 #: templates/mw_website/blog_detail_page.html:68
 msgid "شما این پست را لایک کرده اید"
-msgstr ""
+msgstr "You liked this post"
 
 #: templates/mw_website/blog_detail_page.html:92
 msgid "پست قبلی"
-msgstr ""
+msgstr "Previous post"
 
 #: templates/mw_website/blog_detail_page.html:103
 msgid "پست بعدی"
-msgstr ""
+msgstr "Next post"
 
 #: templates/mw_website/blog_detail_page.html:171
 msgid "ارسال پاسخ"
-msgstr ""
+msgstr "Post reply"
 
 #: templates/mw_website/blog_detail_page.html:213
 msgid "جواب دادن"
-msgstr ""
+msgstr "answer"
 
 #: templates/mw_website/blog_detail_page.html:219
 msgid "خوشحال میشویم نظر خود را با ما به اشتراک بگذارید"
-msgstr ""
+msgstr "We are happy to share your opinion with us"
 
 #: templates/mw_website/blog_detail_page.html:228
 #: templates/mw_website/contactus_page.html:76
 msgid "ارسال پیام"
-msgstr ""
+msgstr "send Message"
 
 #: templates/mw_website/blogs_page.html:3
 #: templates/mw_website/blogs_page.html:14
 msgid "بلاگ ها"
-msgstr ""
+msgstr "Blogs"
 
 #: templates/mw_website/blogs_page.html:18
 msgid "خانه / بلاگ ها"
-msgstr ""
+msgstr "Home / Blogs"
 
 #: templates/mw_website/blogs_page.html:63
 msgid "قبلی"
-msgstr ""
+msgstr "Previous"
 
 #: templates/mw_website/blogs_page.html:83
 msgid "بعدی"
-msgstr ""
+msgstr "next one"
 
 #: templates/mw_website/contactus_page.html:3
 #: templates/mw_website/contactus_page.html:17
 msgid "ارتباط با ما"
-msgstr ""
+msgstr "Contact us"
 
 #: templates/mw_website/contactus_page.html:21
 msgid "خانه / ارتباط با ما"
-msgstr ""
+msgstr "Home / Contact Us"
 
 #: templates/mw_website/contactus_page.html:44
 msgid "در ارتباط بمانید"
-msgstr ""
+msgstr "Stay in touch"
 
 #: templates/mw_website/contactus_page.html:52
 msgid "پیام"
-msgstr ""
+msgstr "Message"
 
 #: templates/mw_website/contactus_page.html:58
 msgid "نام"
-msgstr ""
+msgstr "name"
 
 #: templates/mw_website/contactus_page.html:64
 msgid "ایمیل"
-msgstr ""
+msgstr "email"
 
 #: templates/mw_website/department_page.html:3
 msgid "دپارتمان"
-msgstr ""
+msgstr "Department"
 
 #: templates/mw_website/department_page.html:14
 msgid "ساختمان"
-msgstr ""
+msgstr "Building"
 
 #: templates/mw_website/department_page.html:18
 msgid "خانه / ساختمان"
-msgstr ""
+msgstr "House / Building"
 
 #: templates/mw_website/department_page.html:31
 msgid "سرویس سلامتی"
-msgstr ""
+msgstr "Health service"
 
 #: templates/mw_website/department_page.html:41
 msgid "سرویس ها"
-msgstr ""
+msgstr "Services"
 
 #: templates/mw_website/department_page.html:50
 msgid "کلینیک دندان پزشکی"
-msgstr ""
+msgstr "Dental Clinic"
 
 #: templates/mw_website/department_page.html:59
 #: templates/mw_website/index_page.html:89
 msgid "جراحی پلاستیک"
-msgstr ""
+msgstr "Plastic Surgery"
 
 #: templates/mw_website/doctors_page.html:3
 #: templates/mw_website/doctors_page.html:14
 msgid "دکترها"
-msgstr ""
+msgstr "Doctors"
 
 #: templates/mw_website/doctors_page.html:18
 msgid "خانه / دکتر ها"
-msgstr ""
+msgstr "Home / Doctors"
 
 #: templates/mw_website/doctors_page.html:35
 msgid "اورژانسی"
-msgstr ""
+msgstr "emergency"
 
 #: templates/mw_website/doctors_page.html:37
 #: templates/mw_website/index_page.html:130
 msgid "ما برای سلامتی شما سرویس 24 ساعته در نظر داریم"
-msgstr ""
+msgstr "We provide 24-hour service for your health"
 
 #: templates/mw_website/index_page.html:3
 msgid "خانه"
-msgstr ""
+msgstr "Home"
 
 #: templates/mw_website/index_page.html:12
 msgid "سلامتی را با هم بسازیم"
-msgstr ""
+msgstr "Let's build health together"
 
 #: templates/mw_website/index_page.html:13
-msgid ""
-"ما اینجا هستیم تا شما بتوانید با صرفه جویی در زمان، امورات پزشکی خود را "
-"انجام دهید."
-msgstr ""
+msgid "ما اینجا هستیم تا شما بتوانید با صرفه جویی در زمان، امورات پزشکی خود را انجام دهید."
+msgstr "We are here for you to do your medical work by saving time."
 
 #: templates/mw_website/index_page.html:14
 msgid "دیدن دپارتمان"
-msgstr ""
+msgstr "See Department"
 
 #: templates/mw_website/index_page.html:30
 msgid "مراقبت ویژه"
-msgstr ""
+msgstr "Intensive care"
 
 #: templates/mw_website/index_page.html:31
-msgid ""
-"در واقع شرایط بیماران بستری در بخش مراقبت ویژه به گونه ای است که امکان "
-"مراقبت ونگهداری از آنها در سایر بخش‌ها و در کنار دیگر بیماران وجود ندارد."
-msgstr ""
+msgid "در واقع شرایط بیماران بستری در بخش مراقبت ویژه به گونه ای است که امکان مراقبت ونگهداری از آنها در سایر بخش‌ها و در کنار دیگر بیماران وجود ندارد."
+msgstr "In fact, the condition of patients admitted to the intensive care unit is such that it is not possible to care for and maintain them in other wards and next to other patients."
 
 #: templates/mw_website/index_page.html:39
 msgid "موارد اظطراری"
-msgstr ""
+msgstr "Emergencies"
 
 #: templates/mw_website/index_page.html:40
 msgid "پیشگیری بهتر از درمان است. در حفظ سلامتی خود کوشا باشید."
-msgstr ""
+msgstr "prevention is better than cure. Be diligent in maintaining your health."
 
 #: templates/mw_website/index_page.html:48
 msgid "قرار انلاین"
-msgstr ""
+msgstr "Apply online"
 
 #: templates/mw_website/index_page.html:49
-msgid ""
-"شما میتوانید در همه‌ی اوقات شبانه روز، برای ملاقات با پزشک موردنظر خود، تایم "
-"رزرو کنید."
-msgstr ""
+msgid "شما میتوانید در همه‌ی اوقات شبانه روز، برای ملاقات با پزشک موردنظر خود، تایم رزرو کنید."
+msgstr "You can make an appointment to see your doctor at any time of the day or night."
 
 #: templates/mw_website/index_page.html:62
 msgid "فوق العاده ترین مراقبت ها"
-msgstr ""
+msgstr "The most extraordinary care"
 
 #: templates/mw_website/index_page.html:71
 msgid "سرویس پزشکی"
-msgstr ""
+msgstr "Medical service"
 
 #: templates/mw_website/index_page.html:80
 msgid "دندانی کلینک"
-msgstr ""
+msgstr "Dental Clinic"
 
 #: templates/mw_website/index_page.html:128
 msgid "خط ویژه"
-msgstr ""
+msgstr "Special line"
 
 #: templates/mw_website/index_page.html:142
 msgid "آخرین بلاگ‌ها"
-msgstr ""
+msgstr "Latest Blogs"
 
 #: templates/partials_mw_website/blog_sidebar.html:18
 msgid "جستجو"
-msgstr ""
+msgstr "Search"
 
 #: templates/partials_mw_website/blog_sidebar.html:37
 msgid "پست های اخیر"
-msgstr ""
+msgstr "Recent Posts"
 
 #: templates/partials_mw_website/blog_sidebar.html:53
 msgid "اخبار"
-msgstr ""
+msgstr "News"
 
 #: templates/partials_mw_website/blog_sidebar.html:60
 msgid "اشتراک"
-msgstr ""
+msgstr "Subscription"
 
 #: templates/partials_mw_website/doctor_cards.html:7
 msgid "پزشکی دکتر های باتجربه"
-msgstr ""
+msgstr "Experienced medical doctors"
 
 #: views.py:129
 msgid "نظر شما ثبت شد. بعد از تایید در سایت نمایش خواهد شد"
-msgstr ""
+msgstr "Your comment has been submitted. Will be displayed on the site after confirmation"
 
 #: views.py:132 views.py:143
 msgid "مشکلی به وجود آمده است"
-msgstr ""
+msgstr "There is a problem"
 
 #: views.py:140
 msgid "پاسخ شما ثبت شد. بعد از تایید در سایت نمایش خواهد شد"
-msgstr ""
+msgstr "Your answer has been recorded. Will be displayed on the site after confirmation"
 
 #: views.py:155
 msgid "ایمیل شما با موفقیت ذخیره شد"
-msgstr ""
+msgstr "Your email has been saved successfully"
 
 #: views.py:157
 msgid "مشکلی در ثبت ایمیل پیش آمد"
-msgstr ""
+msgstr "There was a problem registering the email"
 
 #: views.py:159
 msgid "این ایمیل قبلا وارد شده است"
-msgstr ""
+msgstr "This email has already been entered"
 
 #: views.py:161
 msgid "فرمت ایمیل را درست وارد کنید"
-msgstr ""
+msgstr "Enter the email format correctly"
